@@ -1,18 +1,19 @@
 ---
 title: What Rookery is
-description: A self-hosted platform where your notes and your agents live in the same place — agents that read what you know and act through the accounts you connect.
+description: A self-hosted platform where agents live on your knowledge and act through the accounts you connect.
 ---
 
-Rookery is two things in one program, and they are deliberately joined:
+Rookery is a **platform for agents that work on your behalf**, running on hardware
+you own.
 
-- **A place to keep what you know** — a full notes application with a rich
-  editor, search, links and AI writing tools.
-- **A place for agents to work on it** — agents you describe in plain language,
-  that read and write those same notes, reach the services you connect, and run
-  on a schedule or on demand.
+You install one program. It gives you a place to keep what you know, a way to
+build agents by describing them in plain language, and a way for those agents to
+reach the services you already use — email, calendars, repositories, home
+automation, whatever you connect. They run on a schedule, or when you ask, and
+they tell you what happened.
 
-It runs on hardware you own, and it is built to sit on a machine that stays on,
-so the work carries on while you are not watching.
+The whole thing is designed to sit on a machine that stays on, so the work
+carries on while you are not watching.
 
 ## The shape of it
 
