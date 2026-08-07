@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Inter, self-hosted. No CDN import: the product refuses one because it ships
+   as a single binary for offline and LAN installs, and the website holds the
+   same line. This file is a COPY of internal/fonts/InterVariable.woff2 in the
+   product repo and carries a refresh obligation — see FONTS.md at the repo
+   root. (The note lives there rather than beside the font because anything
+   under public/ is served verbatim.) */
+@font-face {
+  font-family: "InterVariable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2-variations");
+}
+
+/* ── Brand tokens — identity spec §4 ─────────────────────────────────────────
+   Warm ground and warm ink held against a cool counterweight. Rooks are seen
+   against a dusk sky, so the cool value is subject-derived; it is also what
+   keeps the palette out of the generic warm-cream-and-terracotta territory. */
+:root {
+  --bone: #ece5db; /* page ground */
+  --paper: #f8f4ee; /* raised surfaces */
+  --bark: #211d1a; /* ink — warm near-black, never pure #000 */
+  --ember: #a94c1c; /* accent — one per view */
+  --ember-soft: #f6e6dc;
+  --dusk: #46405a; /* counterweight */
+  --dusk-deep: #2b2635;
+  --stone: #6f6760; /* muted text */
+  --line: #d9cfc2;
+
+  --ground: var(--bone);
+  --surface: var(--paper);
+  --ink: var(--bark);
+}
+
+/* The site commits to its light, warm world. App captures are dark-theme
+   panels sitting ON that ground, which is where the depth comes from — so
+   there is deliberately no dark mode for the landing page. Starlight's docs
+   keep their own light/dark toggle; the overrides below theme both. */
+@theme inline {
+  --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+    monospace;
+
+  --color-bone: var(--bone);
+  --color-paper: var(--paper);
+  --color-bark: var(--bark);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-dusk: var(--dusk);
+  --color-dusk-deep: var(--dusk-deep);
+  --color-stone: var(--stone);
+  --color-line: var(--line);
+}
+
+@layer base {
+  /* Tailwind v4's Preflight drops this to match the browser, and a <button>'s
+     browser default is cursor: default — so every button hovers as if inert.
+     The product hit exactly this and fixed it in base; so do we. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ── Starlight theming ───────────────────────────────────────────────────────
+   Starlight is themed through its own custom properties rather than by
+   overriding its component classes, which would break on every upgrade. */
+:root[data-theme="light"] {
+  --sl-color-accent: #a94c1c;
+  --sl-color-accent-low: #f6e6dc;
+  --sl-color-accent-high: #7d3813;
+  --sl-color-white: #211d1a;
+  --sl-color-gray-1: #2c2723;
+  --sl-color-gray-2: #4a433c;
+  --sl-color-gray-3: #6f6760;
+  --sl-color-gray-5: #d9cfc2;
+  --sl-color-gray-6: #ece5db;
+  --sl-color-gray-7: #f3ede4;
+  --sl-color-black: #f8f4ee;
+  --sl-font: "InterVariable", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-accent: #e08d51;
+  --sl-color-accent-low: #2f2118;
+  --sl-color-accent-high: #f0b183;
+  --sl-color-white: #ece5db;
+  --sl-color-gray-1: #e3dbd1;
+  --sl-color-gray-2: #bdb4a9;
+  --sl-color-gray-3: #9c9289;
+  --sl-color-gray-4: #6b6259;
+  --sl-color-gray-5: #383029;
+  --sl-color-gray-6: #211d18;
+  --sl-color-black: #17140f;
+  --sl-font: "InterVariable", ui-sans-serif, system-ui, sans-serif;
+}

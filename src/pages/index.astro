@@ -1,0 +1,200 @@
+---
+import "../styles/brand.css";
+import InstallBlock from "../components/InstallBlock.tsx";
+import Transcript from "../components/Transcript.tsx";
+import FeatureSection from "../components/FeatureSection.tsx";
+
+const title = "Rookery — your knowledge grew hands";
+const description =
+  "Rookery runs agents on your own machine — around the clock. They read and write your knowledge, reach the apps you already use, and tell you the moment something happens.";
+
+// Ten sections, in the order the spec fixes. `flip` alternates the media side.
+const features = [
+  {
+    eyebrow: "Workspaces",
+    title: "One machine. Sealed, separate worlds.",
+    body: "Every workspace is its own tenant — its own knowledge, its own credentials, its own connected accounts, its own agents. You enter one with its password, and nothing crosses between them.",
+    footnote:
+      "On Linux, each workspace's agents are additionally confined to it at the filesystem level. On macOS and Windows that confinement isn't available and they run unconfined.",
+  },
+  {
+    eyebrow: "Knowledge base",
+    title: "Select a sentence. Improve, proofread, explain, reformat.",
+    body: "Everything you know, everything your agents learn, and what your connected services bring in — as plain markdown on your own disk. Open it in Rookery or in any editor you like. It is yours, in a format that outlives us.",
+  },
+  {
+    eyebrow: "Agents",
+    title: "Describe it. Don't configure it.",
+    body: "Say what you want in your own words. Rookery asks a couple of questions, proposes a plan, builds it, tests it against the real services, and shows you what happened before anything is saved.",
+  },
+  {
+    eyebrow: "Skills",
+    title: "Things your agents already know how to do.",
+    body: "Reading PDFs and spreadsheets, researching the web, triaging email, working a calendar, watching for changes. Built in, and ready to be attached to any agent — plus any you create the same conversational way.",
+  },
+  {
+    eyebrow: "Connections",
+    title: "100+ services. No middleman holding your keys.",
+    body: "Connect the apps you already use. Rookery talks to them directly using credentials you own, so no third-party broker ever sits between you and your accounts.",
+  },
+  {
+    eyebrow: "Chat",
+    title: "Ask what you know. Then have it act.",
+    body: "Talk to your knowledge the way you'd talk to someone who has read all of it — and have it write a note, or do something in a connected account, right there in the conversation.",
+  },
+  {
+    eyebrow: "Notifications",
+    title: "You find out the moment it happens.",
+    body: "An agent finished, a service returned something new, a reminder came due, something needs a decision. It lands in your inbox, and reaches you on Telegram, Discord or Slack when you're away from the app.",
+    footnote:
+      "All three connect outbound — the bot dials out, so nothing listens on an open port and it works from behind a home firewall with nothing forwarded.",
+  },
+  {
+    eyebrow: "Models",
+    title: "Your machine. Your model.",
+    body: "Use the coder tool you already have, or connect the model provider you prefer — hosted, or running entirely on your own hardware. Nothing forces a hosted model, and nothing ties you to one vendor.",
+  },
+  {
+    eyebrow: "Secrets",
+    title: "Credentials that stay yours.",
+    body: "Encrypted where they sit, unlocked only into the thing that needs them, scoped to one workspace, and never handed to anyone else.",
+  },
+  {
+    eyebrow: "Scheduling",
+    title: "“Every weekday at eight.”",
+    body: "Say when, in words. Agents run on their own or whenever you ask, and reminders work the same way — “remind me in 10 minutes to call the doctor.”",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link
+      rel="preload"
+      href="/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 border-b border-line/70 bg-bone/80 backdrop-blur">
+      <nav
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5"
+        aria-label="Main"
+      >
+        <a href="/" class="flex items-center gap-2.5 text-bark">
+          <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+            <path
+              d="M11 8.5h10M7.5 14h17M4.5 19.5C4.5 26 9.5 29 16 29S27.5 26 27.5 19.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.1"
+              stroke-linecap="round"></path>
+          </svg>
+          <span class="font-mono text-[17px] font-semibold tracking-[-0.05em]">rookery</span>
+        </a>
+        <div class="flex items-center gap-6 text-[14px]">
+          <a href="/docs/getting-started/what-rookery-is" class="text-stone hover:text-bark"
+            >Docs</a
+          >
+          <a href="https://github.com/ilijad1/rookery" class="text-stone hover:text-bark"
+            >GitHub</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="mx-auto max-w-6xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
+        <h1
+          class="max-w-[16ch] text-[clamp(2.4rem,7vw,4.5rem)] leading-[1.02] font-semibold tracking-[-0.045em] text-balance"
+        >
+          Your knowledge grew hands.
+        </h1>
+        <p class="mt-6 max-w-[46ch] text-[clamp(1.05rem,2.2vw,1.3rem)] leading-relaxed text-stone">
+          Rookery runs agents on your own machine — around the clock.
+        </p>
+        <div class="mt-10">
+          <InstallBlock client:load />
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="border-y border-line/70 bg-paper/60 py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="mb-10 text-center">
+          <p class="font-mono text-[12px] font-medium tracking-[0.14em] text-ember uppercase">
+            What it's like
+          </p>
+          <h2
+            class="mx-auto mt-3 max-w-[20ch] text-[clamp(1.6rem,3.4vw,2.25rem)] leading-[1.15] font-semibold tracking-[-0.03em] text-balance"
+          >
+            You describe it. It gets built and tested.
+          </h2>
+        </div>
+        <Transcript client:visible />
+      </div>
+    </section>
+
+    <!-- Features -->
+    <div class="divide-y divide-line/50">
+      {
+        features.map((f, i) => (
+          <FeatureSection client:visible {...f} flip={i % 2 === 1} />
+        ))
+      }
+    </div>
+
+    <!-- Install again -->
+    <section class="border-t border-line/70 bg-paper/60 py-20 sm:py-28">
+      <div class="mx-auto flex max-w-6xl flex-col items-center px-6 text-center">
+        <h2
+          class="max-w-[18ch] text-[clamp(1.7rem,4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.035em] text-balance"
+        >
+          Put it on a machine that never sleeps.
+        </h2>
+        <div class="mt-10 flex justify-center">
+          <InstallBlock client:visible />
+        </div>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section class="py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <h2 class="text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.03em]">
+          Support the project
+        </h2>
+        <p class="mx-auto mt-4 max-w-[52ch] text-[15px] leading-relaxed text-stone">
+          Rookery is open source and self-hostable, forever. If it's useful to you, a
+          star genuinely helps other people find it.
+        </p>
+        <a
+          href="https://github.com/ilijad1/rookery"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-bark px-5 py-3 text-[14px] font-medium text-bone transition-opacity hover:opacity-90"
+        >
+          Star on GitHub
+        </a>
+      </div>
+    </section>
+
+    <footer class="border-t border-line/70 py-10">
+      <div
+        class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-[13px] text-stone sm:flex-row"
+      >
+        <span>Rookery — Apache-2.0</span>
+        <span>No trackers on this site.</span>
+      </div>
+    </footer>
+  </body>
+</html>
