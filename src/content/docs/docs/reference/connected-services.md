@@ -79,18 +79,113 @@ These need no credentials at all — connect and use.
 
 ## How connecting works
 
-Two shapes, depending on the service:
+Two shapes, depending on the service.
 
-**Sign-in (OAuth).** You register an app with the provider once, paste its two
-values into Rookery, then approve access in your browser. Rookery stores the
-resulting token encrypted and refreshes it for you.
+### A key you paste
 
-**A key you paste.** Some services just issue a token. Paste it and you're done.
-Self-hosted services also ask for the address of your own instance.
+Some services just issue a token. Paste it and you are connected. Self-hosted
+services also ask for the address of your own instance.
+
+**This works no matter how you run Rookery** — on a laptop, on a home server at
+`192.168.1.50`, behind Tailscale, at a `.lan` hostname, or on a public domain.
+Nothing has to reach you from outside, so there is nothing to validate.
+
+If your deployment is private and you want the least friction, prefer these
+services.
+
+### Sign-in (OAuth)
+
+You register an application with the provider once, paste its two values into
+Rookery, and approve access in your browser.
+
+The extra step is that **the provider has to send you back**. After you approve,
+it redirects your browser to a **callback address** you registered with it, and
+Rookery completes the exchange there. That address must be one the provider is
+willing to accept — and providers differ, sometimes sharply.
+
+Set it with `ROOKERY_PUBLIC_URL`, or in owner settings, which takes precedence.
+
+## Choosing a callback address
+
+### On your own machine, use `localhost`
+
+```
+ROOKERY_PUBLIC_URL=http://localhost:8080
+```
+
+Most providers make a specific exception for loopback, so plain HTTP is accepted
+here even though it is refused everywhere else.
+
+**Prefer the name `localhost` over an IP address**, even the loopback one:
+
+| Address | Verdict |
+|---|---|
+| `http://localhost:8080` | **Best.** Widest acceptance. |
+| `http://127.0.0.1:8080` | Usually works, but some providers reject IP addresses outright as redirect hosts. |
+| `http://192.168.1.50:8080` | **Never works.** A private IP is not a loopback address and not a public host. |
+| `http://rookery.lan:8080` | **Never works.** See below. |
+
+A caveat that catches people out: this only helps if the browser you approve in
+is on the same machine as Rookery. Approving from your phone against a server's
+`localhost` cannot work — the phone's `localhost` is the phone.
+
+### Reserved names can never work
+
+These suffixes are reserved by RFC and can never be registered, so a provider
+that validates the domain will always refuse them:
+
+```
+.local   .lan   .home   .internal   .test   .invalid   .example   .localdomain
+```
+
+A dotless hostname like `http://server:8080` fails for the same reason — there is
+no registrable domain in it at all.
+
+### Some providers accept nothing but HTTPS on a real domain
+
+This is the case worth planning for. **Slack**, for example, requires an `https`
+address **with no exception for localhost**, and rejects IP addresses entirely.
+There is no local-only way to connect it.
+
+For those services you need Rookery reachable at a real domain over HTTPS:
+
+```
+ROOKERY_PUBLIC_URL=https://rookery.example.com
+```
+
+Two ways to get there:
+
+- **A reverse proxy that terminates HTTPS** — Caddy, nginx or Traefik in front of
+  Rookery, with a certificate from Let's Encrypt.
+- **A tunnel** — Cloudflare Tunnel, Tailscale Funnel or similar, which gives you a
+  public HTTPS hostname without opening a port.
+
+:::tip
+The domain does not have to point at a public server. A domain you own can
+resolve to a private address on your own network — the provider only ever
+validates the **shape** of the address you registered, and your browser is what
+actually visits it. So `https://rookery.example.com` resolving to `192.168.1.50`
+on your LAN is a legitimate setup.
+:::
+
+### What Rookery does about this
+
+Rookery knows each provider's rules and checks your address against them before
+you start, telling you what is wrong and how to fix it rather than letting you
+discover it on the provider's error page.
+
+- Providers whose rules have been **confirmed against their documentation** can
+  block the Connect button, with the reason.
+- Providers not yet confirmed only ever **warn** — an out-of-date rule can never
+  lock you out of a service that would have worked.
+
+The address you consented with is also pinned into the sign-in request, so the
+token exchange cannot use a different one than the approval did.
 
 :::caution
-For the sign-in flow, the provider redirects back to Rookery — so it must know
-its own externally reachable address. Set `ROOKERY_PUBLIC_URL`, and note that
-providers reject addresses that aren't publicly resolvable, so a `.lan` hostname
-will fail validation.
+The callback address you register with the provider must match
+`ROOKERY_PUBLIC_URL` **exactly** — scheme, host and port. `https://example.com`
+and `https://example.com/` are the same, but `http://` versus `https://`, or a
+missing port, are not. A mismatch fails at the last step, after you have already
+approved, which makes it look like a permissions problem rather than a typo.
 :::

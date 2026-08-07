@@ -31,10 +31,18 @@ each provider, including the **redirect address** to paste into their form.
 The provider redirects back to Rookery after you approve, so Rookery must know its
 own externally reachable address. Set `ROOKERY_PUBLIC_URL`.
 
-Providers reject addresses that are not publicly resolvable — a `.lan` hostname
-fails validation outright. Use a real hostname with HTTPS, or `http://localhost`
-while you are testing.
+Use `http://localhost:8080` on your own machine, or a real domain over HTTPS
+otherwise. A `.lan` hostname or a private IP address will never be accepted, and
+a few providers — Slack among them — refuse anything that is not HTTPS on a
+registrable domain, with no localhost exception.
+
+[Choosing a callback address](/docs/reference/connected-services#choosing-a-callback-address)
+covers this properly, including how to get an HTTPS domain that still resolves to
+a machine on your own network.
 :::
+
+Services that take **a key you paste** have none of this to worry about — they
+work regardless of how or where you run Rookery.
 
 Some providers share one application. The Google services — Gmail, Calendar,
 Drive, Sheets, Docs, Tasks, Analytics and the rest — all use a single Google
