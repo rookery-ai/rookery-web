@@ -38,7 +38,7 @@ const description =
  * changedetection and karakeep reads as noise, while one containing Gmail,
  * Slack, Notion and Stripe reads as "this already works with my stuff".
  */
-const CONNECTIONS = [
+const CONNECTION_SLUGS = [
   "google", "google_calendar", "google_drive", "google_sheets", "google_docs",
   "notion", "slack", "github", "discord", "telegram", "outlook", "teams",
   "dropbox", "jira", "asana", "trello", "clickup", "monday", "airtable",
@@ -49,20 +49,42 @@ const CONNECTIONS = [
   "home_assistant", "immich", "nextcloud", "grafana", "n8n", "gitea",
   "jellyfin", "strava", "readwise", "wikipedia",
 ];
+const CONNECTIONS = CONNECTION_SLUGS.map((slug) => ({ slug }));
 
-/** The CLI coders Rookery can drive. No cursor mark is vendored. */
-const CODERS = ["anthropic", "openai", "opencode_zen", "gemini"];
+/**
+ * The CLI coders Rookery can drive. Labelled explicitly because several of
+ * these marks are ambiguous alone: OpenCode's is a plain black block and
+ * Anthropic's is a bare corporate glyph, so unlabelled they read as wrong.
+ * Cursor is supported but no mark is vendored for it.
+ */
+const CODERS = [
+  { slug: "anthropic", label: "Claude Code" },
+  { slug: "openai", label: "Codex" },
+  { slug: "opencode_zen", label: "OpenCode" },
+  { slug: "gemini", label: "Gemini CLI" },
+];
 
 /** Hosted model providers — a selection; the docs carry the current list. */
 const PROVIDERS = [
-  "openai", "anthropic", "gemini", "xai", "mistral", "deepseek", "moonshot",
-  "zai", "openrouter", "perplexity", "groq", "together", "fireworks",
-  "cerebras", "sambanova", "nebius", "deepinfra", "huggingface",
-  "github_models", "bedrock", "alibaba", "ollama",
+  { slug: "openai", label: "OpenAI" }, { slug: "anthropic", label: "Anthropic" },
+  { slug: "gemini", label: "Gemini" }, { slug: "xai", label: "xAI" },
+  { slug: "mistral", label: "Mistral" }, { slug: "deepseek", label: "DeepSeek" },
+  { slug: "moonshot", label: "Moonshot" }, { slug: "zai", label: "Z.AI" },
+  { slug: "openrouter", label: "OpenRouter" }, { slug: "perplexity", label: "Perplexity" },
+  { slug: "groq", label: "Groq" }, { slug: "together", label: "Together" },
+  { slug: "fireworks", label: "Fireworks" }, { slug: "cerebras", label: "Cerebras" },
+  { slug: "sambanova", label: "SambaNova" }, { slug: "nebius", label: "Nebius" },
+  { slug: "deepinfra", label: "DeepInfra" }, { slug: "huggingface", label: "Hugging Face" },
+  { slug: "github_models", label: "GitHub Models" }, { slug: "bedrock", label: "Bedrock" },
+  { slug: "alibaba", label: "Alibaba" }, { slug: "ollama", label: "Ollama Cloud" },
 ];
 
 /** Runs on your own hardware — no key, nothing leaves the network. */
-const SELF_HOSTED = ["ollama_local", "lmstudio", "llamacpp", "vllm", "localai", "jan"];
+const SELF_HOSTED = [
+  { slug: "ollama_local", label: "Ollama" }, { slug: "lmstudio", label: "LM Studio" },
+  { slug: "llamacpp", label: "llama.cpp" }, { slug: "vllm", label: "vLLM" },
+  { slug: "localai", label: "LocalAI" }, { slug: "jan", label: "Jan" },
+];
 ---
 
 <!doctype html>
@@ -102,15 +124,15 @@ const SELF_HOSTED = ["ollama_local", "lmstudio", "llamacpp", "vllm", "localai", 
         <div class="flex items-center gap-2 text-[14px]">
           <a
             href="/docs/getting-started/what-rookery-is"
-            class="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-stone transition-colors hover:bg-bark/5 hover:text-bark"
+            class="flex items-center gap-2 rounded-lg px-3.5 py-2 text-[15px] text-stone transition-colors hover:bg-bark/5 hover:text-bark"
           >
-            <BookOpen className="size-4" /> Docs
+            <BookOpen className="size-[20px]" /> Docs
           </a>
           <a
             href="https://github.com/ilijad1/rookery"
-            class="flex items-center gap-1.5 rounded-lg bg-bark px-3.5 py-1.5 font-medium text-bone transition-opacity hover:opacity-90"
+            class="flex items-center gap-2 rounded-lg bg-bark px-4 py-2 text-[15px] font-medium text-bone transition-opacity hover:opacity-90"
           >
-            <GithubIcon className="size-4" /> Star
+            <GithubIcon className="size-[20px]" /> GitHub
           </a>
         </div>
       </nav>
@@ -310,7 +332,7 @@ const SELF_HOSTED = ["ollama_local", "lmstudio", "llamacpp", "vllm", "localai", 
           id="conn"
           placeholder="Search services…"
           emptyText="Not in this selection — it may still be supported. See the full list in the docs."
-          groups={[{ label: "Services", slugs: CONNECTIONS }]}
+          groups={[{ label: "Services", items: CONNECTIONS }]}
         >
           <p slot="after" class="mt-9 text-center text-[14px] text-stone">
             A selection of the 100+ supported.{" "}
@@ -490,10 +512,11 @@ const SELF_HOSTED = ["ollama_local", "lmstudio", "llamacpp", "vllm", "localai", 
           columns={true}
           placeholder="Search models and providers…"
           emptyText="Not in this list — any OpenAI-compatible endpoint works too."
+          showLabels={true}
           groups={[
-            { label: "Coders", slugs: CODERS },
-            { label: "Providers", slugs: PROVIDERS },
-            { label: "Self-hosted", slugs: SELF_HOSTED },
+            { label: "Coders", items: CODERS },
+            { label: "Providers", items: PROVIDERS },
+            { label: "Self-hosted", items: SELF_HOSTED },
           ]}
         />
       </div>

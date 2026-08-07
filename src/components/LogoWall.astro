@@ -5,21 +5,31 @@ import { namespaceSvgIds } from "../lib/svg";
  * A searchable wall of vendor marks, rendered entirely on the server.
  *
  * Shared by Connections and Models so both get the id-namespacing fix and the
- * same search behaviour. Groups are optional: pass one group for a flat wall,
- * or several for a column layout that collapses into a single flat result set
- * while a search is active.
+ * same search behaviour. Groups are optional: one group gives a flat wall,
+ * several give columns that collapse into a flat result set while searching.
  */
-export type Group = { label: string; slugs: string[] };
+export type Group = { label: string; items: { slug: string; label?: string }[] };
 
 interface Props {
   id: string;
   groups: Group[];
   placeholder?: string;
   columns?: boolean;
+  /** Names under each tile. On for Models, where several marks are ambiguous
+   *  on their own — OpenCode's is a plain black block, Anthropic's a bare
+   *  glyph — and off for Connections, where the brands are self-evident. */
+  showLabels?: boolean;
   emptyText?: string;
 }
 
-const { id, groups, placeholder = "Search…", columns = false, emptyText } = Astro.props;
+const {
+  id,
+  groups,
+  placeholder = "Search…",
+  columns = false,
+  showLabels = false,
+  emptyText,
+} = Astro.props;
 
 const RAW = import.meta.glob("../assets/logos/*.svg", {
   query: "?raw",
@@ -33,22 +43,20 @@ const byName = new Map(
 
 const resolved = groups.map((g, gi) => ({
   label: g.label,
-  items: g.slugs
-    .filter((s) => byName.has(s))
-    .map((s) => ({
-      slug: s,
-      name: s.replace(/_/g, " "),
+  items: g.items
+    .filter((i) => byName.has(i.slug))
+    .map((i) => ({
+      name: i.label ?? i.slug.replace(/_/g, " "),
       // Namespaced per WALL, per GROUP and per MARK. The group index is not
-      // redundant: the same mark legitimately appears in two columns — gemini,
-      // openai and anthropic are each both a coder and a provider — and
-      // without it those duplicates collide with each other.
-      svg: namespaceSvgIds(byName.get(s)!, `${id}${gi}-${s}`),
+      // redundant: gemini, openai and anthropic are each both a coder and a
+      // provider, and would otherwise collide with themselves.
+      svg: namespaceSvgIds(byName.get(i.slug)!, `${id}${gi}-${i.slug}`),
     })),
 }));
 ---
 
 <div class="mx-auto w-full max-w-5xl" data-wall={id}>
-  <div class="relative mx-auto mb-9 max-w-sm">
+  <div class="relative mx-auto mb-10 max-w-sm">
     <svg
       class="absolute top-1/2 left-4 size-4 -translate-y-1/2 text-stone/60"
       viewBox="0 0 24 24"
@@ -70,40 +78,43 @@ const resolved = groups.map((g, gi) => ({
     />
   </div>
 
-  <div
-    data-wall-groups
-    class={columns ? "grid gap-8 md:grid-cols-3" : "grid gap-8"}
-  >
+  <div data-wall-groups class={columns ? "grid gap-10 md:grid-cols-3" : "grid gap-8"}>
     {
       resolved.map((g) => (
         <div data-group>
           {columns && (
             <p
               data-group-label
-              class="mb-4 text-center font-mono text-[11.5px] font-medium tracking-[0.14em] text-stone uppercase"
+              class="mb-5 text-center font-mono text-[11.5px] font-medium tracking-[0.14em] text-stone uppercase"
             >
               {g.label}
             </p>
           )}
-          <div
-            class:list={[
-              "grid gap-2.5",
-              columns
-                ? "grid-cols-[repeat(auto-fill,minmax(52px,1fr))]"
-                : "grid-cols-[repeat(auto-fill,minmax(56px,1fr))] sm:gap-3",
-            ]}
-          >
+          {/* Flex-wrap with justify-center, not a grid: a column holding four
+              tiles was left-aligned under a centred heading, which read as
+              misalignment. Flex centres any number of tiles. */}
+          <div class="flex flex-wrap justify-center gap-3">
             {g.items.map((l) => (
               <div
                 data-tile
-                data-name={l.name}
+                data-name={l.name.toLowerCase()}
                 title={l.name}
-                class="group grid aspect-square place-items-center rounded-xl border border-line/70 bg-white text-[#18181b] shadow-[0_1px_2px_rgba(33,29,26,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-[0_8px_20px_-8px_rgba(169,76,28,0.45)]"
+                class:list={[
+                  "group flex flex-col items-center",
+                  showLabels ? "w-[76px]" : "w-[64px]",
+                ]}
               >
-                <span
-                  class="[&>svg]:size-[22px] [&>svg]:transition-transform [&>svg]:duration-200 group-hover:[&>svg]:scale-110"
-                  set:html={l.svg}
-                />
+                <div class="grid size-16 place-items-center rounded-2xl border border-line/70 bg-white text-[#18181b] shadow-[0_1px_3px_rgba(33,29,26,0.06)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-ember/40 group-hover:shadow-[0_10px_24px_-10px_rgba(169,76,28,0.5)]">
+                  <span
+                    class="[&>svg]:size-[30px] [&>svg]:transition-transform [&>svg]:duration-200 group-hover:[&>svg]:scale-110"
+                    set:html={l.svg}
+                  />
+                </div>
+                {showLabels && (
+                  <span class="mt-2 w-full truncate text-center text-[11px] leading-tight text-stone capitalize">
+                    {l.name}
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -120,7 +131,6 @@ const resolved = groups.map((g, gi) => ({
 </div>
 
 <script>
-  // One handler covers every wall on the page.
   for (const wall of document.querySelectorAll<HTMLElement>("[data-wall]")) {
     const input = wall.querySelector<HTMLInputElement>("[data-wall-search]");
     const empty = wall.querySelector<HTMLElement>("[data-wall-empty]");
