@@ -11,22 +11,27 @@ agent and those instructions become part of how that agent works.
 
 Twenty-two ship with Rookery and are available in every workspace with no setup.
 
-**Working with files** — PDF, spreadsheets (csv, xlsx), Word documents,
-presentations, markdown, and text out of images.
-
-**How to behave** — keeping the knowledge base tidy, detecting change, writing
-good notifications, collaborating with other agents, surviving failures,
-handling time and timezones.
-
-**Web and research** — researching a topic properly, driving a real browser.
-
-**Development** — git and GitHub, installing command-line tools it needs.
-
-**Productivity** — email triage, calendar and scheduling.
-
-**Integrations** — working with APIs.
-
-**Meta** — creating skills, and vetting them.
+- **Working with files**
+  - PDF, spreadsheets (csv, xlsx), Word documents, presentations, markdown
+  - Reading text out of images
+- **How to behave**
+  - Keeping the knowledge base tidy
+  - Detecting what changed since last time
+  - Writing notifications worth reading
+  - Collaborating with other agents
+  - Surviving failures and retrying sensibly
+  - Handling time and timezones correctly
+- **Web and research**
+  - Researching a topic properly, with sources
+  - Driving a real browser
+- **Development**
+  - git and GitHub
+  - Installing command-line tools it needs
+- **Productivity**
+  - Email triage
+  - Calendar and scheduling
+- **Integrations** — working with APIs
+- **Meta** — creating skills, and vetting them
 
 ## Your own
 

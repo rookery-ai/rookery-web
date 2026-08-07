@@ -6,6 +6,10 @@ description: Plain markdown on your own disk — what you write, what your agent
 Every workspace has one knowledge base: a folder of markdown files that Rookery
 reads, writes and searches, and that you can open in any editor.
 
+**It is a complete notes application in its own right.** Plenty of people will use
+it as one and never build an agent — that is a perfectly good way to use Rookery.
+The agents are there when you want them, reading and writing the same notes.
+
 It is deliberately not a database. If Rookery disappeared tomorrow, you would
 still have every note in a format that opens anywhere.
 
@@ -53,10 +57,21 @@ reach further.
 
 ## Editing
 
-The knowledge base has a full editor in the web interface: formatting, tables,
-images, drag-and-drop, and a slash menu.
+The web interface has a full rich-text editor:
 
-Select any text and an AI toolbar appears with four actions:
+- **Formatting** — headings, bold and italic, quotes, code blocks.
+- **Lists** — bulleted, numbered, and checkboxes you can tick.
+- **Tables** — with header rows, added and edited inline.
+- **Images** — dropped or pasted in, and resizable once placed.
+- **Links** — to the web, and `[[wikilinks]]` to your other notes.
+- **A slash menu** — type `/` for every block type without leaving the keyboard.
+- **Emoji** — a searchable picker, and icons for folders and notes.
+
+There is a raw markdown mode too, if you would rather see the source.
+
+### AI writing tools
+
+Select any text and a toolbar appears with four actions:
 
 | Action | What it does |
 |---|---|
@@ -68,18 +83,32 @@ Select any text and an AI toolbar appears with four actions:
 Files that are not markdown open read-only: text and code in a monospace viewer,
 anything else as a download.
 
+### Bringing documents in
+
+Drop in a PDF, Word document, spreadsheet, presentation, web page or CSV and it
+becomes a markdown note. Also available from the command line:
+
+```bash
+rookery kb convert report.pdf --dest notes/research
+```
+
+Conversion is one-directional — into markdown, never out. If the extraction looks
+thin, the note says so in its own frontmatter, so a scanned PDF that yielded
+almost nothing cannot pass as a clean one.
+
 ## Searching
 
-Search runs across the whole knowledge base from the interface, and agents have
-the same search available as a tool — which is why "find the note where I
-mentioned the dentist" works as a single lookup rather than an agent reading
-every file.
+- Search the whole knowledge base from the interface.
+- Agents have the same search as a tool, which is why "find the note where I
+  mentioned the dentist" is one lookup rather than an agent reading every file.
+- It uses ripgrep when installed, and falls back to a slower built-in scan when
+  it is not.
 
 ## Links between notes
 
-Write `[[Another note]]` and Rookery resolves it to that note, with backlinks
-shown on the target. This is the same convention Obsidian uses, so an existing
-vault of notes carries over.
+Write `[[Another note]]` and Rookery resolves it, with backlinks shown on the
+target. This is the same convention Obsidian uses, so an existing vault carries
+over — and so does yours, if you ever leave.
 
 ## Where it lives on disk
 
