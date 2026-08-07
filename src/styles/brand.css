@@ -127,3 +127,17 @@
   --sl-color-black: #17140f;
   --sl-font: "InterVariable", ui-sans-serif, system-ui, sans-serif;
 }
+
+/* The docs wordmark matches the landing page: lowercase, monospace, tight.
+   Starlight renders it as .site-title, so this is the one place to set it. */
+.site-title {
+  font-family: var(--font-mono) !important;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  font-size: 1.15rem;
+}
+.site-title img,
+.site-title svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
