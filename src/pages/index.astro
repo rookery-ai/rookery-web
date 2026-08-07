@@ -62,9 +62,10 @@ const CONNECTIONS = CONNECTION_SLUGS.map((slug) => ({ slug }));
  * Cursor is supported but no mark is vendored for it.
  */
 const CODERS = [
-  { slug: "anthropic", label: "Claude Code" },
+  { slug: "claude", label: "Claude Code" },
   { slug: "openai", label: "Codex" },
   { slug: "opencode_zen", label: "OpenCode" },
+  { slug: "cursor", label: "Cursor" },
   { slug: "gemini", label: "Gemini CLI" },
 ];
 
@@ -312,6 +313,13 @@ const SELF_HOSTED = [
             Built in and ready to attach to any agent — plus any you create the same
             conversational way.
           </p>
+          <p class="mt-5 max-w-[52ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            And whatever model is behind an agent, it gets the same tools: web search,
+            reading and writing your notes, running what it needs, and every account
+            you have connected. A small local model and a frontier one are given the
+            same reach — so the model decides how well the job is done, never whether
+            it can be done at all.
+          </p>
         </div>
         <SkillsBento client:visible />
       </div>
@@ -321,7 +329,7 @@ const SELF_HOSTED = [
     <section class="py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 text-center">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center gap-3">
             <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
               <Plug className="size-5" />
             </span>
@@ -508,7 +516,7 @@ const SELF_HOSTED = [
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 text-center">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center gap-3">
             <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
               <Cpu className="size-5" />
             </span>

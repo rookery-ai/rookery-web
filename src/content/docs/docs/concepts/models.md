@@ -7,6 +7,17 @@ icon: models
 Every workspace picks its own model, and you can change it whenever you like.
 There are two ways to connect one.
 
+:::tip[The model does not decide what an agent can reach]
+Whatever is behind an agent — a frontier model or a small one on your own
+machine — it is given the same tools: web search and fetching, reading and
+writing your knowledge base, searching it, running scripts, and every account
+you have connected.
+
+Rookery supplies those itself rather than relying on the model to have them, so
+the model determines how *well* a job is done, not whether it can be done at
+all. This is why a modest local model is a reasonable choice for routine agents.
+:::
+
 ## A coder tool you already have
 
 If you already use a command-line coding assistant, Rookery can drive it directly
