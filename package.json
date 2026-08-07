@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "dev:lan": "astro dev --host --port 9999",
+    "dev": "node scripts/clean-vite-cache.mjs && astro dev",
+    "dev:lan": "node scripts/clean-vite-cache.mjs && astro dev --host --port 9999",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"
