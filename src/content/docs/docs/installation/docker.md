@@ -1,6 +1,7 @@
 ---
 title: Docker
 description: Run Rookery as a container. Smaller and simpler, with one deliberate limitation.
+icon: docker
 ---
 
 ```bash

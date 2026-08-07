@@ -1,6 +1,7 @@
 ---
 title: Binary and packages
 description: Install from an archive or a .deb/.rpm, and verify what you downloaded.
+icon: binary
 ---
 
 Every release ships archives for six platform combinations, plus Linux packages —

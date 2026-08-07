@@ -1,6 +1,7 @@
 ---
 title: Connections
 description: Connect your accounts directly, with credentials you own. No broker in between.
+icon: connections
 ---
 
 A connection lets agents and chat reach one of your accounts — read your mail,

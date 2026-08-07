@@ -1,6 +1,7 @@
 ---
 title: Agents
 description: Built by conversation, tested against real services, and run on a schedule or on demand.
+icon: agents
 ---
 
 An agent is a small worker that does one job well. You describe it in your own

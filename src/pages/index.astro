@@ -24,6 +24,10 @@ import {
   MessagesSquare,
   KeyRound,
   CalendarClock,
+  Puzzle,
+  Plug,
+  Bell,
+  Cpu,
 } from "lucide-react";
 
 const title = "Rookery — your knowledge grew hands";
@@ -291,9 +295,14 @@ const SELF_HOSTED = [
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 max-w-[46ch]">
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            Skills
-          </p>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Puzzle className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Skills
+            </span>
+          </div>
           <h2
             class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
@@ -312,9 +321,14 @@ const SELF_HOSTED = [
     <section class="py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 text-center">
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            Connections
-          </p>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Plug className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Connections
+            </span>
+          </div>
           <h2
             class="mx-auto mt-5 max-w-[20ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
@@ -379,9 +393,14 @@ const SELF_HOSTED = [
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div>
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            Notifications
-          </p>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Bell className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Notifications
+            </span>
+          </div>
           <h2
             class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
@@ -401,9 +420,14 @@ const SELF_HOSTED = [
     <section class="py-20 sm:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div>
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            Models
-          </p>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Cpu className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Models
+            </span>
+          </div>
           <h2
             class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
@@ -484,9 +508,14 @@ const SELF_HOSTED = [
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 text-center">
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            Models
-          </p>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Cpu className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Models
+            </span>
+          </div>
           <h2
             class="mx-auto mt-5 max-w-[20ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >

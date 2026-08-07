@@ -1,6 +1,7 @@
 ---
 title: Models
 description: Rookery ships no model. Use a coder tool you have, a hosted provider, or one on your own hardware.
+icon: models
 ---
 
 Every workspace picks its own model, and you can change it whenever you like.

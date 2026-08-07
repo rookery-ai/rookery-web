@@ -1,6 +1,7 @@
 ---
 title: CLI commands
 description: Every command the rookery binary accepts.
+icon: cli
 ---
 
 ```bash

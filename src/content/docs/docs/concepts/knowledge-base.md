@@ -1,6 +1,7 @@
 ---
 title: Knowledge base
 description: Plain markdown on your own disk — what you write, what your agents learn, and what your connected services bring in.
+icon: knowledge
 ---
 
 Every workspace has one knowledge base: a folder of markdown files that Rookery

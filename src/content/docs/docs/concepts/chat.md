@@ -1,6 +1,7 @@
 ---
 title: Chat
 description: Talk to your knowledge, and act through your connected accounts, in the moment.
+icon: chat
 ---
 
 Chat is the direct line. No agent, no schedule — you ask, it answers, and it can

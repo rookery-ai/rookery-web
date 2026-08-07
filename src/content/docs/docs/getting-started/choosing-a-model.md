@@ -1,6 +1,7 @@
 ---
 title: Choosing a model
 description: Rookery needs a model to think with. Use a coder tool you already have, a hosted provider, or one running on your own hardware.
+icon: models
 ---
 
 Rookery does not ship a model. You choose one, per workspace, and you can change

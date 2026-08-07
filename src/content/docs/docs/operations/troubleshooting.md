@@ -1,6 +1,7 @@
 ---
 title: Health and troubleshooting
 description: What /healthz tells you, and the failures people actually hit.
+icon: health
 ---
 
 ## The health endpoint

@@ -1,6 +1,7 @@
 ---
 title: Backup and restore
 description: One encrypted file holding the database and every workspace's knowledge base.
+icon: backup
 ---
 
 A backup covers the **whole installation**: the database plus every workspace's

@@ -24,24 +24,25 @@ export default defineConfig({
       // Pagefind builds a static search index at build time. No third-party
       // request — see the no-tracker rule in the spec.
       pagefind: true,
-      customCss: ["./src/styles/brand.css"],
+      customCss: ["./src/styles/brand.css", "./src/styles/doc-icons.css"],
+      components: { PageTitle: "./src/overrides/PageTitle.astro" },
       sidebar: [
         {
           label: "Getting started",
           items: [
-            { label: "What Rookery is", slug: "docs/getting-started/what-rookery-is" },
-            { label: "Your first 15 minutes", slug: "docs/getting-started/first-15-minutes" },
-            { label: "Choosing a model", slug: "docs/getting-started/choosing-a-model" },
+            { label: "What Rookery is", slug: "docs/getting-started/what-rookery-is", attrs: { "data-icon": "overview" } },
+            { label: "Your first 15 minutes", slug: "docs/getting-started/first-15-minutes", attrs: { "data-icon": "start" } },
+            { label: "Choosing a model", slug: "docs/getting-started/choosing-a-model", attrs: { "data-icon": "models" } },
           ],
         },
         {
           label: "Installation",
           items: [
-            { label: "Linux server", slug: "docs/installation/linux-server" },
-            { label: "Docker", slug: "docs/installation/docker" },
-            { label: "macOS", slug: "docs/installation/macos" },
-            { label: "Windows", slug: "docs/installation/windows" },
-            { label: "Binary and packages", slug: "docs/installation/binary" },
+            { label: "Linux server", slug: "docs/installation/linux-server", attrs: { "data-icon": "linux" } },
+            { label: "Docker", slug: "docs/installation/docker", attrs: { "data-icon": "docker" } },
+            { label: "macOS", slug: "docs/installation/macos", attrs: { "data-icon": "macos" } },
+            { label: "Windows", slug: "docs/installation/windows", attrs: { "data-icon": "windows" } },
+            { label: "Binary and packages", slug: "docs/installation/binary", attrs: { "data-icon": "binary" } },
           ],
         },
         {
@@ -49,31 +50,31 @@ export default defineConfig({
           // concepts build on each other.
           label: "Concepts",
           items: [
-            { label: "Workspaces", slug: "docs/concepts/workspaces" },
-            { label: "Knowledge base", slug: "docs/concepts/knowledge-base" },
-            { label: "Agents", slug: "docs/concepts/agents" },
-            { label: "Skills", slug: "docs/concepts/skills" },
-            { label: "Chat", slug: "docs/concepts/chat" },
-            { label: "Secrets", slug: "docs/concepts/secrets" },
-            { label: "Connections", slug: "docs/concepts/connections" },
-            { label: "Notifications and chat apps", slug: "docs/concepts/notifications" },
-            { label: "Scheduling and reminders", slug: "docs/concepts/scheduling" },
-            { label: "Models", slug: "docs/concepts/models" },
-            { label: "Backup and restore", slug: "docs/concepts/backup-and-restore" },
+            { label: "Workspaces", slug: "docs/concepts/workspaces", attrs: { "data-icon": "workspaces" } },
+            { label: "Knowledge base", slug: "docs/concepts/knowledge-base", attrs: { "data-icon": "knowledge" } },
+            { label: "Agents", slug: "docs/concepts/agents", attrs: { "data-icon": "agents" } },
+            { label: "Skills", slug: "docs/concepts/skills", attrs: { "data-icon": "skills" } },
+            { label: "Chat", slug: "docs/concepts/chat", attrs: { "data-icon": "chat" } },
+            { label: "Secrets", slug: "docs/concepts/secrets", attrs: { "data-icon": "secrets" } },
+            { label: "Connections", slug: "docs/concepts/connections", attrs: { "data-icon": "connections" } },
+            { label: "Notifications and chat apps", slug: "docs/concepts/notifications", attrs: { "data-icon": "notifications" } },
+            { label: "Scheduling and reminders", slug: "docs/concepts/scheduling", attrs: { "data-icon": "scheduling" } },
+            { label: "Models", slug: "docs/concepts/models", attrs: { "data-icon": "models" } },
+            { label: "Backup and restore", slug: "docs/concepts/backup-and-restore", attrs: { "data-icon": "backup" } },
           ],
         },
         {
           label: "Operations",
           items: [
-            { label: "Configuration", slug: "docs/operations/configuration" },
-            { label: "Health and troubleshooting", slug: "docs/operations/troubleshooting" },
+            { label: "Configuration", slug: "docs/operations/configuration", attrs: { "data-icon": "config" } },
+            { label: "Health and troubleshooting", slug: "docs/operations/troubleshooting", attrs: { "data-icon": "health" } },
           ],
         },
         {
           label: "Reference",
           items: [
-            { label: "CLI commands", slug: "docs/reference/cli" },
-            { label: "Connected services", slug: "docs/reference/connected-services" },
+            { label: "CLI commands", slug: "docs/reference/cli", attrs: { "data-icon": "cli" } },
+            { label: "Connected services", slug: "docs/reference/connected-services", attrs: { "data-icon": "services" } },
           ],
         },
       ],

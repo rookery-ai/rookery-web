@@ -1,6 +1,7 @@
 ---
 title: Notifications and chat apps
 description: The inbox, and reaching you on Telegram, Discord or Slack.
+icon: notifications
 ---
 
 Rookery tells you when something happens: an agent finished, a service returned

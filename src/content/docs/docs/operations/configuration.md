@@ -1,6 +1,7 @@
 ---
 title: Configuration
 description: Every environment variable Rookery reads, what it defaults to, and what it changes.
+icon: config
 ---
 
 Rookery is configured by environment variables, and by a `config.yaml` beside the

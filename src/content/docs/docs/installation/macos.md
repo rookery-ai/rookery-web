@@ -1,6 +1,7 @@
 ---
 title: macOS
 description: Running Rookery on a Mac, and the one thing that differs from Linux.
+icon: macos
 ---
 
 ```bash

@@ -1,6 +1,7 @@
 ---
 title: Workspaces
 description: One owner, many sealed worlds. What is isolated, what that protects you from, and where the isolation ends.
+icon: workspaces
 ---
 
 A Rookery installation has **one owner** — the person who installed it — and any

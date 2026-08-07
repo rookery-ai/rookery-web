@@ -1,6 +1,7 @@
 ---
 title: Connected services
 description: Every service Rookery can connect to, and what it can do with each.
+icon: services
 ---
 
 Rookery connects to services directly, using credentials you own. There is no

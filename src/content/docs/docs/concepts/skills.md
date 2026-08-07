@@ -1,6 +1,7 @@
 ---
 title: Skills
 description: Reusable capabilities your agents draw on — 22 built in, plus any you write.
+icon: skills
 ---
 
 A skill is a document that teaches an agent how to do something well: read a PDF,

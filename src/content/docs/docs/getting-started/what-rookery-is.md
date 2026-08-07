@@ -1,6 +1,7 @@
 ---
 title: What Rookery is
 description: A self-hosted platform where agents live on your knowledge and act through the accounts you connect.
+icon: overview
 ---
 
 Rookery is a **platform for agents that work on your behalf**, running on hardware

@@ -1,6 +1,7 @@
 ---
 title: Windows
 description: Running Rookery on Windows, and what is not available there.
+icon: windows
 ---
 
 In PowerShell:

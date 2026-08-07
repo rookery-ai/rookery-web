@@ -1,6 +1,7 @@
 ---
 title: Linux server
 description: The recommended way to run Rookery — on a machine that stays on, so agents work around the clock.
+icon: linux
 ---
 
 Rookery is designed to sit on a machine that stays on. This is the recommended

@@ -1,6 +1,7 @@
 ---
 title: Secrets
 description: Credentials encrypted at rest, unlocked only into the process that needs them.
+icon: secrets
 ---
 
 Secrets are the values agents need but you should not paste into their

@@ -1,6 +1,7 @@
 ---
 title: Scheduling and reminders
 description: Say when in your own words. Agents run on their own; reminders fire on time.
+icon: scheduling
 ---
 
 ## Agent schedules

@@ -1,6 +1,7 @@
 ---
 title: Your first 15 minutes
 description: Install Rookery, create the owner account, enter a workspace, and build your first agent.
+icon: start
 ---
 
 By the end of this you will have Rookery running and one agent that actually does
