@@ -7,6 +7,10 @@ import {
   Layers,
   ArrowRight,
   CalendarClock,
+  Bot,
+  MessageSquare,
+  BellRing,
+  Plug,
 } from "lucide-react";
 
 /**
@@ -43,58 +47,144 @@ function useInView<T extends HTMLElement>(threshold = 0.35) {
   return { ref, seen };
 }
 
-/* ── Workspaces: three sealed stacks, one active ───────────────────────────── */
+/* ── Workspaces: three sealed tenants, each with its own everything ────────── */
+const SPACES = [
+  {
+    name: "Personal",
+    agents: [
+      { name: "Bill watcher", when: "Weekdays · 09:00" },
+      { name: "Reading digest", when: "Sun · 18:00" },
+    ],
+    chats: ["Planning the trip", "Health notes"],
+    reminders: ["Call the dentist · 11:30", "Renew passport · Fri"],
+    notes: 214,
+    connections: 6,
+  },
+  {
+    name: "Work",
+    agents: [
+      { name: "Invoice chaser", when: "Weekdays · 08:00" },
+      { name: "Inbox triage", when: "Every 30 min" },
+    ],
+    chats: ["Q3 pricing", "Client onboarding"],
+    reminders: ["Send the proposal · 16:00"],
+    notes: 431,
+    connections: 11,
+  },
+  {
+    name: "Homelab",
+    agents: [
+      { name: "Uptime check", when: "Daily · 07:00" },
+      { name: "Backup verifier", when: "Sun · 03:00" },
+    ],
+    chats: ["Migration plan"],
+    reminders: ["Rotate the keys · 1st"],
+    notes: 68,
+    connections: 4,
+  },
+];
+
 export function WorkspacesVisual() {
   const { ref, seen } = useInView<HTMLDivElement>();
   const [active, setActive] = useState(0);
-  const spaces = [
-    { name: "Personal", items: ["Notes", "Bills", "Health"] },
-    { name: "Studio", items: ["Clients", "Invoices", "Briefs"] },
-    { name: "Homelab", items: ["Uptime", "Backups", "Media"] },
-  ];
+  const [taken, setTaken] = useState(false);
 
   useEffect(() => {
-    if (!seen) return;
-    const iv = window.setInterval(() => setActive((a) => (a + 1) % spaces.length), 2600);
+    if (!seen || taken) return;
+    const iv = window.setInterval(() => setActive((a) => (a + 1) % SPACES.length), 3600);
     return () => window.clearInterval(iv);
-  }, [seen, spaces.length]);
+  }, [seen, taken]);
+
+  const s = SPACES[active];
 
   return (
     <div ref={ref} className="relative">
       <div aria-hidden="true" className={bloom} />
       <div className={shell}>
         <div className="flex gap-1 border-b border-white/8 bg-white/[0.03] p-2">
-          {spaces.map((s, i) => (
+          {SPACES.map((sp, i) => (
             <button
-              key={s.name}
-              onClick={() => setActive(i)}
+              key={sp.name}
+              onClick={() => {
+                setTaken(true);
+                setActive(i);
+              }}
               className={[
-                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[12.5px] font-medium transition-all",
+                "flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[12.5px] font-medium transition-all",
                 i === active
                   ? "bg-ember text-white"
                   : "text-bone/50 hover:bg-white/8 hover:text-bone",
               ].join(" ")}
             >
               <Layers className="size-3.5" strokeWidth={1.9} />
-              {s.name}
+              {sp.name}
             </button>
           ))}
         </div>
-        <div className="grid min-h-[190px] grid-cols-3 gap-3 p-5">
-          {spaces[active].items.map((it, i) => (
-            <div
-              key={it}
-              style={{ animationDelay: `${i * 70}ms` }}
-              className="motion-safe:animate-[cardIn_360ms_ease-out_both] rounded-xl border border-white/8 bg-white/[0.04] p-3"
-            >
-              <FileText className="size-4 text-ember/80" strokeWidth={1.8} />
-              <p className="mt-2 text-[12.5px] text-bone/80">{it}</p>
+
+        <div key={s.name} className="motion-safe:animate-[cardIn_360ms_ease-out] p-4">
+          {/* Agents */}
+          <p className="mb-2 font-mono text-[10px] tracking-[0.14em] text-bone/30 uppercase">
+            Agents
+          </p>
+          <div className="flex flex-col gap-1.5">
+            {s.agents.map((a) => (
+              <div
+                key={a.name}
+                className="flex items-center gap-2.5 rounded-lg border border-white/8 bg-white/[0.04] px-3 py-2"
+              >
+                <Bot className="size-3.5 shrink-0 text-ember/85" strokeWidth={1.8} />
+                <span className="truncate text-[12.5px] text-bone/85">{a.name}</span>
+                <span className="ml-auto shrink-0 font-mono text-[10.5px] text-bone/30">
+                  {a.when}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Chats + reminders */}
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div>
+              <p className="mb-2 font-mono text-[10px] tracking-[0.14em] text-bone/30 uppercase">
+                Chats
+              </p>
+              <div className="flex flex-col gap-1.5">
+                {s.chats.map((c) => (
+                  <div key={c} className="flex items-center gap-2">
+                    <MessageSquare className="size-3 shrink-0 text-bone/35" strokeWidth={1.9} />
+                    <span className="truncate text-[12px] text-bone/70">{c}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+            <div>
+              <p className="mb-2 font-mono text-[10px] tracking-[0.14em] text-bone/30 uppercase">
+                Reminders
+              </p>
+              <div className="flex flex-col gap-1.5">
+                {s.reminders.map((r) => (
+                  <div key={r} className="flex items-center gap-2">
+                    <BellRing className="size-3 shrink-0 text-bone/35" strokeWidth={1.9} />
+                    <span className="truncate text-[12px] text-bone/70">{r}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer counts */}
+          <div className="mt-4 flex items-center gap-4 border-t border-white/8 pt-3">
+            <span className="flex items-center gap-1.5 font-mono text-[10.5px] text-bone/35">
+              <FileText className="size-3" strokeWidth={2} /> {s.notes} notes
+            </span>
+            <span className="flex items-center gap-1.5 font-mono text-[10.5px] text-bone/35">
+              <Plug className="size-3" strokeWidth={2} /> {s.connections} connected
+            </span>
+            <span className="ml-auto font-mono text-[10px] tracking-[0.1em] text-bone/25 uppercase">
+              sealed
+            </span>
+          </div>
         </div>
-        <p className="border-t border-white/8 px-5 py-3 font-mono text-[10.5px] tracking-[0.1em] text-bone/30 uppercase">
-          nothing crosses between them
-        </p>
       </div>
       <style>{`@keyframes cardIn { from { opacity:0; transform: translateY(6px) } to { opacity:1; transform:none } }`}</style>
     </div>

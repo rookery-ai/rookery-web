@@ -219,9 +219,7 @@ const SELF_HOSTED = [
             nothing crosses between them.
           </p>
           <p class="mt-6 max-w-[46ch] rounded-lg border border-line/80 bg-paper/70 px-4 py-3 text-[13.5px] leading-relaxed text-stone/90">
-            On Linux, each workspace's agents are additionally confined to it at the
-            filesystem level. On macOS and Windows that confinement isn't available and
-            they run unconfined.
+            Sandboxing is only supported on Linux.
           </p>
         </div>
         <WorkspacesVisual client:visible />
@@ -393,12 +391,6 @@ const SELF_HOSTED = [
             An agent finished, a service returned something new, a reminder came due. It
             lands in your inbox, and reaches you on Telegram, Discord or Slack when
             you're away.
-          </p>
-          <p
-            class="mt-6 max-w-[46ch] rounded-lg border border-line/80 bg-bone/70 px-4 py-3 text-[13.5px] leading-relaxed text-stone/90"
-          >
-            All three connect outbound — the bot dials out, so nothing listens on an open
-            port and it works from behind a home firewall with nothing forwarded.
           </p>
         </div>
         <NotificationDemo client:visible />

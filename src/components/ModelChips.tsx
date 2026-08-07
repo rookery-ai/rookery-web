@@ -27,10 +27,10 @@ const MODES = [
   {
     id: "local",
     Icon: HardDrive,
-    label: "Your own hardware",
+    label: "Self-hosted models",
     blurb:
-      "Run the model on your own machine or network. No key, no account, and nothing — knowledge, credentials or prompts — leaves hardware you control.",
-    detail: "Nothing leaves your network",
+      "Point Rookery at Ollama, vLLM, LM Studio, llama.cpp, LocalAI or Jan on your own machine or network. No key, no account, and nothing — knowledge, credentials or prompts — leaves hardware you control.",
+    detail: "Ollama · vLLM · LM Studio",
   },
 ] as const;
 

@@ -47,11 +47,12 @@ const TABS: Tab[] = [
     id: "binary",
     label: "Binary",
     icons: [Download],
-    command: "# Download for your platform, with checksums and signatures",
+    command:
+      "# Linux · macOS · Windows — amd64 and arm64\n# .tar.gz and .zip archives, plus .deb and .rpm packages",
     note: {
-      text: "Every release is checksummed and signed:",
-      href: "https://github.com/ilijad1/rookery/releases",
-      linkText: "releases",
+      text: "Checksummed and signed —",
+      href: "https://github.com/ilijad1/rookery/releases/latest",
+      linkText: "download for your platform",
     },
   },
 ];

@@ -14,15 +14,18 @@ import { Bot, Check, CircleDot, Play, Save } from "lucide-react";
 type Turn = { from: "you" | "rookery"; text: string };
 
 const TURNS: Turn[] = [
-  { from: "you", text: "Every morning tell me if any of my sites went down overnight." },
   {
-    from: "rookery",
-    text: "Two quick things. Which sites should I watch — and should I message you every morning, or only when something is actually wrong?",
+    from: "you",
+    text: "Every morning, tell me if any of my sites went down overnight.",
   },
-  { from: "you", text: "rookery.sh and my blog. Only when something's wrong." },
   {
     from: "rookery",
-    text: "Here's the agent I'll build:\n\n• Checks both sites every morning at 7\n• Messages you only if one is unreachable or slow\n• Writes every check into your notes under Uptime\n\nType approve and I'll build and test it.",
+    text: "Two quick questions. Which sites should I watch, and should I message you every morning or only when something is actually wrong?",
+  },
+  { from: "you", text: "rookery.sh and my blog. Only when something is wrong." },
+  {
+    from: "rookery",
+    text: "Here is the agent I will build:\n\n• Checks both sites every morning at 7am\n• Messages you only if one is unreachable or slow\n• Writes every check into your notes, under Uptime\n\nType approve and I will build it and test it for real.",
   },
   { from: "you", text: "approve" },
 ];
