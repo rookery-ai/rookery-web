@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "dev:lan": "astro dev --host --port 9999",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"
