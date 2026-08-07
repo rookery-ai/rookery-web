@@ -45,6 +45,12 @@ export default defineConfig({
           label: "Concepts",
           items: [{ label: "Workspaces", slug: "docs/concepts/workspaces" }],
         },
+        {
+          label: "Reference",
+          items: [
+            { label: "Connected services", slug: "docs/reference/connected-services" },
+          ],
+        },
       ],
     }),
   ],

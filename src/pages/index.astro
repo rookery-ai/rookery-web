@@ -2,17 +2,67 @@
 import "../styles/brand.css";
 import InstallBlock from "../components/InstallBlock.tsx";
 import Transcript from "../components/Transcript.tsx";
-import FeatureSection from "../components/FeatureSection.tsx";
 import AIActionsDemo from "../components/AIActionsDemo.tsx";
-import ConnectionsWall from "../components/ConnectionsWall.astro";
+import LogoWall from "../components/LogoWall.astro";
 import SkillsBento from "../components/SkillsBento.tsx";
 import NotificationDemo from "../components/NotificationDemo.tsx";
 import ModelChips from "../components/ModelChips.tsx";
-import { Star, ArrowRight, BookOpen, BookText } from "lucide-react";
+import {
+  WorkspacesVisual,
+  AgentsVisual,
+  SecretsVisual,
+  ChatVisual,
+  ScheduleVisual,
+} from "../components/FeatureVisual.tsx";
+import { GithubIcon } from "../components/icons.tsx";
+import {
+  ArrowRight,
+  BookOpen,
+  BookText,
+  Layers,
+  Bot,
+  MessagesSquare,
+  KeyRound,
+  CalendarClock,
+} from "lucide-react";
 
 const title = "Rookery — your knowledge grew hands";
 const description =
   "Rookery runs agents on your own machine — around the clock. They read and write your knowledge, reach the apps you already use, and tell you the moment something happens.";
+
+/**
+ * A CURATED selection of the connection marks, not all 124.
+ *
+ * Inlining every one cost 182 KB of gzipped HTML for one section — more than
+ * the rest of the page combined — and sold worse: a wall containing
+ * changedetection and karakeep reads as noise, while one containing Gmail,
+ * Slack, Notion and Stripe reads as "this already works with my stuff".
+ */
+const CONNECTIONS = [
+  "google", "google_calendar", "google_drive", "google_sheets", "google_docs",
+  "notion", "slack", "github", "discord", "telegram", "outlook", "teams",
+  "dropbox", "jira", "asana", "trello", "clickup", "monday", "airtable",
+  "hubspot", "salesforce", "stripe", "shopify", "mailchimp", "sendgrid",
+  "zendesk", "intercom", "twilio", "calendly", "todoist", "spotify", "youtube",
+  "reddit", "x", "linkedin", "facebook", "instagram", "mastodon", "bluesky",
+  "threads", "tiktok", "pinterest", "google_analytics", "google_ads",
+  "home_assistant", "immich", "nextcloud", "grafana", "n8n", "gitea",
+  "jellyfin", "strava", "readwise", "wikipedia",
+];
+
+/** The CLI coders Rookery can drive. No cursor mark is vendored. */
+const CODERS = ["anthropic", "openai", "opencode_zen", "gemini"];
+
+/** Hosted model providers — a selection; the docs carry the current list. */
+const PROVIDERS = [
+  "openai", "anthropic", "gemini", "xai", "mistral", "deepseek", "moonshot",
+  "zai", "openrouter", "perplexity", "groq", "together", "fireworks",
+  "cerebras", "sambanova", "nebius", "deepinfra", "huggingface",
+  "github_models", "bedrock", "alibaba", "ollama",
+];
+
+/** Runs on your own hardware — no key, nothing leaves the network. */
+const SELF_HOSTED = ["ollama_local", "lmstudio", "llamacpp", "vllm", "localai", "jan"];
 ---
 
 <!doctype html>
@@ -60,7 +110,7 @@ const description =
             href="https://github.com/ilijad1/rookery"
             class="flex items-center gap-1.5 rounded-lg bg-bark px-3.5 py-1.5 font-medium text-bone transition-opacity hover:opacity-90"
           >
-            <Star className="size-3.5" /> Star
+            <GithubIcon className="size-4" /> Star
           </a>
         </div>
       </nav>
@@ -116,7 +166,7 @@ const description =
             What it's like
           </p>
           <h2
-            class="mx-auto mt-4 max-w-[18ch] text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mx-auto mt-4 max-w-[18ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             You describe it. It gets built and tested.
           </h2>
@@ -126,15 +176,35 @@ const description =
     </section>
 
     <!-- Features -->
-    <FeatureSection
-      client:visible
-      index={1}
-      icon="Layers"
-      eyebrow="Workspaces"
-      title="One machine. Sealed, separate worlds."
-      body="Every workspace is its own tenant — its own knowledge, its own credentials, its own connected accounts, its own agents. You enter one with its password, and nothing crosses between them."
-      footnote="On Linux, each workspace's agents are additionally confined to it at the filesystem level. On macOS and Windows that confinement isn't available and they run unconfined."
-    />
+    <!-- Workspaces -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Layers className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Workspaces
+            </span>
+          </div>
+          <h2 class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance">
+            One machine. Sealed, separate worlds.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Every workspace is its own tenant — its own knowledge, its own credentials, its
+            own connected accounts, its own agents. You enter one with its password, and
+            nothing crosses between them.
+          </p>
+          <p class="mt-6 max-w-[46ch] rounded-lg border border-line/80 bg-paper/70 px-4 py-3 text-[13.5px] leading-relaxed text-stone/90">
+            On Linux, each workspace's agents are additionally confined to it at the
+            filesystem level. On macOS and Windows that confinement isn't available and
+            they run unconfined.
+          </p>
+        </div>
+        <WorkspacesVisual client:visible />
+      </div>
+    </section>
 
     <!-- Knowledge base: the live AI-actions demo instead of a media panel -->
     <section class="relative py-20 sm:py-28">
@@ -151,11 +221,11 @@ const description =
             <span
               class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
             >
-              02 · Knowledge base
+              Knowledge base
             </span>
           </div>
           <h2
-            class="mt-6 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             Select a sentence. Watch it improve.
           </h2>
@@ -172,24 +242,40 @@ const description =
       </div>
     </section>
 
-    <FeatureSection
-      client:visible
-      index={3}
-      icon="Bot"
-      eyebrow="Agents"
-      title="Describe it. Don't configure it."
-      body="Say what you want in your own words. Rookery asks a couple of questions, proposes a plan, builds it, tests it against the real services, and shows you what happened before anything is saved."
-    />
+    <!-- Agents -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div class="lg:order-2">
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
+              <Bot className="size-5" />
+            </span>
+            <span class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+              Agents
+            </span>
+          </div>
+          <h2 class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance">
+            Describe it. Don't configure it.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Say what you want in your own words. Rookery asks a couple of questions,
+            proposes a plan, builds it, tests it against the real services, and shows you
+            what happened before anything is saved. Then it just runs.
+          </p>
+        </div>
+        <div class="lg:order-1"><AgentsVisual client:visible /></div>
+      </div>
+    </section>
 
     <!-- Skills: bento, not a panel -->
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 max-w-[46ch]">
           <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            04 · Skills
+            Skills
           </p>
           <h2
-            class="mt-5 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             Things your agents already know how to do.
           </h2>
@@ -207,10 +293,10 @@ const description =
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-12 text-center">
           <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            05 · Connections
+            Connections
           </p>
           <h2
-            class="mx-auto mt-5 max-w-[20ch] text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mx-auto mt-5 max-w-[20ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             100+ services. No middleman holding your keys.
           </h2>
@@ -220,28 +306,64 @@ const description =
             Rookery talks to them directly, using credentials you own.
           </p>
         </div>
-        <ConnectionsWall />
+        <LogoWall
+          id="conn"
+          placeholder="Search services…"
+          emptyText="Not in this selection — it may still be supported. See the full list in the docs."
+          groups={[{ label: "Services", slugs: CONNECTIONS }]}
+        >
+          <p slot="after" class="mt-9 text-center text-[14px] text-stone">
+            A selection of the 100+ supported.{" "}
+            <a
+              href="/docs/reference/connected-services"
+              class="font-medium text-ember underline decoration-ember/30 underline-offset-2 hover:decoration-ember"
+              >See them all</a
+            >
+          </p>
+        </LogoWall>
       </div>
     </section>
 
-    <FeatureSection
-      client:visible
-      index={6}
-      icon="MessagesSquare"
-      eyebrow="Chat"
-      title="Ask what you know. Then have it act."
-      body="Talk to your knowledge the way you'd talk to someone who has read all of it — and have it write a note, or do something in a connected account, right there in the conversation."
-    />
+    <!-- Chat -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15"
+            >
+              <MessagesSquare className="size-5" />
+            </span>
+            <span
+              class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
+            >
+              Chat
+            </span>
+          </div>
+          <h2
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            Ask what you know. Then have it act.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Talk to your knowledge the way you'd talk to someone who has read all of it —
+            and have it write a note, or do something in a connected account, right there
+            in the conversation.
+          </p>
+        </div>
+        <ChatVisual client:visible />
+      </div>
+    </section>
 
     <!-- Notifications: live demo -->
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div>
           <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            07 · Notifications
+            Notifications
           </p>
           <h2
-            class="mt-5 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             You find out the moment it happens.
           </h2>
@@ -266,10 +388,10 @@ const description =
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div>
           <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-            08 · Models
+            Models
           </p>
           <h2
-            class="mt-5 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             Your machine. Your model.
           </h2>
@@ -283,24 +405,99 @@ const description =
       </div>
     </section>
 
-    <FeatureSection
-      client:visible
-      index={9}
-      icon="KeyRound"
-      eyebrow="Secrets"
-      title="Credentials that stay yours."
-      body="Encrypted where they sit, unlocked only into the thing that needs them, scoped to one workspace, and never handed to anyone else."
-      flip={true}
-    />
+    <!-- Secrets -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div class="lg:order-2">
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15"
+            >
+              <KeyRound className="size-5" />
+            </span>
+            <span
+              class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
+            >
+              Secrets
+            </span>
+          </div>
+          <h2
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            Credentials that stay yours.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Encrypted where they sit, unlocked only into the thing that needs them, scoped
+            to one workspace, and never handed to anyone else.
+          </p>
+        </div>
+        <div class="lg:order-1"><SecretsVisual client:visible /></div>
+      </div>
+    </section>
 
-    <FeatureSection
-      client:visible
-      index={10}
-      icon="CalendarClock"
-      eyebrow="Scheduling"
-      title="“Every weekday at eight.”"
-      body="Say when, in words. Agents run on their own or whenever you ask, and reminders work the same way — “remind me in 10 minutes to call the doctor.”"
-    />
+    <!-- Scheduling -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15"
+            >
+              <CalendarClock className="size-5" />
+            </span>
+            <span
+              class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
+            >
+              Scheduling
+            </span>
+          </div>
+          <h2
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            Every weekday at eight. And again at ten.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Say when in your own words — twice a day, the first Monday of the month, every
+            twenty minutes during work hours, or only when you ask. Reminders work the same
+            way: “remind me in 10 minutes to call the doctor.”
+          </p>
+        </div>
+        <ScheduleVisual client:visible />
+      </div>
+    </section>
+
+    <!-- Models wall -->
+    <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="mb-12 text-center">
+          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
+            Models
+          </p>
+          <h2
+            class="mx-auto mt-5 max-w-[20ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            Bring the model you already trust.
+          </h2>
+          <p
+            class="mx-auto mt-5 max-w-[52ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone"
+          >
+            A coder tool you already use, a hosted provider, or a model running on your own
+            hardware.
+          </p>
+        </div>
+        <LogoWall
+          id="models"
+          columns={true}
+          placeholder="Search models and providers…"
+          emptyText="Not in this list — any OpenAI-compatible endpoint works too."
+          groups={[
+            { label: "Coders", slugs: CODERS },
+            { label: "Providers", slugs: PROVIDERS },
+            { label: "Self-hosted", slugs: SELF_HOSTED },
+          ]}
+        />
+      </div>
+    </section>
 
     <!-- Install again -->
     <section class="relative isolate overflow-hidden border-t border-line/60 bg-paper/50 py-24 sm:py-32">
@@ -335,7 +532,7 @@ const description =
           href="https://github.com/ilijad1/rookery"
           class="mt-9 inline-flex items-center gap-2.5 rounded-xl bg-bark px-6 py-3.5 text-[15px] font-medium text-bone transition-all hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-14px_rgba(33,29,26,0.7)]"
         >
-          <Star className="size-4" /> Star on GitHub
+          <GithubIcon className="size-[18px]" /> Star on GitHub
         </a>
       </div>
     </section>

@@ -1,0 +1,152 @@
+---
+import { namespaceSvgIds } from "../lib/svg";
+
+/**
+ * A searchable wall of vendor marks, rendered entirely on the server.
+ *
+ * Shared by Connections and Models so both get the id-namespacing fix and the
+ * same search behaviour. Groups are optional: pass one group for a flat wall,
+ * or several for a column layout that collapses into a single flat result set
+ * while a search is active.
+ */
+export type Group = { label: string; slugs: string[] };
+
+interface Props {
+  id: string;
+  groups: Group[];
+  placeholder?: string;
+  columns?: boolean;
+  emptyText?: string;
+}
+
+const { id, groups, placeholder = "Search…", columns = false, emptyText } = Astro.props;
+
+const RAW = import.meta.glob("../assets/logos/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const byName = new Map(
+  Object.entries(RAW).map(([p, svg]) => [(p.split("/").pop() ?? "").replace(".svg", ""), svg]),
+);
+
+const resolved = groups.map((g, gi) => ({
+  label: g.label,
+  items: g.slugs
+    .filter((s) => byName.has(s))
+    .map((s) => ({
+      slug: s,
+      name: s.replace(/_/g, " "),
+      // Namespaced per WALL, per GROUP and per MARK. The group index is not
+      // redundant: the same mark legitimately appears in two columns — gemini,
+      // openai and anthropic are each both a coder and a provider — and
+      // without it those duplicates collide with each other.
+      svg: namespaceSvgIds(byName.get(s)!, `${id}${gi}-${s}`),
+    })),
+}));
+---
+
+<div class="mx-auto w-full max-w-5xl" data-wall={id}>
+  <div class="relative mx-auto mb-9 max-w-sm">
+    <svg
+      class="absolute top-1/2 left-4 size-4 -translate-y-1/2 text-stone/60"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+    </svg>
+    <input
+      type="search"
+      data-wall-search
+      placeholder={placeholder}
+      aria-label={placeholder}
+      autocomplete="off"
+      class="w-full rounded-full border border-line bg-paper py-3 pr-4 pl-11 text-[15px] text-bark shadow-[0_1px_2px_rgba(33,29,26,0.04)] transition-colors outline-none placeholder:text-stone/60 focus:border-ember/50 focus:shadow-[0_0_0_4px_rgba(169,76,28,0.09)]"
+    />
+  </div>
+
+  <div
+    data-wall-groups
+    class={columns ? "grid gap-8 md:grid-cols-3" : "grid gap-8"}
+  >
+    {
+      resolved.map((g) => (
+        <div data-group>
+          {columns && (
+            <p
+              data-group-label
+              class="mb-4 text-center font-mono text-[11.5px] font-medium tracking-[0.14em] text-stone uppercase"
+            >
+              {g.label}
+            </p>
+          )}
+          <div
+            class:list={[
+              "grid gap-2.5",
+              columns
+                ? "grid-cols-[repeat(auto-fill,minmax(52px,1fr))]"
+                : "grid-cols-[repeat(auto-fill,minmax(56px,1fr))] sm:gap-3",
+            ]}
+          >
+            {g.items.map((l) => (
+              <div
+                data-tile
+                data-name={l.name}
+                title={l.name}
+                class="group grid aspect-square place-items-center rounded-xl border border-line/70 bg-white text-[#18181b] shadow-[0_1px_2px_rgba(33,29,26,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-[0_8px_20px_-8px_rgba(169,76,28,0.45)]"
+              >
+                <span
+                  class="[&>svg]:size-[22px] [&>svg]:transition-transform [&>svg]:duration-200 group-hover:[&>svg]:scale-110"
+                  set:html={l.svg}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <p data-wall-empty class="hidden py-10 text-center text-[14px] text-stone">
+    {emptyText ?? "Nothing matching that."}
+  </p>
+
+  <slot name="after" />
+</div>
+
+<script>
+  // One handler covers every wall on the page.
+  for (const wall of document.querySelectorAll<HTMLElement>("[data-wall]")) {
+    const input = wall.querySelector<HTMLInputElement>("[data-wall-search]");
+    const empty = wall.querySelector<HTMLElement>("[data-wall-empty]");
+    const groups = Array.from(wall.querySelectorAll<HTMLElement>("[data-group]"));
+    const tiles = Array.from(wall.querySelectorAll<HTMLElement>("[data-tile]"));
+    if (!input || !empty) continue;
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      for (const t of tiles) {
+        const hit = !q || (t.dataset.name ?? "").includes(q);
+        t.hidden = !hit;
+        if (hit) shown++;
+      }
+      // While searching, a grouped wall collapses: a column heading over an
+      // empty column reads as "none of these match", which is noise.
+      for (const g of groups) {
+        const any = Array.from(g.querySelectorAll<HTMLElement>("[data-tile]")).some(
+          (t) => !t.hidden,
+        );
+        g.hidden = !!q && !any;
+        const label = g.querySelector<HTMLElement>("[data-group-label]");
+        if (label) label.hidden = !!q;
+      }
+      empty.classList.toggle("hidden", shown > 0);
+    });
+  }
+</script>

@@ -125,7 +125,7 @@ export default function InstallBlock() {
               aria-selected={selected}
               onClick={() => setActive(t.id)}
               className={[
-                "flex items-center gap-2 rounded-t-md px-3.5 py-2 text-[13px] font-medium transition-colors",
+                "flex items-center gap-2.5 rounded-t-lg px-5 py-3 text-[15px] font-medium transition-colors",
                 selected
                   ? "bg-bark text-bone"
                   : "text-stone hover:bg-bark/5 hover:text-bark",
@@ -133,7 +133,7 @@ export default function InstallBlock() {
             >
               <span className="flex items-center gap-1">
                 {t.icons.map((Icon, i) => (
-                  <Icon key={i} className="size-3.5" />
+                  <Icon key={i} className="size-[18px]" />
                 ))}
               </span>
               {t.label}
@@ -142,9 +142,9 @@ export default function InstallBlock() {
         })}
       </div>
 
-      <div className="rounded-md rounded-tl-none bg-bark text-bone shadow-[0_14px_40px_-18px_rgba(70,64,90,0.6)]">
-        <div className="flex items-start gap-3 px-4 py-4 sm:px-5">
-          <code className="min-w-0 flex-1 overflow-x-auto whitespace-pre font-mono text-[13px] leading-relaxed text-bone/95">
+      <div className="rounded-xl rounded-tl-none bg-bark text-bone shadow-[0_14px_40px_-18px_rgba(70,64,90,0.6)]">
+        <div className="flex items-start gap-3 px-5 py-5 sm:px-6">
+          <code className="min-w-0 flex-1 overflow-x-auto whitespace-pre font-mono text-[14.5px] leading-relaxed text-bone/95">
             {tab.command}
           </code>
           <button
@@ -153,9 +153,9 @@ export default function InstallBlock() {
             className="shrink-0 rounded p-1.5 text-bone/60 transition-colors hover:bg-bone/10 hover:text-bone"
           >
             {copied ? (
-              <Check className="size-4 text-[#8fce9f]" />
+              <Check className="size-[18px] text-[#8fce9f]" />
             ) : (
-              <Copy className="size-4" />
+              <Copy className="size-[18px]" />
             )}
           </button>
         </div>

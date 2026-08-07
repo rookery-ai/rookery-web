@@ -97,11 +97,11 @@ export default function FeatureSection({
               <Icon className="size-5" strokeWidth={1.75} />
             </span>
             <span className="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase">
-              {String(index).padStart(2, "0")} · {eyebrow}
+              {eyebrow}
             </span>
           </div>
 
-          <h2 className="mt-6 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance">
+          <h2 className="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance">
             {title}
           </h2>
 

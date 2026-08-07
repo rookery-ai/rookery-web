@@ -13,8 +13,8 @@ const MODES = [
     Icon: Terminal,
     label: "A tool you have",
     blurb:
-      "Already using a command-line coding assistant? Point Rookery at it and it reuses that sign-in. Nothing new to configure.",
-    detail: "Reuses your existing sign-in",
+      "Already using Claude Code, Codex, OpenCode, Cursor or Gemini CLI? Point Rookery at it and it reuses that sign-in. No key to paste, nothing new to configure.",
+    detail: "Claude Code · Codex · OpenCode",
   },
   {
     id: "hosted",
