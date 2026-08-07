@@ -28,6 +28,9 @@ import {
   Plug,
   Bell,
   Cpu,
+  Globe,
+  FileText,
+  Terminal,
 } from "lucide-react";
 
 const title = "Rookery — your knowledge grew hands";
@@ -56,10 +59,12 @@ const CONNECTION_SLUGS = [
 const CONNECTIONS = CONNECTION_SLUGS.map((slug) => ({ slug }));
 
 /**
- * The CLI coders Rookery can drive. Labelled explicitly because several of
- * these marks are ambiguous alone: OpenCode's is a plain black block and
- * Anthropic's is a bare corporate glyph, so unlabelled they read as wrong.
- * Cursor is supported but no mark is vendored for it.
+ * The CLI coders Rookery can drive. Labelled explicitly because OpenCode's
+ * mark is a plain black block that means nothing on its own.
+ *
+ * `claude` and `cursor` are written by scripts/gen-coder-logos.mjs from
+ * simple-icons — the vendored provider logos cover SERVICES, so they had only
+ * Anthropic's corporate glyph, which is the wrong mark for Claude Code.
  */
 const CODERS = [
   { slug: "claude", label: "Claude Code" },
@@ -295,8 +300,8 @@ const SELF_HOSTED = [
     <!-- Skills: bento, not a panel -->
     <section class="border-y border-line/60 bg-paper/50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-6">
-        <div class="mb-12 max-w-[46ch]">
-          <div class="flex items-center gap-3">
+        <div class="mb-12 text-center">
+          <div class="flex items-center justify-center gap-3">
             <span class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15">
               <Puzzle className="size-5" />
             </span>
@@ -305,23 +310,55 @@ const SELF_HOSTED = [
             </span>
           </div>
           <h2
-            class="mt-5 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+            class="mx-auto mt-5 max-w-[20ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
             Things your agents already know how to do.
           </h2>
-          <p class="mt-5 text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+          <p
+            class="mx-auto mt-5 max-w-[52ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone"
+          >
             Built in and ready to attach to any agent — plus any you create the same
             conversational way.
           </p>
-          <p class="mt-5 max-w-[52ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
-            And whatever model is behind an agent, it gets the same tools: web search,
-            reading and writing your notes, running what it needs, and every account
-            you have connected. A small local model and a frontier one are given the
-            same reach — so the model decides how well the job is done, never whether
-            it can be done at all.
+        </div>
+
+        <SkillsBento client:visible />
+
+        <!-- The model-agnostic tooling claim is a different point from "here are
+             the skills", so it stands on its own below the grid rather than as a
+             second paragraph stacked above it, where it read as small print. -->
+        <div class="mx-auto mt-16 max-w-3xl text-center">
+          <p
+            class="mx-auto max-w-[46ch] text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.35] font-semibold tracking-[-0.02em] text-balance"
+          >
+            Every agent gets the same tools, whatever model is behind it.
+          </p>
+
+          <div class="mt-7 flex flex-wrap justify-center gap-2.5">
+            {
+              [
+                { Icon: Globe, label: "Web search & fetch" },
+                { Icon: FileText, label: "Read & write your notes" },
+                { Icon: Terminal, label: "Run what it needs" },
+                { Icon: Plug, label: "Every connected account" },
+              ].map(({ Icon, label }) => (
+                <span class="flex items-center gap-2 rounded-full border border-line bg-bone/70 py-2 pr-4 pl-3 text-[13.5px] font-medium text-bark/80">
+                  <Icon className="size-4 text-ember" />
+                  {label}
+                </span>
+              ))
+            }
+          </div>
+
+          <p
+            class="mx-auto mt-7 max-w-[54ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.7] text-stone"
+          >
+            A small model on your own machine and a frontier one are given exactly the
+            same reach. The model decides how <strong class="font-semibold text-bark"
+              >well</strong
+            > a job is done — never whether it can be done at all.
           </p>
         </div>
-        <SkillsBento client:visible />
       </div>
     </section>
 
