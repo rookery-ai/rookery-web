@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { Check, Copy, FileCode2 } from "lucide-react";
+import { useEffect, useState, type ComponentType } from "react";
+import { Check, Copy, FileCode2, Download } from "lucide-react";
+import { AppleIcon, LinuxIcon, WindowsIcon, DockerIcon } from "./icons";
 
 type TabId = "script" | "powershell" | "docker" | "binary";
 
 type Tab = {
   id: TabId;
   label: string;
+  icons: ComponentType<{ className?: string }>[];
   command: string;
   /** Shown under the command. The inspectable-script link lives here. */
   note?: { text: string; href: string; linkText: string };
@@ -15,6 +17,7 @@ const TABS: Tab[] = [
   {
     id: "script",
     label: "Linux / macOS",
+    icons: [LinuxIcon, AppleIcon],
     command: "curl -fsSL https://rookery.sh/install.sh | sh",
     note: {
       text: "Read it first — it's short:",
@@ -25,6 +28,7 @@ const TABS: Tab[] = [
   {
     id: "powershell",
     label: "Windows",
+    icons: [WindowsIcon],
     command: "irm https://rookery.sh/install.ps1 | iex",
     note: {
       text: "Read it first — it's short:",
@@ -35,12 +39,14 @@ const TABS: Tab[] = [
   {
     id: "docker",
     label: "Docker",
+    icons: [DockerIcon],
     command:
       "docker run -d --name rookery -p 8080:8080 -v rookery-data:/data ghcr.io/ilijad1/rookery:latest",
   },
   {
     id: "binary",
     label: "Binary",
+    icons: [Download],
     command: "# Download for your platform, with checksums and signatures",
     note: {
       text: "Every release is checksummed and signed:",
@@ -119,12 +125,17 @@ export default function InstallBlock() {
               aria-selected={selected}
               onClick={() => setActive(t.id)}
               className={[
-                "rounded-t-md px-3.5 py-2 text-[13px] font-medium transition-colors",
+                "flex items-center gap-2 rounded-t-md px-3.5 py-2 text-[13px] font-medium transition-colors",
                 selected
                   ? "bg-bark text-bone"
-                  : "text-stone hover:text-bark hover:bg-bark/5",
+                  : "text-stone hover:bg-bark/5 hover:text-bark",
               ].join(" ")}
             >
+              <span className="flex items-center gap-1">
+                {t.icons.map((Icon, i) => (
+                  <Icon key={i} className="size-3.5" />
+                ))}
+              </span>
               {t.label}
             </button>
           );
