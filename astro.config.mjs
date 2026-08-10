@@ -10,7 +10,7 @@ import tailwindcss from "@tailwindcss/vite";
 // /<path>. Astro pages take precedence over Starlight's injected routes, which
 // is what keeps "/" ours.
 export default defineConfig({
-  site: "https://rookery.sh",
+  site: "https://rookery.cloud",
   integrations: [
     react(),
     starlight({
