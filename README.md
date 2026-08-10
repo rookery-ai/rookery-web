@@ -31,17 +31,23 @@ Documentation  a sequenced site — getting started, per-OS installation, then
 ```
 
 The full structure, section copy, documentation IA and the recorded decisions
-live in the design spec, which is **canonical in the product repository**:
+live in [`docs/website-design-spec.md`](docs/website-design-spec.md).
+
+It moved here from the product repository, which is going public while this one
+stays private — a specification for a private website does not belong in a
+public repo, and it carried a decision record ("100+ connections" against a true
+count of 91) that should not be published.
+
+**Identity** — the mark, palette, type and voice rules — stays canonical in the
+product repository, because its palette and contrast analysis documents code
+that ships from there:
 
 ```
-ilijad1/rookery → docs/superpowers/specs/2026-08-06-website-landing-page-and-docs-design.md
+ilijad1/rookery → docs/superpowers/specs/2026-08-06-brand-identity-and-narrative-design.md
 ```
 
-It is deliberately **not** copied here. A duplicated living document drifts, for
-the same reason a duplicated asset does.
-
-Identity — the mark, palette, type and voice rules — comes from spec 1 in the
-same directory: `2026-08-06-brand-identity-and-narrative-design.md`.
+That one is deliberately **not** copied here. A duplicated living document
+drifts, for the same reason a duplicated asset does.
 
 ## Planned stack
 
