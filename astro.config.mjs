@@ -74,6 +74,7 @@ export default defineConfig({
           label: "Reference",
           items: [
             { label: "CLI commands", slug: "docs/reference/cli", attrs: { "data-icon": "cli" } },
+            { label: "HTTP API", slug: "docs/reference/api", attrs: { "data-icon": "cli" } },
             { label: "Connected services", slug: "docs/reference/connected-services", attrs: { "data-icon": "services" } },
           ],
         },
