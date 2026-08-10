@@ -5,7 +5,7 @@ icon: macos
 ---
 
 ```bash
-curl -fsSL https://rookery.sh/install.sh | sh
+curl -fsSL https://rookery.cloud/install.sh | sh
 ```
 
 Intel and Apple Silicon are both supported. Then:

@@ -10,7 +10,7 @@ installation.
 ## Install
 
 ```bash
-curl -fsSL https://rookery.sh/install.sh | sh
+curl -fsSL https://rookery.cloud/install.sh | sh
 ```
 
 The script installs a native binary. Prefer to inspect it first — it is short —

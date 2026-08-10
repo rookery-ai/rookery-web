@@ -1,6 +1,6 @@
 # rookery-web
 
-The **rookery.sh** website: the landing page and the documentation site.
+The **rookery.cloud** website: the landing page and the documentation site.
 
 This repository is deliberately separate from
 [`ilijad1/rookery`](https://github.com/ilijad1/rookery), the product. Nothing
@@ -116,7 +116,7 @@ need is already built. Going public removes the blocker; someone still has to
 write them.
 
 The landing page cannot ship before those two scripts exist and are served from
-`rookery.sh`. Everything else here can be built in parallel.
+`rookery.cloud`. Everything else here can be built in parallel.
 
 ## Documentation accuracy
 

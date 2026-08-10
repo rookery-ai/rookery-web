@@ -11,7 +11,7 @@
 > reference for the mark, colour and voice this site is built on.
 
 **Date:** 2026-08-06
-**Scope:** rookery.sh — the landing page and the documentation site, as one
+**Scope:** rookery.cloud — the landing page and the documentation site, as one
 property, built and released from **its own repository** (`ilijad1/rookery-web`)
 and never compiled into the product binary. See §10.
 **Status:** Approved for writing. Spec 2 of 3.
@@ -33,7 +33,7 @@ installers will need is already built." Going public removes the blocker, but
 somebody still has to write them.
 
 **The landing page cannot go live before those two scripts exist and are served
-from `rookery.sh`.** This is release-engineering work, explicitly out of this
+from `rookery.cloud`.** This is release-engineering work, explicitly out of this
 spec's scope, and it is on the critical path. Everything else here can be built
 in parallel; only the hero is blocked.
 
@@ -117,8 +117,8 @@ A single command visible at a time, in a tabbed block whose default tab is
 
 | Detected | Default tab | Command |
 |---|---|---|
-| Linux, macOS | **Script** | `curl -fsSL https://rookery.sh/install.sh \| sh` |
-| Windows | **PowerShell** | `irm https://rookery.sh/install.ps1 \| iex` |
+| Linux, macOS | **Script** | `curl -fsSL https://rookery.cloud/install.sh \| sh` |
+| Windows | **PowerShell** | `irm https://rookery.cloud/install.ps1 \| iex` |
 
 Other tabs, always available regardless of detection: **Docker** and **Binary**.
 
@@ -323,7 +323,7 @@ forever. No sponsorship ask at launch.
 ## 9. Documentation
 
 Documentation is **mandatory**, not a follow-up. It shares the site's
-infrastructure, navigation and design, and lives at `rookery.sh/docs`.
+infrastructure, navigation and design, and lives at `rookery.cloud/docs`.
 
 This spec defines the information architecture and a per-page outline. **Writing
 the prose is the implementation work**, not part of this document.
