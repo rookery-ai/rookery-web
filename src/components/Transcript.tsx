@@ -22,7 +22,7 @@ const TURNS: Turn[] = [
     from: "rookery",
     text: "Two quick questions. Which sites should I watch, and should I message you every morning or only when something is actually wrong?",
   },
-  { from: "you", text: "rookery.sh and my blog. Only when something is wrong." },
+  { from: "you", text: "rookery.cloud and my blog. Only when something is wrong." },
   {
     from: "rookery",
     text: "Here is the agent I will build:\n\n• Checks both sites every morning at 7am\n• Messages you only if one is unreachable or slow\n• Writes every check into your notes, under Uptime\n\nType approve and I will build it and test it for real.",

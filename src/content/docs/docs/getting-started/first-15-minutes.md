@@ -10,13 +10,13 @@ something.
 ## 1. Install it
 
 ```bash
-curl -fsSL https://rookery.sh/install.sh | sh
+curl -fsSL https://rookery.cloud/install.sh | sh
 ```
 
 On Windows, use PowerShell:
 
 ```powershell
-irm https://rookery.sh/install.ps1 | iex
+irm https://rookery.cloud/install.ps1 | iex
 ```
 
 Prefer a container, or want to read the script first? See
@@ -73,7 +73,7 @@ See [Choosing a model](/docs/getting-started/choosing-a-model).
 Go to **Agents → New**, and describe what you want in your own words. Something
 small and real works best:
 
-> Every morning, check whether rookery.sh is reachable and tell me only if it
+> Every morning, check whether rookery.cloud is reachable and tell me only if it
 > isn't.
 
 Rookery will ask a couple of questions, propose a plan, and wait for you to type

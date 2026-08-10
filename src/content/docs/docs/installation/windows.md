@@ -7,7 +7,7 @@ icon: windows
 In PowerShell:
 
 ```powershell
-irm https://rookery.sh/install.ps1 | iex
+irm https://rookery.cloud/install.ps1 | iex
 ```
 
 Both x64 and ARM64 are supported. Then:
