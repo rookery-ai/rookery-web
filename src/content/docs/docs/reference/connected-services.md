@@ -18,16 +18,16 @@ configuration files, with no code change.
 
 ## Google
 
-Gmail, Calendar, Drive, Sheets, Docs, Tasks, Analytics, Ads, AdSense, Search
-Console, YouTube, and Google Health.
+Gmail, Calendar, Drive, Sheets, Docs, Tasks, Analytics, Ads, AdSense,
+Search Console, YouTube, and Google Health.
 
 These share one sign-in. You approve each service separately, but they all use
 the same app credentials, so setting Google up once covers the rest.
 
 ## Productivity
 
-Notion, Todoist, Asana, ClickUp, Monday, Trello, Airtable, Calendly, Vikunja,
-Toggl Track, Clockify, WakaTime.
+Notion, Todoist, Dropbox, Asana, ClickUp, Monday, Trello, Airtable, Calendly,
+Vikunja, Toggl Track, Clockify, WakaTime.
 
 ## Communication
 
@@ -36,7 +36,7 @@ SendGrid, Mailchimp, Twilio.
 
 ## Developer
 
-GitHub, Gitea, Jira, n8n, Grafana, Portainer, Syncthing, Changedetection.io.
+GitHub, Gitea, Jira, n8n, Grafana, Portainer, Syncthing, Changedetection.io, OpenAI.
 
 ## Commerce and finance
 
@@ -55,7 +55,7 @@ Steam.
 ## Social and publishing
 
 X, LinkedIn, Facebook, Instagram, Threads, TikTok, Reddit, Mastodon, Bluesky,
-Pinterest, and the Meta, LinkedIn and TikTok advertising APIs.
+Pinterest, and the Meta Ads and LinkedIn Ads advertising APIs.
 
 ## Self-hosted
 
@@ -68,12 +68,12 @@ connections — that is what makes a self-hosted service reachable at all.
 
 ## Health and fitness
 
-Strava, Oura, Fitbit, Google Health.
+Strava, Oura, Google Health.
 
 ## Open data, no account needed
 
-Open-Meteo (weather), Frankfurter (exchange rates), OpenStreetMap, Open Food
-Facts, Open Library, Wikipedia, Hacker News.
+Open-Meteo (weather), Frankfurter (exchange rates), OpenStreetMap,
+Open Food Facts, Open Library, Wikipedia, Hacker News.
 
 These need no credentials at all — connect and use.
 
