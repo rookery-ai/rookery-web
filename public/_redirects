@@ -1,0 +1,20 @@
+# The install scripts have exactly ONE copy, in the product repository. This
+# file makes rookery.sh serve them by redirecting to it, rather than vendoring
+# copies here that would silently drift — the same failure the brand-logo
+# manifest already has to be defended against.
+#
+# These MUST be real HTTP redirects, not Astro's `redirects:` config. That
+# emits an HTML page carrying <meta http-equiv="refresh">, which a browser
+# follows and `curl -fsSL` does not — so the advertised
+# `curl -fsSL https://rookery.sh/install.sh | sh` would pipe an HTML document
+# into a shell. curl and PowerShell's `irm` both follow a 302.
+#
+# The `!` suffix forces the rule ahead of static-file matching. Netlify and
+# Cloudflare Pages both read this file; whichever host is chosen must honour it
+# or express the same two rules in its own configuration.
+#
+# Both 404 until the product repository is public: raw.githubusercontent.com
+# needs an authenticated request for a private repo. That is a release step, and
+# no redirect can fix it.
+/install.sh   https://raw.githubusercontent.com/ilijad1/rookery/main/install.sh   302!
+/install.ps1  https://raw.githubusercontent.com/ilijad1/rookery/main/install.ps1  302!

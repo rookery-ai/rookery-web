@@ -17,7 +17,11 @@ export default defineConfig({
       title: "rookery",
       description:
         "Documentation for Rookery — self-hosted agents that live on your knowledge and act through the apps you already use.",
-      logo: { src: "./src/assets/mark.svg", replacesTitle: false },
+      // No `logo:` here on purpose. Starlight renders a configured logo as an
+      // <img>, which cannot inherit currentColor — that is exactly why the mark
+      // painted black and vanished on the dark theme. src/overrides/SiteTitle.astro
+      // inlines the SVG instead, and is the only consumer of the mark in the
+      // header.
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/ilijad1/rookery" },
       ],
@@ -25,7 +29,10 @@ export default defineConfig({
       // request — see the no-tracker rule in the spec.
       pagefind: true,
       customCss: ["./src/styles/brand.css", "./src/styles/doc-icons.css"],
-      components: { PageTitle: "./src/overrides/PageTitle.astro" },
+      components: {
+        PageTitle: "./src/overrides/PageTitle.astro",
+        SiteTitle: "./src/overrides/SiteTitle.astro",
+      },
       sidebar: [
         {
           label: "Getting started",

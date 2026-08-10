@@ -15,8 +15,8 @@ binary. Environment variables win.
 | `ROOKERY_PORT` | `8080` | Port to listen on. |
 | `ROOKERY_DATA_DIR` | `~/.rookery` | Everything lives here: database, knowledge bases, backups. |
 | `ROOKERY_PUBLIC_URL` | — | The externally reachable address. Required for connections that use sign-in. |
-| `ROOKERY_SESSION_KEY` | generated | 32-byte hex key signing browser sessions. |
-| `ROOKERY_SYSTEM_KEY` | generated | Hex key encrypting stored credentials. See the warning below. |
+| `ROOKERY_SESSION_KEY` | generated, saved to `<data_dir>/session.key` | 32-byte hex key signing browser sessions. |
+| `ROOKERY_SYSTEM_KEY` | generated, saved to `<data_dir>/system.key` | Hex key encrypting stored credentials. See the warning below. |
 | `ROOKERY_SANDBOX` | `1` | `0`, `false` or `off` disables filesystem confinement on Linux. |
 | `ROOKERY_CODER_MODE` | `full` | `slim` removes the local coder option entirely. |
 | `ROOKERY_CLAUDE_BIN` | detected | Override the path to a coder binary. |
@@ -31,6 +31,7 @@ Everything of yours is under here. Point it at a disk you back up.
 <data_dir>/
   rookery.db          the database
   system.key          the key encrypting stored credentials
+  session.key         the key signing browser sessions
   vaults/<id>/        one knowledge base per workspace
   claude-homes/<id>/  per-workspace coder config — not backed up
   backups/            local backups, if configured
@@ -69,6 +70,21 @@ and connection.
 Restoring a backup while this is set to a different value is refused with an
 explanatory error rather than silently breaking.
 :::
+
+You do **not** need to copy this key somewhere safe by hand. A backup already
+contains it — that is what makes restoring onto a new machine a single step. The
+thing you cannot recover is the **backup passphrase**, so keep that in your
+password manager.
+
+### `ROOKERY_SESSION_KEY`
+
+Signs browser session cookies, and nothing else. Resolved the same way as the
+system key: this variable, then `<data_dir>/session.key`, then generated and
+written there.
+
+Unlike the system key it encrypts nothing stored on disk, so losing it costs one
+sign-in rather than any data. It is deliberately **not** included in backups, so
+restoring onto new hardware does not also transplant live sessions.
 
 ### `ROOKERY_SANDBOX`
 
