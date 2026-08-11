@@ -90,5 +90,40 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+
+    optimizeDeps: {
+      /**
+       * lucide-react MUST be declared here, not left for Vite to discover.
+       *
+       * Vite pre-bundles the dependencies it finds by scanning entry points.
+       * It never reaches lucide-react that way: the only importers are the
+       * React components in src/components/, and those are pulled in by
+       * `client:*` islands as DYNAMIC imports, below the scanner. So on a cold
+       * start lucide-react is a *discovered* dependency — found at request
+       * time, optimised in a second pass, with a full page reload to pick up
+       * the new hash. That works, which is why this looked fine for months.
+       *
+       * It stops working the moment the dev server re-optimises in place.
+       * Discovered dependencies are not carried across a re-optimisation: the
+       * new _metadata.json contains react, react-dom and astro's own deps and
+       * nothing else, so /node_modules/.vite/deps/lucide-react.js answers 504
+       * "Outdated Optimize Dep" — with OR without a ?v= query, because the
+       * bundle is genuinely gone from disk. Every island then fails its
+       * dynamic import and the page renders as static SSR HTML: no animation,
+       * no working buttons, and no error a visitor can see.
+       *
+       * The trigger is routine here. Astro restarts and re-optimises whenever
+       * astro.config.mjs changes, and a `git checkout` between branches
+       * rewrites that file whenever the two sides differ — which any docs
+       * change that touches the sidebar does. Switching back to main after a
+       * docs branch is enough. It has been misdiagnosed as "the animations are
+       * broken" three times.
+       *
+       * Declaring it puts lucide-react in the FIRST optimise pass, so it
+       * survives every later one. See scripts/clean-vite-cache.mjs, which
+       * covers the start-of-session half of this.
+       */
+      include: ["lucide-react"],
+    },
   },
 });
