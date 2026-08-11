@@ -72,8 +72,8 @@ or change the password from the interface once you are in.
 ```bash
 rookery backup now [--dir <path>]
 rookery backup list [--dir <path>]
-rookery backup verify <file>
-rookery backup restore <file>
+rookery backup verify <file|name> [--dir <path>]
+rookery backup restore <file|name> [--dir <path>]
 rookery backup cancel-restore
 ```
 
@@ -82,14 +82,24 @@ one encrypted file.
 
 `verify` decrypts and reads a snapshot end to end without restoring it.
 
-`restore` **stages** a restore — the swap happens on the next server start, before
-the database is opened. It refuses to run while the server holds its lock.
+`restore` **applies** the restore then and there: it stages the snapshot, checks
+it, and swaps it in, printing `restore complete` when the data is in place.
+Starting the server afterwards is how you use the restored install, not how the
+restore happens. It refuses to run while the server holds its lock. The Restore
+button in the web interface is the one that defers — it stages and shuts the
+server down, so the swap happens on the next start.
 
-`cancel-restore` abandons a staged restore that has not fired yet. Without it, a
-staged restore triggers whenever the server next starts, possibly weeks later.
+`cancel-restore` abandons a restore staged that way but not yet fired. Without
+it, a staged restore triggers whenever the server next starts, possibly weeks
+later.
 
-All of these prompt for the passphrase, with terminal echo suppressed. Pass
-`--passphrase-stdin` to pipe it instead.
+`--dir` is where snapshots are read and written, defaulting to
+`<data_dir>/backups`. `verify` and `restore` take either a path to a file
+anywhere on disk or the name of a snapshot in that directory — so a snapshot
+downloaded from the web interface restores in place, with no copying.
+
+Every command except `list` prompts for the passphrase with terminal echo
+suppressed. Pass `--passphrase-stdin` to pipe it in instead.
 
 See [Backup and restore](/docs/operations/backup-and-restore).
 
