@@ -70,6 +70,7 @@ export default defineConfig({
             { label: "Chat", slug: "docs/concepts/chat", attrs: { "data-icon": "chat" } },
             { label: "Secrets", slug: "docs/concepts/secrets", attrs: { "data-icon": "secrets" } },
             { label: "Connections", slug: "docs/concepts/connections", attrs: { "data-icon": "connections" } },
+            { label: "MCP servers", slug: "docs/concepts/mcp-servers", attrs: { "data-icon": "connections" } },
             { label: "Notifications and chat apps", slug: "docs/concepts/notifications", attrs: { "data-icon": "notifications" } },
             { label: "Scheduling and reminders", slug: "docs/concepts/scheduling", attrs: { "data-icon": "scheduling" } },
             { label: "Models", slug: "docs/concepts/models", attrs: { "data-icon": "models" } },
