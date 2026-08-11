@@ -107,16 +107,27 @@ changes.** A provenance note sits beside the file naming that.
 
 ## Before this can go live
 
-**The hero of the landing page is an install command that does not exist.**
+**The hero of the landing page is an install command that does not resolve yet.**
 
-`install.sh` and `install.ps1` are not written. The product repository records
-that they were deferred because release assets on a *private* repo need an
-authenticated request, so `curl | sh` could not work — and that everything they
-need is already built. Going public removes the blocker; someone still has to
-write them.
+`install.sh` and `install.ps1` now exist, at the root of the product repository,
+and `public/_redirects` serves them from this domain. What remains is a release
+step, not a writing one: release assets on a *private* repository need an
+authenticated request, so `raw.githubusercontent.com` answers 404 and
+`curl -fsSL https://rookery.cloud/install.sh | sh` fetches nothing. **Making the
+product repository public is the last thing standing between the landing page and
+a working hero command.**
 
-The landing page cannot ship before those two scripts exist and are served from
-`rookery.cloud`. Everything else here can be built in parallel.
+Two constraints worth knowing before touching this:
+
+- The redirects must be **real HTTP redirects**, which is why they live in
+  `public/_redirects` and not in Astro's `redirects:` config. That config emits an
+  HTML page carrying `<meta http-equiv="refresh">` — a browser follows it and
+  `curl` does not, so the advertised command would pipe an HTML document into a
+  shell. Whichever host is chosen must honour `_redirects` or express the same two
+  rules itself.
+- There is deliberately **one copy** of each script, in the product repository.
+  Vendoring copies into `public/` would recreate exactly the drift the brand-logo
+  manifest already has to be defended against.
 
 ## Documentation accuracy
 

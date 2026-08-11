@@ -1,0 +1,64 @@
+---
+/**
+ * Overrides Starlight's SiteTitle so the brand mark themes and sits against the
+ * wordmark.
+ *
+ * Two defects, one cause. Starlight's own component renders the configured logo
+ * as `<img src={…}>`, and **an <img> cannot inherit `currentColor`** — so
+ * mark.svg, which strokes in currentColor, painted black and disappeared
+ * against the dark theme. Its `gap: var(--sl-nav-gap)` also spaced mark and
+ * wordmark far enough apart that they read as two adjacent objects rather than
+ * one logo.
+ *
+ * Starlight supports a `logo: { light, dark }` pair, which would fix the colour
+ * by shipping two files. Inlining the SVG instead fixes it with one, restores
+ * `currentColor` so the mark tracks the theme continuously rather than at a
+ * single breakpoint, and puts the gap under our own CSS in the same place. The
+ * repository already overrides PageTitle, so the pattern is established.
+ *
+ * `?raw` + set:html is how NotificationDemo and LogoWall already inline the
+ * vendored provider marks; the file is ours and is not user input.
+ */
+import markSvg from '../assets/mark.svg?raw';
+
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex">
+  <span class="mark" aria-hidden="true" set:html={markSvg} />
+  <span translate="no">{siteTitle}</span>
+</a>
+
+<style>
+  @layer starlight.core {
+    .site-title {
+      align-items: center;
+      /* Deliberately tighter than --sl-nav-gap. Mark and word read as one logo
+         only while they are closer to each other than either is to anything
+         else in the header; at the nav gap they read as two separate things. */
+      gap: 0.4rem;
+      font-size: var(--sl-text-h4);
+      font-weight: 600;
+      color: var(--sl-color-text-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .site-title > span:last-child {
+      overflow: hidden;
+    }
+
+    /* currentColor is the whole point: the mark inherits the link's colour, so
+       it tracks the theme with no second asset and no breakpoint. */
+    .mark {
+      display: inline-flex;
+      color: var(--sl-color-text-accent);
+    }
+
+    .mark :global(svg) {
+      height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+      width: auto;
+    }
+  }
+</style>
