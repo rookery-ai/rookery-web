@@ -23,8 +23,16 @@
  * It does NOT affect production: a built site has content-hashed filenames
  * that are stable for the lifetime of that build.
  *
- * If you install a package or edit astro.config.mjs while the dev server is
- * running, restart it. That is the one case this cannot cover.
+ * The mid-session case — astro.config.mjs changing under a RUNNING dev server,
+ * which a `git checkout` between branches does on its own whenever the sidebar
+ * differs — is handled separately, by `vite.optimizeDeps.include` in
+ * astro.config.mjs. Vite drops *discovered* dependencies when it re-optimises,
+ * and lucide-react was one, so every island lost its import and the page went
+ * static. Declaring it there keeps it in the first optimise pass. That comment
+ * carries the full explanation; this script covers only the start-of-session
+ * half.
+ *
+ * If you install a package while the dev server is running, still restart it.
  */
 import { rmSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
