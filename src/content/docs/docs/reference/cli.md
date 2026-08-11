@@ -144,3 +144,16 @@ rookery connector exec <tool> --args '<json>'
 Not for interactive use. This is how a command-line coder reaches your connected
 accounts during a run, through a loopback bridge with a token scoped to that run.
 It is documented here only so it is not a mystery if you see it in a log.
+
+## mcp
+
+```bash
+rookery mcp exec <tool> --args '<json>'
+```
+
+Not for interactive use, and the same shape as `connector exec` above: this is how
+a command-line coder calls a tool on one of your MCP servers during a run, through
+a loopback bridge with a token scoped to that run. The server's own credential
+never reaches the coder — only Rookery holds it.
+
+Documented here so it is not a mystery if you see it in a log.

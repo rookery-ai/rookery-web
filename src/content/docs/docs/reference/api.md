@@ -161,6 +161,25 @@ Self-managed-OAuth and API-key connections to external services — see
 | POST | `/services/:provider/apikey` | Connect via a pasted API key | Workspace |
 | DELETE | `/services/:id` | Disconnect a service connection | Workspace |
 
+### MCP servers
+
+Model Context Protocol servers you added by URL — see
+[MCP servers](/docs/concepts/mcp-servers).
+
+| Method | Path | What it does | Scope |
+|---|---|---|---|
+| GET | `/mcp/servers` | List MCP servers | Workspace |
+| POST | `/mcp/servers` | Add an MCP server | Workspace |
+| GET | `/mcp/servers/:id` | Server detail | Workspace |
+| PUT | `/mcp/servers/:id` | Update a server | Workspace |
+| DELETE | `/mcp/servers/:id` | Remove a server | Workspace |
+| POST | `/mcp/servers/:id/test` | Check the server answers, and sync its tools | Workspace |
+| POST | `/mcp/servers/:id/sync` | Re-read the server's tool list | Workspace |
+| GET | `/mcp/servers/:id/tools` | List a server's discovered tools | Workspace |
+| PUT | `/mcp/servers/:id/tools/:toolID` | Enable a tool, or change its trust settings | Workspace |
+| GET | `/agents/:id/mcp` | Which servers an agent is attached to | Workspace |
+| PUT | `/agents/:id/mcp` | Attach an agent to servers | Workspace |
+
 ### Chats
 
 | Method | Path | What it does | Scope |

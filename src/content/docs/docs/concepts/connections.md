@@ -104,3 +104,10 @@ untrusted content, but a connection's address comes from you.
 See [Connected services](/docs/reference/connected-services). It grows between
 releases; anything with an HTTP API can be added as two small configuration
 files, without changing any code.
+
+## When there is no connection for what you need
+
+Rookery ships a fixed set of services. If yours is not among them — or what you
+want has no web API to wrap at all — you can point Rookery at an
+[MCP server](/docs/concepts/mcp-servers) instead. You supply the URL and the
+server supplies its own tools, so you are not waiting for us to add support.
