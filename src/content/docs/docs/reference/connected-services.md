@@ -32,15 +32,52 @@ Vikunja, Toggl Track, Clockify, WakaTime.
 ## Communication
 
 Slack, Discord, Telegram, Microsoft Outlook, Microsoft Teams, ntfy, Gotify,
-SendGrid, Mailchimp, Twilio.
+SendGrid, Mailchimp, Twilio, Pushover, Pushbullet, Resend, Mailgun, Matrix.
+
+**Pushover and Pushbullet** are how an agent reaches your phone without going
+through a chat app. **Resend and Mailgun** send email from a domain you own.
+
+Sending email is marked as **public writing** — it lands in someone else's inbox
+and cannot be recalled — so you can require approval for it per agent, the same
+gate that guards posting to social accounts.
+
+**Matrix here is a connector, not a chat platform.** An agent can post to a room;
+Rookery does not yet talk back to you over Matrix the way it does over Telegram,
+Discord and Slack. Note also that a Matrix access token cannot be scoped — it is
+the whole account — so a dedicated account for the agent is a better idea than
+your own.
 
 ## Developer
 
-GitHub, Gitea, Jira, n8n, Grafana, Portainer, Syncthing, Changedetection.io, OpenAI.
+GitHub, GitLab, Bitbucket, Gitea, Jira, Linear, Sentry, n8n, Grafana,
+Portainer, Syncthing, Changedetection.io, npm registry, PyPI.
+
+GitLab works against **your own instance** as well as gitlab.com — the host is
+part of the connection.
+
+Sentry is the one worth putting on a schedule: an agent can read your unresolved
+issues and the stack trace of the latest event, which is enough to summarise
+what broke overnight.
+
+**npm and PyPI need no account at all.** They read published package metadata —
+versions, dependencies, download counts — so an agent can tell you how far
+behind a pinned dependency has fallen. PyPI has no search action, because PyPI
+withdrew its search API; only exact-name lookups are offered rather than an
+action that would appear to search and could not.
 
 ## Commerce and finance
 
-Stripe, Shopify, Salesforce, HubSpot, Firefly III, YNAB.
+Stripe, Shopify, Salesforce, HubSpot, Firefly III, YNAB, Wise, CoinGecko,
+Alpha Vantage.
+
+Wise is deliberately **read-only** here — balances, profiles and exchange rates.
+It can move money, and an agent that can send a transfer is a different
+proposition from one that can read a balance; if that is ever added it will be
+behind the approval gate, not merely marked as changing things.
+
+CoinGecko and Alpha Vantage need only a free key. Alpha Vantage's free tier is
+rate-limited to a few calls a minute, so an agent polling it on a tight schedule
+will be throttled.
 
 ## Support
 
@@ -60,7 +97,18 @@ Pinterest, and the Meta Ads and LinkedIn Ads advertising APIs.
 ## Self-hosted
 
 Home Assistant, Immich, Paperless-ngx, Nextcloud, Mealie, AdGuard Home,
-Sonarr, Radarr, Linkwarden, Vikunja, Gotify, Portainer.
+Sonarr, Radarr, Prowlarr, Lidarr, Bazarr, Linkwarden, Vikunja, Gotify,
+Portainer, Proxmox VE, Plex, Tailscale.
+
+Proxmox can start and stop virtual machines; those actions are marked as
+changing things, and nothing here destroys one. Note that Proxmox usually serves
+a self-signed certificate, which will fail TLS verification until you install a
+trusted one.
+
+Tailscale is the odd member of this group — it is a hosted service rather than
+software you run — but it is here because what you do with it is manage your own
+machines. Its API tokens expire after 90 days by default, so the key-listing
+action is worth putting on a schedule.
 
 These pair a token with **your own address** for the service, so they work on a
 home network. Rookery deliberately does not block private addresses for
