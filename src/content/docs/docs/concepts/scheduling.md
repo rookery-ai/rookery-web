@@ -11,7 +11,7 @@ words:
 
 - "every weekday at eight"
 - "every morning at seven, and again at ten"
-- "the first Monday of the month"
+- "the first of the month"
 - "every twenty minutes during work hours"
 - "only when I ask"
 
@@ -21,6 +21,11 @@ The schedule appears on the agent's page in plain language, and you can change i
 there. If Rookery cannot express your schedule exactly, it shows you the precise
 form rather than a friendly approximation — because you would have no way to tell
 a wrong friendly answer from a right one.
+
+One limit worth knowing: a schedule cannot combine a day of the month with a day
+of the week. "The first Monday of the month" is not expressible — asking for both
+gives you every day in the first week *and* every Monday, not the one day where
+they meet. Pick one or the other: "the first of the month", or "every Monday".
 
 ## When they run
 

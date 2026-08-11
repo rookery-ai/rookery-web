@@ -19,7 +19,7 @@ binary. Environment variables win.
 | `ROOKERY_SYSTEM_KEY` | generated | Hex key encrypting stored credentials. See the warning below. |
 | `ROOKERY_SANDBOX` | `1` | `0`, `false` or `off` disables filesystem confinement on Linux. |
 | `ROOKERY_CODER_MODE` | `full` | `slim` removes the local coder option entirely. |
-| `ROOKERY_CLAUDE_BIN` | detected | Override the path to a coder binary. |
+| `ROOKERY_CLAUDE_BIN` | `claude` | Override the path to a coder binary. Resolved on `PATH` unless you give an absolute path. |
 
 ## The ones that matter
 

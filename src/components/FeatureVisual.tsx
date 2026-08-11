@@ -357,7 +357,7 @@ export function ScheduleVisual() {
   const [i, setI] = useState(0);
   const lines = [
     { said: "every weekday at eight and again at ten", got: "Mon–Fri · 08:00, 10:00" },
-    { said: "first Monday of the month", got: "Monthly · 1st Mon · 09:00" },
+    { said: "the first of the month", got: "Monthly · 1st · 09:00" },
     { said: "every 20 minutes during work hours", got: "Mon–Fri · 09:00–17:00 · /20m" },
     { said: "only when I ask", got: "Manual · no schedule" },
   ];
