@@ -85,22 +85,32 @@ ElevenLabs and Stability are not here, while Replicate is (it answers with
 
 ## Cloud
 
-AWS.
+AWS, Cloudflare, DigitalOcean, Vercel, Netlify, Fly.io, Hetzner Cloud, Linode.
 
-Unlike every other connection, AWS does not carry a key in the request — it
-**signs** the request with Signature Version 4. You supply an access key ID, a
-region and a service; the secret access key is stored encrypted like any other
-credential, while the key ID and region are not secrets and are kept in the
-clear (the key ID appears in the authorization header of every signed request
-anyway).
+Infrastructure you rent, as opposed to the **Self-hosted** section above, which
+is the machine under your desk. The actions cover what is worth automating
+rather than everything each API offers: DNS records, droplets and servers,
+deploy status, and account balance — the last being a sensible thing for a
+scheduled agent to watch, since an account that runs dry takes everything with
+it.
 
-One connection covers **one service in one region**, because the region and
+Anything that powers a machine off or deletes a DNS record is marked as
+changing things, so you can require approval for it per agent.
+
+**AWS is the exception in this group.** It does not carry a key in the request
+— it **signs** the request with Signature Version 4. You supply an access key
+ID, a region and a service; the secret access key is stored encrypted like any
+other credential, while the key ID and region are not secrets and are kept in
+the clear (the key ID appears in the authorization header of every signed
+request anyway).
+
+One AWS connection covers **one service in one region**, because the region and
 service are part of the signature. Connect again for another.
 
-The available actions cover **Lambda** (list functions, read a configuration,
-invoke) and **CloudWatch Logs** (list log groups, search events — the usual way
-to find out why something failed). S3, EC2 and CloudWatch metrics are not
-offered yet: those APIs answer in XML, and Rookery's connector layer reads JSON.
+Its actions cover **Lambda** (list functions, read a configuration, invoke) and
+**CloudWatch Logs** (list log groups, search events — the usual way to find out
+why something failed). S3, EC2 and CloudWatch metrics are not offered: those
+APIs answer in XML, and Rookery's connector layer reads JSON.
 
 ## Health and fitness
 
