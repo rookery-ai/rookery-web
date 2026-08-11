@@ -66,6 +66,23 @@ These pair a token with **your own address** for the service, so they work on a
 home network. Rookery deliberately does not block private addresses for
 connections — that is what makes a self-hosted service reachable at all.
 
+## AI
+
+OpenAI, Anthropic, OpenRouter, Perplexity, Replicate, Deepgram, AssemblyAI,
+Hugging Face.
+
+These are AI services an agent calls **with your own key** — a different thing
+from the model that runs your agents, which you choose in coder settings. The
+reason to connect one is to reach something your coder cannot: a second opinion
+from a different model, a web-grounded answer with sources, a transcript of a
+recording, or an image generated on demand.
+
+Two kinds of service are deliberately absent, and it is the same reason in both
+cases: a connection answers in **JSON**. Text-to-speech and image generation
+return raw audio or image bytes, which a connector cannot carry — which is why
+ElevenLabs and Stability are not here, while Replicate is (it answers with
+*links* to its results, not the files themselves).
+
 ## Cloud
 
 AWS.
