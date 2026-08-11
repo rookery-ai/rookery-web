@@ -66,7 +66,7 @@ curl http://localhost:8080/healthz
 ```
 
 Change it with `ROOKERY_DATA_DIR`. This folder is the installation — back it up,
-or better, configure [backups](/docs/concepts/backup-and-restore).
+or better, configure [backups](/docs/operations/backup-and-restore).
 
 ## WSL is a reasonable alternative
 
