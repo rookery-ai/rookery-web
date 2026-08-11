@@ -392,7 +392,7 @@ const SELF_HOSTED = [
           groups={[{ label: "Services", items: CONNECTIONS }]}
         >
           <p slot="after" class="mt-9 text-center text-[14px] text-stone">
-            A selection of the 91 supported.{" "}
+            A selection of the 126 supported.{" "}
             <a
               href="/docs/reference/connected-services"
               class="font-medium text-ember underline decoration-ember/30 underline-offset-2 hover:decoration-ember"
@@ -400,6 +400,85 @@ const SELF_HOSTED = [
             >
           </p>
         </LogoWall>
+      </div>
+    </section>
+
+    <!-- MCP servers.
+         Deliberately static markup rather than a hydrated React island: this
+         section is a mock of a tool list, not something that needs to animate,
+         and every client:visible component here is one more thing that can fail
+         to hydrate. -->
+    <section class="py-20 sm:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15"
+            >
+              <Terminal className="size-5" />
+            </span>
+            <span
+              class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
+            >
+              MCP servers
+            </span>
+          </div>
+          <h2
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            Not on the list?<br />Add it yourself.
+          </h2>
+          <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Point Rookery at any Model Context Protocol server by URL — including one on
+            your own network — and its tools join your agents and chat. Nothing about the
+            server ships with Rookery: you supply the URL, it supplies its own tool list.
+            That is the one thing a curated connection cannot do, because it does not wait
+            for a release.
+          </p>
+          <p class="mt-4 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            You decide which tools are switched on, which may run while an agent is being
+            built, and which need your approval first.
+          </p>
+          <a
+            href="/docs/concepts/mcp-servers"
+            class="mt-6 inline-flex items-center gap-1.5 text-[15px] font-medium text-ember underline decoration-ember/30 underline-offset-4 hover:decoration-ember"
+            >How it works <ArrowRight className="size-4" /></a
+          >
+        </div>
+
+        <div
+          class="overflow-hidden rounded-2xl bg-bark text-bone shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)] ring-1 ring-black/10"
+        >
+          <div
+            class="flex items-center justify-between border-b border-white/8 px-4 py-3 font-mono text-[11px] tracking-[0.14em] text-bone/45 uppercase"
+          >
+            <span>playwright · 192.168.1.20:3000</span>
+            <span class="text-ember">7 tools</span>
+          </div>
+          <ul class="divide-y divide-white/6 font-mono text-[12.5px]">
+            <li class="flex items-center justify-between gap-3 px-4 py-3">
+              <span class="text-bone/85">browser_navigate</span>
+              <span class="shrink-0 rounded-full bg-white/8 px-2 py-0.5 text-[10px] tracking-wide text-bone/55 uppercase">on</span>
+            </li>
+            <li class="flex items-center justify-between gap-3 px-4 py-3">
+              <span class="text-bone/85">browser_snapshot</span>
+              <span class="shrink-0 rounded-full bg-white/8 px-2 py-0.5 text-[10px] tracking-wide text-bone/55 uppercase">read-only</span>
+            </li>
+            <li class="flex items-center justify-between gap-3 px-4 py-3">
+              <span class="text-bone/85">browser_click</span>
+              <span class="shrink-0 rounded-full bg-ember/20 px-2 py-0.5 text-[10px] tracking-wide text-ember uppercase">approval</span>
+            </li>
+            <li class="flex items-center justify-between gap-3 px-4 py-3 opacity-45">
+              <span class="text-bone/85">browser_file_upload</span>
+              <span class="shrink-0 rounded-full bg-white/8 px-2 py-0.5 text-[10px] tracking-wide text-bone/55 uppercase">off</span>
+            </li>
+          </ul>
+          <div
+            class="border-t border-white/8 px-4 py-3 font-mono text-[11px] tracking-[0.14em] text-bone/45 uppercase"
+          >
+            ↵ new tools arrive switched off
+          </div>
+        </div>
       </div>
     </section>
 
