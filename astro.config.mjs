@@ -11,6 +11,12 @@ import tailwindcss from "@tailwindcss/vite";
 // is what keeps "/" ours.
 export default defineConfig({
   site: "https://rookery.cloud",
+  // Backup and restore moved from Concepts to Operations — it is a procedure
+  // you follow, not an idea you read. The old URL was public, so it redirects
+  // rather than 404s.
+  redirects: {
+    "/docs/concepts/backup-and-restore": "/docs/operations/backup-and-restore/",
+  },
   integrations: [
     react(),
     starlight({
@@ -67,13 +73,13 @@ export default defineConfig({
             { label: "Notifications and chat apps", slug: "docs/concepts/notifications", attrs: { "data-icon": "notifications" } },
             { label: "Scheduling and reminders", slug: "docs/concepts/scheduling", attrs: { "data-icon": "scheduling" } },
             { label: "Models", slug: "docs/concepts/models", attrs: { "data-icon": "models" } },
-            { label: "Backup and restore", slug: "docs/concepts/backup-and-restore", attrs: { "data-icon": "backup" } },
           ],
         },
         {
           label: "Operations",
           items: [
             { label: "Configuration", slug: "docs/operations/configuration", attrs: { "data-icon": "config" } },
+            { label: "Backup and restore", slug: "docs/operations/backup-and-restore", attrs: { "data-icon": "backup" } },
             { label: "Health and troubleshooting", slug: "docs/operations/troubleshooting", attrs: { "data-icon": "health" } },
           ],
         },

@@ -59,7 +59,7 @@ password; without one they return `403` with the error code `no_workspace`.
 ### Backup
 
 One snapshot covers the whole install, so these sit on the owner group rather
-than any one workspace. See [Backup and restore](/docs/concepts/backup-and-restore).
+than any one workspace. See [Backup and restore](/docs/operations/backup-and-restore).
 
 | Method | Path | What it does | Scope |
 |---|---|---|---|

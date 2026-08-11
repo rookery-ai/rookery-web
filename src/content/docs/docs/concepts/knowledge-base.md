@@ -118,7 +118,7 @@ over — and so does yours, if you ever leave.
 ```
 
 `<data_dir>` defaults to `~/.rookery` and moves with `ROOKERY_DATA_DIR`. Back it
-up — see [Backup and restore](/docs/concepts/backup-and-restore), which covers the
+up — see [Backup and restore](/docs/operations/backup-and-restore), which covers the
 database and every workspace's knowledge base in one encrypted file.
 
 :::caution

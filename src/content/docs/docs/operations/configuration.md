@@ -34,7 +34,7 @@ Everything of yours is under here. Point it at a disk you back up.
   session.key         the key signing browser sessions
   vaults/<id>/        one knowledge base per workspace
   claude-homes/<id>/  per-workspace coder config — not backed up
-  backups/            local backups, if configured
+  backups/            local backups
 ```
 
 ### `ROOKERY_PUBLIC_URL`

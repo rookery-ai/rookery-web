@@ -91,7 +91,7 @@ staged restore triggers whenever the server next starts, possibly weeks later.
 All of these prompt for the passphrase, with terminal echo suppressed. Pass
 `--passphrase-stdin` to pipe it instead.
 
-See [Backup and restore](/docs/concepts/backup-and-restore).
+See [Backup and restore](/docs/operations/backup-and-restore).
 
 ## kb
 
