@@ -66,6 +66,42 @@ These pair a token with **your own address** for the service, so they work on a
 home network. Rookery deliberately does not block private addresses for
 connections — that is what makes a self-hosted service reachable at all.
 
+## AI
+
+OpenAI, Anthropic, OpenRouter, Perplexity, Replicate, Deepgram, AssemblyAI,
+Hugging Face.
+
+These are AI services an agent calls **with your own key** — a different thing
+from the model that runs your agents, which you choose in coder settings. The
+reason to connect one is to reach something your coder cannot: a second opinion
+from a different model, a web-grounded answer with sources, a transcript of a
+recording, or an image generated on demand.
+
+Two kinds of service are deliberately absent, and it is the same reason in both
+cases: a connection answers in **JSON**. Text-to-speech and image generation
+return raw audio or image bytes, which a connector cannot carry — which is why
+ElevenLabs and Stability are not here, while Replicate is (it answers with
+*links* to its results, not the files themselves).
+
+## Cloud
+
+AWS.
+
+Unlike every other connection, AWS does not carry a key in the request — it
+**signs** the request with Signature Version 4. You supply an access key ID, a
+region and a service; the secret access key is stored encrypted like any other
+credential, while the key ID and region are not secrets and are kept in the
+clear (the key ID appears in the authorization header of every signed request
+anyway).
+
+One connection covers **one service in one region**, because the region and
+service are part of the signature. Connect again for another.
+
+The available actions cover **Lambda** (list functions, read a configuration,
+invoke) and **CloudWatch Logs** (list log groups, search events — the usual way
+to find out why something failed). S3, EC2 and CloudWatch metrics are not
+offered yet: those APIs answer in XML, and Rookery's connector layer reads JSON.
+
 ## Health and fitness
 
 Strava, Oura, Google Health.
