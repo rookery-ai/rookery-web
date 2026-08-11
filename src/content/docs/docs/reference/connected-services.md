@@ -66,6 +66,25 @@ These pair a token with **your own address** for the service, so they work on a
 home network. Rookery deliberately does not block private addresses for
 connections — that is what makes a self-hosted service reachable at all.
 
+## Cloud
+
+AWS.
+
+Unlike every other connection, AWS does not carry a key in the request — it
+**signs** the request with Signature Version 4. You supply an access key ID, a
+region and a service; the secret access key is stored encrypted like any other
+credential, while the key ID and region are not secrets and are kept in the
+clear (the key ID appears in the authorization header of every signed request
+anyway).
+
+One connection covers **one service in one region**, because the region and
+service are part of the signature. Connect again for another.
+
+The available actions cover **Lambda** (list functions, read a configuration,
+invoke) and **CloudWatch Logs** (list log groups, search events — the usual way
+to find out why something failed). S3, EC2 and CloudWatch metrics are not
+offered yet: those APIs answer in XML, and Rookery's connector layer reads JSON.
+
 ## Health and fitness
 
 Strava, Oura, Google Health.
