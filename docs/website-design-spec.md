@@ -1,6 +1,6 @@
 # Website: landing page and documentation — design
 
-> **Moved here from `ilijad1/rookery`.** That repository is going public and this
+> **Moved here from `rookery-ai/rookery`.** That repository is going public and this
 > one is not, so a specification for a private website does not belong there. It
 > also carried the "100+ connections" decision record (§11) — accurate, but a
 > searchable admission of a claim that is not yet true.
@@ -12,7 +12,7 @@
 
 **Date:** 2026-08-06
 **Scope:** rookery.cloud — the landing page and the documentation site, as one
-property, built and released from **its own repository** (`ilijad1/rookery-web`)
+property, built and released from **its own repository** (`rookery-ai/rookery-web`)
 and never compiled into the product binary. See §10.
 **Status:** Approved for writing. Spec 2 of 3.
 
@@ -419,7 +419,7 @@ install docs that cannot instruct anyone.
 
 ### The website is its own repository and its own application
 
-**`ilijad1/rookery-web`, separate from `ilijad1/rookery`.** It is never compiled
+**`rookery-ai/rookery-web`, separate from `rookery-ai/rookery`.** It is never compiled
 into the binary, never embedded with `go:embed`, and shares no build with the
 product.
 
@@ -584,7 +584,7 @@ The site was built while this spec was being written, so this section records
 where the built site and the spec diverge. Read it before treating anything
 above as a description of what exists.
 
-**Built and live** in `ilijad1/rookery-web`:
+**Built and live** in `rookery-ai/rookery-web`:
 
 - Landing page — hero with the OS-detecting install block, the designer
   transcript, ten feature sections, searchable Connections and Models walls,

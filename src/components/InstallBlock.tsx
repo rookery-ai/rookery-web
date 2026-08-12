@@ -41,7 +41,7 @@ const TABS: Tab[] = [
     label: "Docker",
     icons: [DockerIcon],
     command:
-      "docker run -d --name rookery -p 8080:8080 -v rookery-data:/data ghcr.io/ilijad1/rookery:latest",
+      "docker run -d --name rookery -p 8080:8080 -v rookery-data:/data ghcr.io/rookery-ai/rookery:latest",
   },
   {
     id: "binary",
@@ -51,7 +51,7 @@ const TABS: Tab[] = [
       "# Linux · macOS · Windows — amd64 and arm64\n# .tar.gz and .zip archives, plus .deb and .rpm packages",
     note: {
       text: "Checksummed and signed —",
-      href: "https://github.com/ilijad1/rookery/releases/latest",
+      href: "https://github.com/rookery-ai/rookery/releases/latest",
       linkText: "download for your platform",
     },
   },

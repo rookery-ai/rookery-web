@@ -16,5 +16,5 @@
 # Both 404 until the product repository is public: raw.githubusercontent.com
 # needs an authenticated request for a private repo. That is a release step, and
 # no redirect can fix it.
-/install.sh   https://raw.githubusercontent.com/ilijad1/rookery/main/install.sh   302!
-/install.ps1  https://raw.githubusercontent.com/ilijad1/rookery/main/install.ps1  302!
+/install.sh   https://raw.githubusercontent.com/rookery-ai/rookery/main/install.sh   302!
+/install.ps1  https://raw.githubusercontent.com/rookery-ai/rookery/main/install.ps1  302!

@@ -3,7 +3,7 @@
 The **rookery.cloud** website: the landing page and the documentation site.
 
 This repository is deliberately separate from
-[`ilijad1/rookery`](https://github.com/ilijad1/rookery), the product. Nothing
+[`rookery-ai/rookery`](https://github.com/rookery-ai/rookery), the product. Nothing
 here is ever compiled into the Rookery binary.
 
 > **Status: planned, not built.** This repository currently holds the plan only.
@@ -43,7 +43,7 @@ product repository, because its palette and contrast analysis documents code
 that ships from there:
 
 ```
-ilijad1/rookery → docs/superpowers/specs/2026-08-06-brand-identity-and-narrative-design.md
+rookery-ai/rookery → docs/superpowers/specs/2026-08-06-brand-identity-and-narrative-design.md
 ```
 
 That one is deliberately **not** copied here. A duplicated living document

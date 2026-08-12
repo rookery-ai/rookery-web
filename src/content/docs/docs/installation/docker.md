@@ -6,7 +6,7 @@ icon: docker
 
 ```bash
 docker run -d --name rookery -p 8080:8080 \
-  -v rookery-data:/data ghcr.io/ilijad1/rookery:latest
+  -v rookery-data:/data ghcr.io/rookery-ai/rookery:latest
 ```
 
 Open `http://localhost:8080`.
@@ -46,7 +46,7 @@ Environment variables work the same as a native install:
 docker run -d --name rookery -p 8080:8080 \
   -v rookery-data:/data \
   -e ROOKERY_PUBLIC_URL=https://rookery.example.com \
-  ghcr.io/ilijad1/rookery:latest
+  ghcr.io/rookery-ai/rookery:latest
 ```
 
 ## Health

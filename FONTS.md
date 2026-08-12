@@ -3,7 +3,7 @@
 **This file is a copy. The canonical original lives in the product repository:**
 
 ```
-ilijad1/rookery → internal/fonts/InterVariable.woff2
+rookery-ai/rookery → internal/fonts/InterVariable.woff2
 ```
 
 ## Why a copy exists here
