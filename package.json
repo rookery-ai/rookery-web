@@ -8,7 +8,8 @@
     "dev:lan": "node scripts/clean-vite-cache.mjs && astro dev --host --port 9999",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.0",
@@ -24,6 +25,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "lucide-static": "^1.30.0",

@@ -1,0 +1,38 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      # The built site is attached to the release so a deploy targets a VERSION
+      # rather than checking out a branch. Deterministic flags (sorted names,
+      # zeroed mtimes, fixed owner) keep the archive byte-identical for an
+      # identical build.
+      - name: Package the built site
+        run: |
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+              -czf "rookery-web-${GITHUB_REF_NAME}.tar.gz" -C dist .
+          sha256sum "rookery-web-${GITHUB_REF_NAME}.tar.gz" > checksums.txt
+
+      - name: Attach to the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "$GITHUB_REF_NAME" \
+            "rookery-web-${GITHUB_REF_NAME}.tar.gz" checksums.txt --clobber
