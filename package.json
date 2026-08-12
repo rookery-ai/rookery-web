@@ -12,10 +12,10 @@
     "hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.0",
-    "@astrojs/starlight": "^0.36.0",
+    "@astrojs/react": "^6.0.2",
+    "@astrojs/starlight": "^0.41.7",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^5.16.0",
+    "astro": "^7.2.1",
     "lucide-react": "^1.28.0",
     "motion": "^12.24.0",
     "react": "^19.2.8",
