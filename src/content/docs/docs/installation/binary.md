@@ -15,7 +15,7 @@ all with checksums and signatures.
 | **Packages** | `.deb` and `.rpm`, carrying the systemd user service |
 | **Alongside** | `checksums.txt`, a signature, and a software bill of materials per archive |
 
-Get them from the [releases page](https://github.com/ilijad1/rookery/releases/latest).
+Get them from the [releases page](https://github.com/rookery-ai/rookery/releases/latest).
 
 ## From an archive
 
@@ -58,7 +58,7 @@ is no public key to fetch, the identity is recorded in a public transparency log
 cosign verify-blob checksums.txt \
   --signature checksums.txt.sig \
   --certificate checksums.txt.pem \
-  --certificate-identity-regexp 'https://github.com/ilijad1/rookery/.*' \
+  --certificate-identity-regexp 'https://github.com/rookery-ai/rookery/.*' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 

@@ -29,7 +29,7 @@ export default defineConfig({
       // inlines the SVG instead, and is the only consumer of the mark in the
       // header.
       social: [
-        { icon: "github", label: "GitHub", href: "https://github.com/ilijad1/rookery" },
+        { icon: "github", label: "GitHub", href: "https://github.com/rookery-ai/rookery" },
       ],
       // Pagefind builds a static search index at build time. No third-party
       // request — see the no-tracker rule in the spec.
