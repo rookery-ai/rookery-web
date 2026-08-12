@@ -1,6 +1,6 @@
 # Git hooks
 
-Installed with `make hooks`, which points `core.hooksPath` here. Git does not
+Installed with `npm run hooks`, which points `core.hooksPath` here. Git does not
 share hooks through a clone, so this is opt-in per checkout — `CONTRIBUTING.md`
 names it in the setup block.
 
@@ -26,17 +26,17 @@ same kind of problem:
 
 The split was not a style choice; it replaced a single blocking file that was
 tried first and rejected on evidence. All three of these are legitimate,
-on-topic commit messages for THIS repository, and the single-file version
-blocked every one of them:
+on-topic commit messages, and the single-file version blocked every one of
+them:
 
 - `"Verified against a live instance at 192.168.1.50."` — self-hosted
   connector testing. Home Assistant, Immich and Paperless-ngx are
-  RFC1918-addressed *by design* in this repo (see the connectors section of
-  `CLAUDE.md`).
+  RFC1918-addressed *by design* in the product — this site's own docs
+  describe that behaviour (`src/content/docs/docs/reference/connected-services.md`).
 - `"A redirect to test.lan now fails validation as expected."` — the OAuth
   redirect-policy work is literally about `.lan` hosts being rejected.
-- `"The failure only reproduced under /home/runner/work/rookery."` — routine
-  CI debugging.
+- `"The failure only reproduced under /home/runner/work/rookery-web."` —
+  routine CI debugging.
 
 A hook that blocks people from accurately describing their own work gets
 disabled at the first friction, and a disabled hook protects nothing — that
@@ -47,13 +47,13 @@ examples above are what breaks; keep the two files and the two exit codes.
 The patterns apply to **commit messages and PR descriptions only**, never to
 file content. File content is covered by gitleaks and GitHub push protection.
 That separation is why RFC1918/`.lan` literals can appear here at all without
-breaking the connector YAML examples, which document self-hosted deployments
-and are files, not messages.
+breaking the connector documentation pages, which document self-hosted
+deployments and are files, not messages.
 
 ## Portability note
 
 `patterns-warn.txt`'s `.lan` line uses `([^A-Za-z0-9]|$)` instead of the GNU
-`\b` word-boundary escape. `install.sh` supports macOS, whose default `grep`
-is BSD grep and does not understand `\b` in a POSIX ERE — both `commit-msg`
-and the CI job run `grep -Ef` against these files, so every pattern in both
-files must stay POSIX-portable.
+`\b` word-boundary escape. Contributors on macOS use its default BSD grep,
+which does not understand `\b` in a POSIX ERE — both `commit-msg` and the CI
+job run `grep -Ef` against these files, so every pattern in both files must
+stay POSIX-portable.
