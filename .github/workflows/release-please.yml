@@ -6,6 +6,10 @@ name: release-please
 on:
   push:
     branches: [main]
+  # Manual trigger, for re-running after a credential or configuration change
+  # without landing a no-op commit on main. release-please is idempotent: it
+  # updates its existing release PR rather than opening a second one.
+  workflow_dispatch:
 
 permissions:
   contents: read
