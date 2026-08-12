@@ -18,8 +18,10 @@ configuration files, with no code change.
 
 ## Google
 
-Gmail, Calendar, Drive, Sheets, Docs, Tasks, Analytics, Ads, AdSense,
-Search Console, YouTube, and Google Health.
+Gmail, Google Calendar, Google Drive, Google Sheets, Google Docs,
+Google Slides, Google Forms, Google Tasks, Google Contacts, Google Chat,
+Google Analytics, Google Ads, Google AdSense, Google Search Console, YouTube,
+and Google Health.
 
 These share one sign-in. You approve each service separately, but they all use
 the same app credentials, so setting Google up once covers the rest.
@@ -28,6 +30,15 @@ the same app credentials, so setting Google up once covers the rest.
 
 Notion, Todoist, Dropbox, Asana, ClickUp, Monday, Trello, Airtable, Calendly,
 Vikunja, Toggl Track, Clockify, WakaTime.
+
+The Microsoft 365 family — **Outlook Calendar, Outlook Contacts, OneDrive,
+Excel, OneNote and Microsoft Todo** (shown as Microsoft To Do in the app) —
+shares one sign-in with Microsoft
+Outlook, in the same way the Google services share theirs. You approve each
+separately, so connecting your calendar does not hand over your files.
+
+**Google Chat needs a Google Workspace account.** A personal `@gmail.com`
+address has no Chat API at all, and every call will fail.
 
 ## Communication
 
