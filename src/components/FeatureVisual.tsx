@@ -259,9 +259,20 @@ export function SecretsVisual() {
     return () => window.clearInterval(iv);
   }, [seen]);
 
+  // Synthetic display values for the vault illustration. They keep each
+  // provider's recognisable PREFIX — that is what makes the graphic read as
+  // "these are your real credentials" — but the body is the literal word
+  // EXAMPLE rather than a plausible random suffix.
+  //
+  // The previous values reproduced Stripe's real `sk_live_51…` account-prefix
+  // shape and Google's `ya29.` token shape with random-looking bodies, which a
+  // full-history gitleaks scan flagged. They were truncated and non-functional,
+  // but a marketing graphic gains nothing from a realistic-looking body and a
+  // reader cannot tell a truncated mock from a leaked key at a glance. Keep any
+  // future additions here obviously synthetic for the same reason.
   const rows = [
-    { k: "STRIPE_KEY", v: "sk_live_51QxT8mKp9wRt2Nv" },
-    { k: "GMAIL_TOKEN", v: "ya29.a0AfB_byDk3mQx7Lp" },
+    { k: "STRIPE_KEY", v: "sk_live_EXAMPLE_NOT_REAL" },
+    { k: "GMAIL_TOKEN", v: "ya29.EXAMPLE_NOT_REAL" },
   ];
 
   return (
