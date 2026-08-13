@@ -50,6 +50,24 @@ building, on purpose:
 Your live agent is untouched until you approve. The work happens in a separate
 area and is promoted only on save.
 
+## Where the conversation happens
+
+**A build reports back where you started it.** Begin in the web UI and the plan,
+the progress and the test results appear in the web UI; begin with `/agent` in a
+chat app and they arrive there. You will not get a phone notification for a build
+you are watching in the browser.
+
+One session runs at a time per workspace, and the surface that started it drives
+it. If you open the agent page while a build is running in your chat app, you can
+watch it — the conversation and the live progress both mirror across — but the
+composer and the buttons are inactive, so a stray click cannot interrupt work
+happening somewhere else. Sending a design message from the other side answers
+with a pointer to where the session actually lives.
+
+The way out, if you started a session in a browser you no longer have open, is
+`/agent cancel` from your chat app. It works against a session owned by either
+surface, discards it, and lets you start fresh.
+
 ## What an agent is made of
 
 Each agent has its own folder in the knowledge base:
