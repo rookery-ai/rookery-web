@@ -36,3 +36,41 @@ jobs:
         run: |
           gh release upload "$GITHUB_REF_NAME" \
             "rookery-web-${GITHUB_REF_NAME}.tar.gz" checksums.txt --clobber
+
+  deploy:
+    name: Deploy to Cloudflare
+    # Without this, the deploy races the upload it downloads from.
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      # Deploys the artifact the release job just published, never a rebuild —
+      # a rebuild at deploy time could differ from what was released and
+      # nothing would notice.
+      - name: Download the released artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download "$GITHUB_REF_NAME" \
+            --pattern "rookery-web-*.tar.gz" --pattern "checksums.txt"
+
+      - name: Verify the checksum
+        run: sha256sum -c checksums.txt
+
+      - name: Extract
+        run: |
+          rm -rf dist && mkdir -p dist
+          tar -xzf "rookery-web-${GITHUB_REF_NAME}.tar.gz" -C dist
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy
