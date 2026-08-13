@@ -9,17 +9,15 @@
   // second public copy of the whole site at rookery-web.<account>.workers.dev
   // — duplicate content at an unbranded URL that outlives any DNS change.
   // Verified live.
+  // Turning this off ALSO disables per-version preview URLs — they are served
+  // from the workers.dev subdomain, so there is no combination that gives
+  // previews without the public alias. Verified against the live API: with
+  // workers_dev off, `wrangler versions upload` emits only a Version ID and no
+  // URL, and neither a `preview_urls: true` setting nor `--preview-alias`
+  // changes that. Cloudflare's documentation describes them as independent
+  // mechanisms; they are not. Preview deploys were dropped rather than reopen
+  // the unbranded public copy — see the removed `preview` job in pr.yml.
   "workers_dev": false,
-  // Turning workers_dev off ALSO suppresses per-version preview URLs, which is
-  // not obvious and cost a pull request to discover: `wrangler versions upload`
-  // ran clean but printed only a Version ID and no URL, so the preview job's
-  // comment read "Preview: unavailable". These are two settings, not one.
-  //
-  // Keeping previews on is safe for the reason workers_dev is off: the risk was
-  // a STABLE alias permanently serving the whole site at an unbranded address.
-  // A preview URL is per-version, linked only from its own pull request, and
-  // never the production hostname.
-  "preview_urls": true,
   // No `main` key: this Worker runs no code. Every request is an asset
   // request, which Cloudflare serves for free and which never counts against
   // the free plan's invocation limit.
