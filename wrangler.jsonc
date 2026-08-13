@@ -1,0 +1,22 @@
+{
+  // Must equal the Worker name Terraform already created in the private infra
+  // repo. A mismatch does not error — wrangler happily creates a SECOND
+  // Worker that serves nothing at rookery.cloud while the deploy still
+  // reports success.
+  "name": "rookery-web",
+  "compatibility_date": "2026-08-01",
+  // The documented default is TRUE, and leaving it unset silently publishes a
+  // second public copy of the whole site at rookery-web.<account>.workers.dev
+  // — duplicate content at an unbranded URL that outlives any DNS change.
+  // Verified live.
+  "workers_dev": false,
+  // No `main` key: this Worker runs no code. Every request is an asset
+  // request, which Cloudflare serves for free and which never counts against
+  // the free plan's invocation limit.
+  "assets": { "directory": "./dist" }
+
+  // Bindings and variables belong in this file, never in Terraform — Terraform
+  // owns the Worker's existence, wrangler owns its content, and wrangler's
+  // config here is authoritative: it deletes any binding or variable it does
+  // not declare.
+}
