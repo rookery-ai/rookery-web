@@ -1,0 +1,50 @@
+name: rollback
+
+# Redeploy any previously released tag. The release artifact is immutable and
+# checksummed, so a rollback is a re-publish of known-good bytes rather than a
+# rebuild of old source — which is what makes this safe to run under pressure.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to redeploy, e.g. v0.3.1"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - name: Download the released artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download "${{ inputs.tag }}" \
+            --pattern "rookery-web-*.tar.gz" --pattern "checksums.txt"
+
+      - name: Verify the checksum
+        run: sha256sum -c checksums.txt
+
+      - name: Extract
+        run: |
+          rm -rf dist && mkdir -p dist
+          tar -xzf "rookery-web-${{ inputs.tag }}.tar.gz" -C dist
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy
