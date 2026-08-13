@@ -20,3 +20,15 @@
 # no redirect can fix it.
 /install.sh   https://raw.githubusercontent.com/rookery-ai/rookery/main/install.sh   302
 /install.ps1  https://raw.githubusercontent.com/rookery-ai/rookery/main/install.ps1  302
+
+# Astro/Starlight emits no /docs/index.html — only leaf pages exist — but the
+# product repository's README advertises "Documentation -> rookery.cloud/docs"
+# as a bare URL. Without this, that advertised link 404s. Redirect to the
+# first page in the documentation sidebar rather than Astro's `redirects:`
+# config, for the same reason /install.sh above uses a real HTTP redirect:
+# that config emits a <meta http-equiv="refresh"> page that curl does not
+# follow. These match /docs and /docs/ exactly (no trailing splat), so they
+# cannot swallow /docs/anything and redirect the rest of the documentation
+# tree along with it.
+/docs   /docs/getting-started/what-rookery-is/   302
+/docs/  /docs/getting-started/what-rookery-is/   302
