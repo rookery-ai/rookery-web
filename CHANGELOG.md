@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/rookery-ai/rookery-web/compare/v0.1.0...v0.1.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* **docs:** redirect /docs to the first documentation page ([#24](https://github.com/rookery-ai/rookery-web/issues/24)) ([22a396b](https://github.com/rookery-ai/rookery-web/commit/22a396b5822e00ff77fc0f70bc657d320a8d8297))
+
 ## 0.1.0 (2026-08-12)
 
 
