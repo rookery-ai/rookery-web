@@ -76,9 +76,11 @@ small and real works best:
 > Every morning, check whether rookery.cloud is reachable and tell me only if it
 > isn't.
 
-Rookery will ask a couple of questions, propose a plan, and wait for you to type
-`approve`. Then it builds the agent, runs it for real, and shows you what
-happened before saving anything.
+Rookery will ask a couple of questions, then propose a plan and offer
+**Approve & build** (typing `approve` does the same). The button appears only
+once there is a plan — while it is still asking questions, the answer it wants
+is yours, not a click. Then it builds the agent, runs it for real, and shows you
+what happened before saving anything.
 
 ## Where to go next
 
