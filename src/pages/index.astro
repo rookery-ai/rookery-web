@@ -396,7 +396,7 @@ const SELF_HOSTED = [
             <a
               href="/docs/reference/connected-services"
               class="font-medium text-ember underline decoration-ember/30 underline-offset-2 hover:decoration-ember"
-              >See them all</a
+              >See all</a
             >
           </p>
         </LogoWall>
@@ -680,7 +680,16 @@ const SELF_HOSTED = [
         >
           Put it on a machine that never sleeps.
         </h2>
-        <div class="mt-12 flex justify-center">
+        {/* w-full is load-bearing, not decoration. This wrapper is a flex item
+            of the `flex-col items-center` parent above, so without a definite
+            width it is sized shrink-to-fit — and the install block's min-content
+            is its non-wrapping command line, ~500px. The block then rendered
+            500px wide at EVERY viewport: at 320px it spanned -90 to 410, clipped
+            on both sides, with the copy button entirely off-screen and the code
+            box not even scrollable, so the command could be neither read nor
+            copied on a phone. The hero's copy of this block is fine because its
+            wrapper is a plain block with a definite width. */}
+        <div class="mt-12 w-full flex justify-center">
           <InstallBlock client:visible />
         </div>
       </div>
