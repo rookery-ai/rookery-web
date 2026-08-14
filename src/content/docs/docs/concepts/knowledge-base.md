@@ -64,11 +64,20 @@ The web interface has a full rich-text editor:
 - **Lists** — bulleted, numbered, and checkboxes you can tick.
 - **Tables** — with header rows, added and edited inline.
 - **Images** — dropped or pasted in, and resizable once placed.
+- **Columns** — two, three or four blocks side by side; type `/columns`. Useful
+  for a before-and-after pair of images.
 - **Links** — to the web, and `[[wikilinks]]` to your other notes.
 - **A slash menu** — type `/` for every block type without leaving the keyboard.
 - **Emoji** — a searchable picker, and icons for folders and notes.
 
 There is a raw markdown mode too, if you would rather see the source.
+
+Two notes on columns, because notes are plain markdown and markdown has no
+layout. **Each block is one cell** — a cell holding a heading *and* a paragraph
+is not supported, and two bullet lists cannot sit side by side, because markdown
+cannot express two adjacent lists as separate blocks at all. And **columns are a
+Rookery layout**: elsewhere — on GitHub, in an export — the cells appear stacked
+in order, with every image and every bit of formatting intact.
 
 ### AI writing tools
 
