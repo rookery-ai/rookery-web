@@ -118,6 +118,61 @@ into a markdown note. Conversion is one-directional: into markdown, never out.
 If a conversion looks thin, the resulting note says so in its own frontmatter, so
 a scanned PDF that yielded almost nothing cannot pass as a clean extraction.
 
+## upgrade
+
+```bash
+rookery upgrade                 # to the latest release
+rookery upgrade --version v0.2.0
+rookery upgrade --check         # exits non-zero if an upgrade is available
+```
+
+Downloads the release archive for your platform, checks it against the
+release's `checksums.txt`, and replaces the binary in place. The replacement is
+atomic, so an interrupted upgrade leaves the old binary working rather than a
+half-written file.
+
+Restart the service afterwards to pick it up:
+
+```bash
+systemctl --user restart rookery.service
+```
+
+:::note
+If you installed the `.deb` or `.rpm`, `upgrade` refuses and points you at
+`apt upgrade` / `dnf upgrade` instead. Replacing a packaged file behind the
+package database's back leaves it describing a file that is no longer there.
+:::
+
+Installing an **older** version is allowed with an explicit `--version`, but it
+warns first: migrations are forward-only, so a database a newer build has
+already migrated may not open.
+
+## uninstall
+
+```bash
+rookery uninstall            # service + binary; your data is kept
+rookery uninstall --dry-run  # print the plan, change nothing
+rookery uninstall --purge    # ALSO delete the data directory
+```
+
+Stops and disables the systemd user unit, removes it, and removes the binary.
+`loginctl enable-linger` is left alone — it is a user-level setting that may
+predate Rookery and may be keeping something else running.
+
+Your data directory is **kept** unless you pass `--purge`, so reinstalling picks
+up where you left off.
+
+:::caution
+`--purge` deletes the database, every workspace's knowledge base, local backups,
+and `system.key` — which encrypts every stored master password, connector token
+and bot token. `system.key` is not derivable from anything else, so a copy of
+the database taken beforehand is useless without it. The command asks you to
+type the data directory's path back before it proceeds.
+:::
+
+Under a `.deb` or `.rpm` install, `uninstall` removes the service but keeps the
+binary and prints the `apt remove` / `dnf remove` command for it.
+
 ## healthcheck
 
 ```bash
