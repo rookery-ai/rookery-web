@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/rookery-ai/rookery-web/compare/v0.1.1...v0.1.2) (2026-08-13)
+
+
+### Documentation
+
+* **agents:** explain which surface a build reports back to ([#28](https://github.com/rookery-ai/rookery-web/issues/28)) ([969c6a2](https://github.com/rookery-ai/rookery-web/commit/969c6a25ab9a906f24df4549c1e60ea17483db71))
+
 ## [0.1.1](https://github.com/rookery-ai/rookery-web/compare/v0.1.0...v0.1.1) (2026-08-13)
 
 
