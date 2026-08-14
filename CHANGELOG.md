@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/rookery-ai/rookery-web/compare/v0.1.3...v0.1.4) (2026-08-14)
+
+
+### Documentation
+
+* **cli:** document rookery upgrade and rookery uninstall ([#32](https://github.com/rookery-ai/rookery-web/issues/32)) ([ce14d15](https://github.com/rookery-ai/rookery-web/commit/ce14d155e496be21fb2b457ed9552475b2723f9b))
+
 ## [0.1.3](https://github.com/rookery-ai/rookery-web/compare/v0.1.2...v0.1.3) (2026-08-14)
 
 
