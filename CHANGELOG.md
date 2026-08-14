@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/rookery-ai/rookery-web/compare/v0.1.2...v0.1.3) (2026-08-14)
+
+
+### Bug Fixes
+
+* **landing:** stop the closing install block overflowing on phones ([#30](https://github.com/rookery-ai/rookery-web/issues/30)) ([bf60d6c](https://github.com/rookery-ai/rookery-web/commit/bf60d6c608aba8d25f4bb0bf982250ccdd80a5f6))
+
 ## [0.1.2](https://github.com/rookery-ai/rookery-web/compare/v0.1.1...v0.1.2) (2026-08-13)
 
 
