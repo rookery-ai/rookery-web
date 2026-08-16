@@ -169,12 +169,21 @@ rookery upgrade
 rookery uninstall
 ```
 
-`upgrade` replaces the binary in place and reports the version actually on disk
-afterwards. Stop a running `rookery serve` first — Windows will not let the file
-be replaced while it is executing.
+`upgrade` fetches the release for your platform, verifies it against the
+release's checksums, replaces the binary, and reports the version actually on
+disk afterwards. Stop a running `rookery serve` first and start it again after.
 
 `uninstall` removes the binary and leaves your data alone unless you pass
 `--purge`, which asks you to type the data directory back before deleting it.
+
+:::note
+Windows will not delete or overwrite a program while it is running, and both
+commands are running the very file they are asked to replace. They handle this
+by moving the old binary aside to `rookery.exe.old` rather than failing.
+
+`upgrade` clears that file on the next upgrade. After `uninstall`, delete it
+yourself once the window is closed — the command says so when it happens.
+:::
 
 ## WSL is a reasonable alternative
 
