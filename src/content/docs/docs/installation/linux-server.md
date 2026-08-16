@@ -5,7 +5,8 @@ icon: linux
 ---
 
 Rookery is designed to sit on a machine that stays on. This is the recommended
-installation.
+installation, and the only platform with both filesystem confinement and a
+service that survives a reboot.
 
 ## Install
 
@@ -15,19 +16,43 @@ curl -fsSL https://rookery.cloud/install.sh | sh
 
 The script installs a native binary. Prefer to inspect it first — it is short —
 or install from a package or archive instead: every release ships `.deb` and
-`.rpm` packages, plus archives with checksums and signatures.
+`.rpm` packages, plus archives with checksums and signatures. See
+[Binary and packages](/docs/installation/binary).
 
-## Create the owner account
+## Set it up
 
 ```bash
-rookery owner bootstrap -u yourname -p 'a-long-password'
+rookery onboard
 ```
+
+One interactive pass does the whole setup:
+
+- resolves the session key and the system key, and explains which one matters
+- creates the owner account — there is exactly one per installation
+- offers to install any missing host tools with your own package manager
+- reports the coder situation
+- installs and enables the **systemd user service**, with lingering turned on
+
+Anything it skips is repeated in a closing **Still to do** list, so a partial
+setup never looks like a finished one.
+
+Then open `http://localhost:8080` and log in.
+
+:::note
+Scripting an unattended install? `rookery onboard --yes -u yourname -p 'a-long-password'`
+answers every prompt, and `--non-interactive` reports what it would do without
+prompting or acting. `rookery owner bootstrap` remains available if you want to
+create only the owner account and nothing else.
+
+A password on the command line lands in your shell history.
+:::
 
 ## Keep it running
 
-The `.deb` and `.rpm` packages install a **systemd user service**. A user service
-runs as you, not as root, which is the right level of privilege for something
-that only ever touches its own data directory.
+`onboard` sets this up for you. If you are doing it by hand, or installed from a
+`.deb`/`.rpm` and skipped onboarding, the packages ship a **systemd user
+service**. A user service runs as you, not as root, which is the right level of
+privilege for something that only ever touches its own data directory.
 
 ```bash
 systemctl --user enable --now rookery
@@ -79,8 +104,28 @@ recommended one.
 You can confirm it is active:
 
 ```bash
-curl -s http://localhost:8080/healthz
+rookery healthcheck
 ```
 
 The response reports the protection status along with the version and which
 optional host tools are present.
+
+## Upgrading and removing
+
+```bash
+rookery upgrade
+rookery uninstall
+```
+
+`upgrade` fetches the latest release, verifies it against the release checksums,
+replaces the binary in place, and reports the version actually on disk
+afterwards. `--version v0.1.4` moves to a named release instead.
+
+`uninstall` removes the service and the binary, keeping your data unless you pass
+`--purge`.
+
+:::note
+Both refuse to touch a `.deb` or `.rpm` installation and print your package
+manager's own command instead — removing a packaged file behind the package
+manager's back leaves its database claiming a file that is gone.
+:::

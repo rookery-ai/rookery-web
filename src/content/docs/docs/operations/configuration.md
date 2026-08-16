@@ -22,6 +22,24 @@ binary. Environment variables win.
 | `ROOKERY_CODER_BIN` | `claude` | The default coder binary, for workspaces that have not picked one. Resolved on `PATH` unless you give an absolute path. |
 | `ROOKERY_CLAUDE_BIN` | — | Deprecated alias for `ROOKERY_CODER_BIN`. Still honoured; warns at startup. |
 
+## Setting them
+
+The examples in these docs use POSIX shell syntax. On Windows, use PowerShell's
+own forms:
+
+| | Linux / macOS | Windows PowerShell |
+|---|---|---|
+| This session | `export ROOKERY_PORT=9000` | `$env:ROOKERY_PORT = '9000'` |
+| One command | `ROOKERY_PORT=9000 rookery serve` | `$env:ROOKERY_PORT = '9000'; rookery serve` |
+| Persistently | shell profile, or the systemd unit | `setx ROOKERY_PORT 9000` |
+
+`setx` takes effect in **new** terminals only — never in the one that ran it,
+which is the usual reason a persisted variable looks like it was ignored.
+
+On Linux the durable place for these is the systemd user unit that
+`rookery onboard` installs, not a shell profile: a service started at boot never
+reads your profile.
+
 ## The ones that matter
 
 ### `ROOKERY_DATA_DIR`
@@ -37,6 +55,21 @@ Everything of yours is under here. Point it at a disk you back up.
   claude-homes/<id>/  per-workspace coder config — not backed up
   backups/            local backups
 ```
+
+:::caution
+Moving an existing installation? Move the **whole data directory**, intact.
+
+The database and `system.key` have to stay together: the key is read from beside
+the data directory and does not follow the database. Moving only the database,
+or pointing `database.path` back at the old location, both leave a database
+separated from the key that encrypts every stored master password, OAuth token
+and bot token in it — an installation that starts, reports itself healthy, and
+cannot read any of its own credentials.
+
+Rookery warns when it finds a database stranded at the old default. It is a
+warning rather than a refusal, because a fresh install may have an unrelated
+`~/.rookery`.
+:::
 
 ### `ROOKERY_PUBLIC_URL`
 
@@ -108,9 +141,14 @@ binary, pointed at with `--config`. Environment variables always win.
 ## Checking what took effect
 
 ```bash
-curl -s http://localhost:8080/healthz
+rookery healthcheck
 ```
 
 Reports the version, whether confinement is active, the coder mode, and which
 optional host tools are present. No paths or secrets — safe to share when asking
 for help.
+
+The same information is served at `GET /healthz` if you want to read it from
+another machine. Prefer the subcommand where you can: it behaves identically on
+all three platforms, whereas on Windows `curl` is an alias for
+`Invoke-WebRequest` and returns a response object rather than the body.
