@@ -175,6 +175,7 @@ disk afterwards. Stop a running `rookery serve` first and start it again after.
 
 `uninstall` removes the binary and leaves your data alone unless you pass
 `--purge`, which asks you to type the data directory back before deleting it.
+`rookery uninstall --dry-run` shows what would go without touching anything.
 
 :::note
 Windows will not delete or overwrite a program while it is running, and both

@@ -91,6 +91,7 @@ a named release instead.
 
 `uninstall` removes the binary and leaves your data alone unless you pass
 `--purge`, which asks you to type the data directory back before deleting it.
+`rookery uninstall --dry-run` shows what would go without touching anything.
 
 ## Reaching it from your phone
 

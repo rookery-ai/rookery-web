@@ -134,6 +134,12 @@ rookery upgrade --check         # exits non-zero if an upgrade is available
 rookery upgrade --yes           # skip the confirmation prompt
 ```
 
+| Flag | Effect |
+|---|---|
+| `--version` | Install this tag instead of the latest release. |
+| `--check` | Report whether an upgrade is available and exit non-zero if one is. |
+| `--yes` | Skip the confirmation prompt. |
+
 Downloads the release archive for your platform, checks it against the
 release's `checksums.txt`, and replaces the binary in place. The replacement is
 atomic, so an interrupted upgrade leaves the old binary working rather than a
@@ -174,6 +180,12 @@ rookery uninstall            # service + binary; your data is kept
 rookery uninstall --dry-run  # print the plan, change nothing
 rookery uninstall --purge    # ALSO delete the data directory
 ```
+
+| Flag | Effect |
+|---|---|
+| `--purge` | Also delete the data directory: database, knowledge bases, `system.key`, backups. |
+| `--dry-run` | Print what would be removed and exit without changing anything. |
+| `--yes` | Skip every confirmation, including the one guarding `--purge`. |
 
 Stops and disables the systemd user unit, removes it, and removes the binary.
 `loginctl enable-linger` is left alone — it is a user-level setting that may
