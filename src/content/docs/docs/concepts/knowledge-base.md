@@ -81,6 +81,15 @@ Select any text and a toolbar appears with four actions:
 | **Explain** | Explains the selection in plainer terms |
 | **Reformat** | Restructures it — into a list, a table, headings |
 
+Each returns a suggestion you accept or discard, so nothing changes until you say
+so. Explain is the exception: it answers a question about the passage and is never
+pasted over it.
+
+Alongside them, **Edit with AI** opens a chat that already carries the passage and
+the request — no retyping. The assistant edits the note directly, and the open
+editor picks the change up as soon as the reply lands. If you had unsaved edits of
+your own they are not overwritten: you get a **Reload** option and decide.
+
 Files that are not markdown open read-only: text and code in a monospace viewer,
 anything else as a download.
 
