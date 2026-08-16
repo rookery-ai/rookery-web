@@ -64,6 +64,8 @@ The web interface has a full rich-text editor:
 - **Lists** — bulleted, numbered, and checkboxes you can tick.
 - **Tables** — with header rows, added and edited inline.
 - **Images** — dropped or pasted in, and resizable once placed.
+- **Alignment** — centre or right-align a paragraph, a heading, a list, a table
+  or an image; select it and use the toolbar.
 - **Columns** — two, three or four blocks side by side; type `/columns`. Useful
   for a before-and-after pair of images.
 - **Links** — to the web, and `[[wikilinks]]` to your other notes.
@@ -72,12 +74,18 @@ The web interface has a full rich-text editor:
 
 There is a raw markdown mode too, if you would rather see the source.
 
-Two notes on columns, because notes are plain markdown and markdown has no
-layout. **Each block is one cell** — a cell holding a heading *and* a paragraph
-is not supported, and two bullet lists cannot sit side by side, because markdown
-cannot express two adjacent lists as separate blocks at all. And **columns are a
-Rookery layout**: elsewhere — on GitHub, in an export — the cells appear stacked
-in order, with every image and every bit of formatting intact.
+Notes are stored as plain markdown, which has no notion of layout. Alignment is
+therefore written the way markdown has always expressed it — a
+`<div align="center">` wrapper, the same form GitHub READMEs use — so a centred
+block you write here reads correctly anywhere else, and one pasted in from
+elsewhere is understood.
+
+Columns carry two limits worth knowing for the same reason. **Each block is one
+cell**, so a cell holding a heading *and* a paragraph is not supported, and two
+bullet lists cannot sit side by side because markdown cannot express two adjacent
+lists as separate blocks at all. And **columns are a Rookery layout**: elsewhere —
+on GitHub, in an export — the cells appear stacked in order, with every image and
+every bit of formatting intact.
 
 ### AI writing tools
 
@@ -89,6 +97,15 @@ Select any text and a toolbar appears with four actions:
 | **Proofread** | Fixes grammar and spelling, keeps your wording |
 | **Explain** | Explains the selection in plainer terms |
 | **Reformat** | Restructures it — into a list, a table, headings |
+
+Each returns a suggestion you accept or discard, so nothing changes until you say
+so. Explain is the exception: it answers a question about the passage and is never
+pasted over it.
+
+Alongside them, **Edit with AI** opens a chat that already carries the passage and
+the request — no retyping. The assistant edits the note directly, and the open
+editor picks the change up as soon as the reply lands. If you had unsaved edits of
+your own they are not overwritten: you get a **Reload** option and decide.
 
 Files that are not markdown open read-only: text and code in a monospace viewer,
 anything else as a download.
