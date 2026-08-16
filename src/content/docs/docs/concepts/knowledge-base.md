@@ -64,11 +64,19 @@ The web interface has a full rich-text editor:
 - **Lists** — bulleted, numbered, and checkboxes you can tick.
 - **Tables** — with header rows, added and edited inline.
 - **Images** — dropped or pasted in, and resizable once placed.
+- **Alignment** — centre or right-align a paragraph, a heading, a list, a table
+  or an image; select it and use the toolbar.
 - **Links** — to the web, and `[[wikilinks]]` to your other notes.
 - **A slash menu** — type `/` for every block type without leaving the keyboard.
 - **Emoji** — a searchable picker, and icons for folders and notes.
 
 There is a raw markdown mode too, if you would rather see the source.
+
+Notes are stored as plain markdown, which has no notion of alignment — so an
+aligned block is written the way markdown has always expressed it, as a
+`<div align="center">` wrapper. That is the same form GitHub READMEs use, so a
+centred block you write here reads correctly anywhere else, and one pasted in
+from elsewhere is understood.
 
 ### AI writing tools
 
