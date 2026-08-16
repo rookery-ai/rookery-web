@@ -104,10 +104,18 @@ first — no owner account, no database. The snapshot brings both.
    rookery backup restore ~/Downloads/rookery-2026-08-11T03-00-00.rkb
    ```
 
-   It prompts for the passphrase with the echo off. To script it, pipe the
+   It prompts for the passphrase, hiding what you type. To script it, pipe the
    passphrase in with `--passphrase-stdin`. The argument can be a path to a file
    anywhere on disk, or the name of a snapshot already in the local backups
    folder.
+
+   :::caution
+   Piping the passphrase from **Windows PowerShell 5.1** encodes the pipe as
+   ASCII, so any non-ASCII character arrives as `?`. On a restore that reads as
+   a wrong passphrase; on `backup now` it writes a snapshot under a passphrase
+   you cannot retype. PowerShell 7 pipes UTF-8 and is unaffected. Type the
+   passphrase at the prompt, or keep it ASCII-only.
+   :::
 
 4. **Start the server** and sign in with the owner password from the old
    install.

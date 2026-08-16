@@ -9,11 +9,13 @@ something.
 
 ## 1. Install it
 
+On Linux and macOS:
+
 ```bash
 curl -fsSL https://rookery.cloud/install.sh | sh
 ```
 
-On Windows, use PowerShell:
+On Windows, in PowerShell:
 
 ```powershell
 irm https://rookery.cloud/install.ps1 | iex
@@ -22,24 +24,32 @@ irm https://rookery.cloud/install.ps1 | iex
 Prefer a container, or want to read the script first? See
 [Docker](/docs/installation/docker) and [Linux server](/docs/installation/linux-server).
 
-## 2. Create the owner account
-
-There is exactly one owner per installation — you. This is the login you use to
-manage everything else.
+## 2. Set it up
 
 ```bash
-rookery owner bootstrap -u yourname -p 'a-long-password'
+rookery onboard
 ```
 
-:::caution
-Passing a password on the command line puts it in your shell history. Clear it
-afterwards, or set the password and then change it from the interface.
+One interactive pass does the whole setup: it resolves the two keys and explains
+which one matters, creates your owner account — there is exactly one per
+installation — offers any missing host tools, reports the coder situation, and
+on Linux installs and enables the service so Rookery survives a reboot.
+
+Anything it skips is repeated in a closing **Still to do** list, so a partial
+setup never looks like a finished one.
+
+:::note
+Prefer to script it? `rookery onboard --yes -u yourname -p 'a-long-password'`
+answers every prompt. A password on the command line lands in your shell
+history — clear it afterwards, or change it from the interface.
+
+Forgotten the owner password later? `rookery owner reset-password -p 'new-password'`
+works offline and needs no login.
 :::
 
-Forgotten it later? `rookery owner reset-password -p 'new-password'` works
-offline and needs no login.
-
 ## 3. Start it
+
+On Linux, `onboard` already started the service. Otherwise:
 
 ```bash
 rookery serve

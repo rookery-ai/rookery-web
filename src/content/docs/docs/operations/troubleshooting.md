@@ -4,22 +4,36 @@ description: What /healthz tells you, and the failures people actually hit.
 icon: health
 ---
 
-## The health endpoint
+## The health check
 
 ```bash
-curl -s http://localhost:8080/healthz
+rookery healthcheck
 ```
 
-It needs no login and reports the version and build, whether filesystem
-confinement is active, the coder mode, and which optional tools are present. Only
-booleans and names — never paths or secrets — so it is safe to paste when asking
-for help.
+This works identically on Linux, macOS and Windows. It reports the version and
+build, whether filesystem confinement is active, the coder mode, and which
+optional tools are present. Only booleans and names — never paths or secrets —
+so it is safe to paste when asking for help.
 
 In a container:
 
 ```bash
 docker exec rookery rookery healthcheck
 ```
+
+The same information is served, without a login, at `GET /healthz` — useful for
+checking an installation from another machine:
+
+```bash
+curl -s http://localhost:8080/healthz
+```
+
+:::note
+In PowerShell, `curl` is an alias for `Invoke-WebRequest` and returns a response
+object rather than the body. Use `irm http://localhost:8080/healthz`, or
+`curl.exe` if you have real curl installed. On Windows the subcommand above is
+simpler than either.
+:::
 
 ## Optional tools, and what you lose without them
 
@@ -43,13 +57,22 @@ The container image ships all four, so a healthy container reports no warnings.
 
 ### Scheduled agents stop when I close my terminal
 
-Lingering is not enabled. A systemd user service ends with your session:
+**On Linux**, lingering is not enabled. A systemd user service ends with your
+session:
 
 ```bash
 sudo loginctl enable-linger "$USER"
 ```
 
-The symptom is silence rather than an error, which is why this catches people out.
+The symptom is silence rather than an error, which is why this catches people
+out. `rookery onboard` enables lingering for you; an install set up by hand may
+not have it.
+
+**On macOS and Windows this is expected, not a misconfiguration.** Neither
+launchd registration nor a Windows service is shipped yet, so `rookery serve`
+lives and dies with the terminal that started it. Leave the window open, wrap it
+yourself, or run the always-on installation on
+[Linux](/docs/installation/linux-server).
 
 ### A connection won't complete sign-in
 
@@ -98,11 +121,22 @@ finish.
 Run logs are in the knowledge base under `agents/<id>/logs/`, one file per run,
 timestamped and readable. They are also on the agent's page.
 
-Server logs go to the service:
+Server logs go wherever the server is running:
 
 ```bash
-journalctl --user -u rookery -n 100 --no-pager
-docker logs rookery --tail 100
+journalctl --user -u rookery -n 100 --no-pager   # Linux, systemd user service
+docker logs rookery --tail 100                   # container
+```
+
+On macOS and Windows there is no service to ask, so the logs are whatever
+`rookery serve` printed in its terminal. To keep them, redirect:
+
+```bash
+rookery serve > rookery.log 2>&1        # macOS
+```
+
+```powershell
+rookery serve *> rookery.log            # Windows PowerShell
 ```
 
 ## Getting help
