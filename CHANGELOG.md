@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.5](https://github.com/rookery-ai/rookery-web/compare/v0.1.4...v0.1.5) (2026-08-16)
+
+
+### Documentation
+
+* **agents:** the build button now waits for a plan ([#34](https://github.com/rookery-ai/rookery-web/issues/34)) ([e741b47](https://github.com/rookery-ai/rookery-web/commit/e741b478d41707ddf5f0a182ec7ad2b2f62f2503))
+* **kb:** Edit with AI sends the request and the editor keeps up ([#35](https://github.com/rookery-ai/rookery-web/issues/35)) ([a684d0e](https://github.com/rookery-ai/rookery-web/commit/a684d0eb3df7527326f90c4491f8f0aaf7b962e6))
+* **kb:** note alignment for text and images ([#36](https://github.com/rookery-ai/rookery-web/issues/36)) ([5c4478b](https://github.com/rookery-ai/rookery-web/commit/5c4478b153fb486b6cbb1b5cf0003efa36f02c17))
+* **kb:** note the columns layout ([#37](https://github.com/rookery-ai/rookery-web/issues/37)) ([9918776](https://github.com/rookery-ai/rookery-web/commit/99187761468872709ad6b175e9fe2d281ba2ec0b))
+
 ## [0.1.4](https://github.com/rookery-ai/rookery-web/compare/v0.1.3...v0.1.4) (2026-08-14)
 
 
