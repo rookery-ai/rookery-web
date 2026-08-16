@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/rookery-ai/rookery-web/compare/v0.1.5...v0.1.6) (2026-08-16)
+
+
+### Documentation
+
+* document every platform's real install, setup and CLI path ([#39](https://github.com/rookery-ai/rookery-web/issues/39)) ([0e63400](https://github.com/rookery-ai/rookery-web/commit/0e634008b513e9c7d6503062c2962f250aecc125))
+
 ## [0.1.5](https://github.com/rookery-ai/rookery-web/compare/v0.1.4...v0.1.5) (2026-08-16)
 
 
