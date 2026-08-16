@@ -128,10 +128,9 @@ a scanned PDF that yielded almost nothing cannot pass as a clean extraction.
 ## upgrade
 
 ```bash
-rookery upgrade                 # to the latest release
+rookery upgrade
 rookery upgrade --version v0.2.0
-rookery upgrade --check         # exits non-zero if an upgrade is available
-rookery upgrade --yes           # skip the confirmation prompt
+rookery upgrade --check
 ```
 
 | Flag | Effect |
@@ -176,9 +175,9 @@ already migrated may not open.
 ## uninstall
 
 ```bash
-rookery uninstall            # service + binary; your data is kept
-rookery uninstall --dry-run  # print the plan, change nothing
-rookery uninstall --purge    # ALSO delete the data directory
+rookery uninstall
+rookery uninstall --dry-run
+rookery uninstall --purge
 ```
 
 | Flag | Effect |
