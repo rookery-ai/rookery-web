@@ -22,14 +22,21 @@ What happens next:
    to watch, whether you want a message every time or only on problems, how often
    it should run. It will not ask you for tokens or bury you in jargon.
 2. **A plan, in plain language.** Bullet points: what it will do each run, how
-   often, whether it will message you, and where results are saved. Type
-   `approve` when it looks right.
-3. **It gets built and really tested.** Rookery writes the agent and runs it
+   often, whether it will message you, and where results are saved. An
+   **Approve & build** button appears alongside it — only once there is a plan
+   to approve, never while Rookery is still asking questions. Typing `approve`
+   does the same thing, in the browser or in a chat app.
+3. **The plan stays readable.** **View spec** shows what you approved — the
+   schedule, which skills, services and MCP servers it will use, whether it
+   notifies you, and where it writes — so you do not have to scroll back through
+   the conversation to remember.
+4. **It gets built and really tested.** Rookery writes the agent and runs it
    against your actual connected services, with your real credentials, and fixes
    what breaks. The one thing it will not do at this stage is send anything
    outward on your behalf.
-4. **You see the evidence.** The real output from the test run. Approve to save,
-   or say what to change.
+5. **You see the evidence.** The real output from the test run, in a review card
+   at the end of the conversation. Save it, view the finished spec, or say what
+   to change.
 
 :::tip
 If it proposes something more complicated than you expected, say so. "Can you do
@@ -42,8 +49,10 @@ Open an agent and continue the conversation. Editing follows a stricter path tha
 building, on purpose:
 
 1. **Diagnose first.** Rookery reads the agent and tells you what is actually
-   wrong, in plain language, before proposing anything.
-2. **Confirm the fix.** It describes the change without code or file names.
+   wrong, in plain language, before proposing anything. There is nothing to
+   approve at this stage, so it does not offer to rebuild yet.
+2. **Confirm the fix.** It describes the change without code or file names, and
+   **Approve & build** appears once it has something concrete to propose.
 3. **Then it applies only that change** and re-tests, proving the original problem
    is gone.
 
