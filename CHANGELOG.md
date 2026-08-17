@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.8](https://github.com/rookery-ai/rookery-web/compare/v0.1.7...v0.1.8) (2026-08-17)
+
+
+### Bug Fixes
+
+* **scheduling:** correct the missed-window claim and document run recovery ([#43](https://github.com/rookery-ai/rookery-web/issues/43)) ([46d03ef](https://github.com/rookery-ai/rookery-web/commit/46d03efb9aa970b69d8f45d035a1328901aa2c40))
+
+
+### Documentation
+
+* **agents:** describe the review step's buttons and the closed message box ([#45](https://github.com/rookery-ai/rookery-web/issues/45)) ([d72bbb3](https://github.com/rookery-ai/rookery-web/commit/d72bbb3610e1fefe577cf930251ad0954981e0f7))
+* **notifications:** state what silence means, and what is not silence ([#46](https://github.com/rookery-ai/rookery-web/issues/46)) ([35d4daa](https://github.com/rookery-ai/rookery-web/commit/35d4daa3ef00e76e80fc9ac5369cd8e927b81da0))
+
 ## [0.1.7](https://github.com/rookery-ai/rookery-web/compare/v0.1.6...v0.1.7) (2026-08-17)
 
 
