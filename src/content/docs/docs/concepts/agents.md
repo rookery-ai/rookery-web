@@ -35,8 +35,14 @@ What happens next:
    what breaks. The one thing it will not do at this stage is send anything
    outward on your behalf.
 5. **You see the evidence.** The real output from the test run, in a review card
-   at the end of the conversation. Save it, view the finished spec, or say what
-   to change.
+   at the end of the conversation, with three buttons: **Save agent**, **View
+   spec**, and **Request changes**. This is the one step where the message box
+   is closed — a finished build is a yes-or-no decision, and the buttons make it
+   one. **Request changes** opens the box so you can say what to change.
+
+   In a chat app there are no buttons, so type instead: `approve`, `save`,
+   `accepted` and the other ordinary ways of agreeing all save it. Anything that
+   reads as a change — "approved, but make it 7:30" — is treated as a change.
 
 :::tip
 If it proposes something more complicated than you expected, say so. "Can you do
