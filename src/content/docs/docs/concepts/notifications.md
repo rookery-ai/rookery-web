@@ -84,8 +84,16 @@ speak up when something needs you — an uptime check that stays quiet is doing 
 job.
 
 When you build an agent, Rookery asks whether you want a message each run or only
-when something is worth saying. If a run produces nothing to send and did not mean
-to be silent, you get a warning instead of nothing at all.
+when something is worth saying. An agent that decides it has nothing to report
+sends nothing at all — no message, no placeholder, no "all clear".
+
+Two cases are deliberately not silent, because silence would hide them:
+
+- **The run finished but had nothing to send and never said it meant to be quiet.**
+  You get a short warning, so a broken agent cannot pass for a discreet one.
+- **The run produced no output whatsoever.** That is a failure, not discretion:
+  nothing was checked and nothing was saved. It is reported as a failed run and
+  says so, rather than reporting success and going quiet.
 
 ## What is not notified
 
