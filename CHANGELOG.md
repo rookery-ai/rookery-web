@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/rookery-ai/rookery-web/compare/v0.1.6...v0.1.7) (2026-08-17)
+
+
+### Documentation
+
+* **notifications:** state that the inbox and chat are not a choice ([#41](https://github.com/rookery-ai/rookery-web/issues/41)) ([834926a](https://github.com/rookery-ai/rookery-web/commit/834926a7b84aae8204d0b22b8b723267b9ac5c53))
+
 ## [0.1.6](https://github.com/rookery-ai/rookery-web/compare/v0.1.5...v0.1.6) (2026-08-16)
 
 
