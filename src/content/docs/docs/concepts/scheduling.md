@@ -33,8 +33,28 @@ The scheduler checks every minute and fires what is due. Runs happen whether or
 not you are logged in, which is the whole point of putting Rookery on a machine
 that stays on.
 
-A missed window — the machine was off — is not backfilled. The agent runs at its
-next scheduled time.
+### If the machine was off
+
+Nothing is lost. On starting up, Rookery immediately runs everything that came due
+while it was off and delivers every reminder that should already have arrived — so
+a laptop closed on Friday and opened on Monday catches up within seconds. A
+reminder more than two hours late says so, arriving as a **delayed reminder**
+rather than pretending it is on time.
+
+Missed runs **collapse into one**. An hourly agent that was off for three days
+runs once when you open the laptop, not seventy-two times. You get the current
+answer rather than a backlog of stale ones.
+
+If the machine slept or shut down in the *middle* of a run, that run is retried
+once on the next start — exactly once, so a run that keeps failing can never
+become a loop.
+
+Catching up is paced: a few agents run at a time and the rest queue. Opening your
+laptop to find every overdue agent starting at once is worse than waiting another
+minute for them.
+
+Pausing an agent is still absolute. A paused agent is not caught up, not retried,
+and not run.
 
 :::caution
 On a Linux server, a user service stops when you log out unless lingering is
