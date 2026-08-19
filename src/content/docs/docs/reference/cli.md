@@ -263,3 +263,22 @@ a loopback bridge with a token scoped to that run. The server's own credential
 never reaches the coder — only Rookery holds it.
 
 Documented here so it is not a mystery if you see it in a log.
+
+## state
+
+```bash
+rookery state get
+rookery state set --patch '<json>'
+```
+
+Not for interactive use, and the same shape as `connector exec` and `mcp exec`
+above: this is how a command-line coder reads and updates an agent's own memory
+during a run, through a loopback bridge with a token scoped to that run and to
+that one agent.
+
+`set` takes a PATCH, not a replacement — keys you leave out are kept, and a key
+set to `null` is deleted. The API-engine coders reach the same code through
+built-in `get_state` / `set_state` tools, so an agent behaves identically
+whichever coder your workspace uses.
+
+Documented here so it is not a mystery if you see it in a log.
