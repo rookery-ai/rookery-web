@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9](https://github.com/rookery-ai/rookery-web/compare/v0.1.8...v0.1.9) (2026-08-19)
+
+
+### Documentation
+
+* **cli:** document the rookery state command ([#47](https://github.com/rookery-ai/rookery-web/issues/47)) ([e810473](https://github.com/rookery-ai/rookery-web/commit/e810473b1a60ed8b262d1c88f56f3730b67d4e85))
+
 ## [0.1.8](https://github.com/rookery-ai/rookery-web/compare/v0.1.7...v0.1.8) (2026-08-17)
 
 
