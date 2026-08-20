@@ -49,6 +49,19 @@ searchable alongside your notes.
 A conversation stops on its own after 30 minutes of silence. Reopening it from
 the interface resumes it automatically — there is nothing to restart.
 
+## Leaving mid-answer
+
+A question can take minutes to answer, and you do not have to sit and watch it.
+The turn runs on the server, not in your browser tab: your message is saved the
+moment you send it, and the answer is saved when it arrives. Close the tab, walk
+away, come back on your phone — your question is there, and so is the reply if
+it has landed.
+
+Come back while it is still working and you see what it is doing right now — the
+file it is reading, the search it is running — with the earlier steps one click
+away. Only one turn runs per chat at a time, so sending a second question while
+the first is still working is declined rather than queued.
+
 ## Approvals
 
 Chat is **not** gated by the approval system that agents can use. When you ask it

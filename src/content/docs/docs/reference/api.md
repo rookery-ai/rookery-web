@@ -186,12 +186,24 @@ Model Context Protocol servers you added by URL — see
 |---|---|---|---|
 | GET | `/chats` | List chats | Workspace |
 | POST | `/chats` | Start a chat | Workspace |
-| GET | `/chats/:id` | Chat detail + messages | Workspace |
+| GET | `/chats/:id` | Chat detail, messages, and whether a turn is in flight | Workspace |
 | PATCH | `/chats/:id` | Rename/update a chat | Workspace |
-| POST | `/chats/:id/messages` | Send a message | Workspace |
+| POST | `/chats/:id/messages` | Start a turn — returns `202` with a turn id, not the reply | Workspace |
+| GET | `/chats/:id/turn/progress` | SSE stream of the turn in progress | Workspace |
 | POST | `/chats/:id/resume` | Resume a stopped chat | Workspace |
 | POST | `/chats/:id/stop` | Stop a chat | Workspace |
 | DELETE | `/chats/:id` | Delete a chat | Workspace |
+
+A chat turn runs on the server, not inside the request that starts it. Sending
+a message returns immediately with a turn id; the assistant's reply is written
+to the chat's history when the turn finishes, and `GET /chats/:id/turn/progress`
+streams what the model is doing in the meantime. That is what lets you close the
+tab mid-turn and find both your message and the answer waiting when you return —
+`GET /chats/:id` reports `in_flight` so a client that reconnects can pick the
+turn back up.
+
+Only one turn runs per chat at a time. Sending a second message while one is
+still working returns `409`.
 
 ### Reminders, inbox, and dashboard
 
