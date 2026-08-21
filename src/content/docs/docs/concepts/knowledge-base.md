@@ -131,19 +131,40 @@ almost nothing cannot pass as a clean one.
 - It uses ripgrep when installed, and falls back to a slower built-in scan when
   it is not.
 
+## Big files
+
+A knowledge base fills up with things that are too big to read in one go — an
+exported spreadsheet, a long research document, a year of meeting notes in one
+file. Rookery looks at the *shape* of a file before reading it, so a question
+about a large file does not turn into reading the whole thing.
+
+Ask about a big file and it first works out what is in there: for a table, the
+columns and how many rows; for a document, its headings. It also notices when
+one part of a file is far larger than the rest — an exported CSV often carries a
+column of raw technical data that accounts for most of the file and answers none
+of your questions. Knowing that up front is the difference between an answer and
+a long silence.
+
+From there it fetches only what it needs: one section of a document, or a search
+*inside* that single file rather than across everything you own.
+
 ### Tables
 
 A spreadsheet or CSV you import becomes a markdown table, and a match inside one
 comes back with the table's column headers attached. Without them a row is just
-a line of values — nothing in it says which number is the amount and which is
-the date — so a question about a table used to come back empty while the same
-question about prose worked fine.
+a line of values — nothing says which number is the amount and which is the
+date.
 
-**This makes tables findable, not calculable.** Asking "what did I spend at the
-supermarket in August" is a lookup and works. Asking "how much did I spend in
-total" is a calculation over every row, and chat has no calculator: it can read
-your notes, not run code over them. For arithmetic across a whole table, build
-an agent — agents can run scripts, and that is the difference between the two.
+Totals, averages, counts and rankings are **computed, not estimated**. "How much
+did I spend per month", "what are my five biggest transactions", "how many were
+declined" — the numbers are worked out from the rows rather than added up by the
+model, which is the difference between an answer you can trust and one that
+looks plausible.
+
+If a question needs something more unusual than filtering, grouping and ranking,
+it falls back to handing over the table with the bulky columns stripped out —
+small enough to read directly. For anything beyond that, an agent can run a
+script over the file.
 
 ## Links between notes
 
