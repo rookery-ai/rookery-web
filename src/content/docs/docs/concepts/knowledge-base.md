@@ -131,6 +131,20 @@ almost nothing cannot pass as a clean one.
 - It uses ripgrep when installed, and falls back to a slower built-in scan when
   it is not.
 
+### Tables
+
+A spreadsheet or CSV you import becomes a markdown table, and a match inside one
+comes back with the table's column headers attached. Without them a row is just
+a line of values — nothing in it says which number is the amount and which is
+the date — so a question about a table used to come back empty while the same
+question about prose worked fine.
+
+**This makes tables findable, not calculable.** Asking "what did I spend at the
+supermarket in August" is a lookup and works. Asking "how much did I spend in
+total" is a calculation over every row, and chat has no calculator: it can read
+your notes, not run code over them. For arithmetic across a whole table, build
+an agent — agents can run scripts, and that is the difference between the two.
+
 ## Links between notes
 
 Write `[[Another note]]` and Rookery resolves it, with backlinks shown on the
