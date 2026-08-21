@@ -116,7 +116,11 @@ Works with a workspace's knowledge base from the command line.
 
 ```bash
 rookery kb convert <file> [--dest <folder>] [--title <title>]
-rookery kb search <query>
+rookery kb search <query> [--path <file>]
+rookery kb map <file>
+rookery kb table <file> [--group-by <col>] [--metric <col>] [--op <op>]
+                        [--order asc|desc] [--order-by metric|group]
+                        [--select <col>] [--limit <n>]
 ```
 
 `convert` turns a document — PDF, Word, spreadsheet, presentation, HTML, CSV —
@@ -124,6 +128,30 @@ into a markdown note. Conversion is one-directional: into markdown, never out.
 
 If a conversion looks thin, the resulting note says so in its own frontmatter, so
 a scanned PDF that yielded almost nothing cannot pass as a clean extraction.
+
+`search` looks across the whole knowledge base, or inside a single file with
+`--path`.
+
+`map` describes a file without reading it: its columns and row count if it is a
+table, its headings if it is a document, and a warning when one part of it holds
+most of the file.
+
+`table` aggregates a markdown table — totals, averages, counts, rankings:
+
+```bash
+rookery kb table notes/card-transactions.md \
+  --group-by date:month --metric USDAmount --op sum
+```
+
+`--op` is one of `sum`, `avg`, `count`, `min`, `max`. `--group-by` takes a column
+name or `date:month`, `date:day`, `date:year`. Omit `--metric` and `--op` to get
+filtered rows back rather than a calculation.
+
+:::note
+These three are how a CLI coder reaches the same knowledge-base tools the
+built-in engine has, so both behave the same way. They need a running Rookery
+instance and are not meant for typing by hand.
+:::
 
 ## upgrade
 
