@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.10](https://github.com/rookery-ai/rookery-web/compare/v0.1.9...v0.1.10) (2026-08-21)
+
+
+### Documentation
+
+* big files, and tables that compute rather than estimate ([#51](https://github.com/rookery-ai/rookery-web/issues/51)) ([4a5ed99](https://github.com/rookery-ai/rookery-web/commit/4a5ed9914c8dd9a965b27c81be04900420e83248))
+* durable chat turns, and what table search does not do ([#49](https://github.com/rookery-ai/rookery-web/issues/49)) ([9101224](https://github.com/rookery-ai/rookery-web/commit/9101224b7ae51ed538cb80942bde81f729fb13c5))
+
 ## [0.1.9](https://github.com/rookery-ai/rookery-web/compare/v0.1.8...v0.1.9) (2026-08-19)
 
 
