@@ -106,9 +106,22 @@ eight"), changeable later on the agent's page.
 
 **On demand** — the Run button, or `/run <name>` from a chat app.
 
-Every run writes a log you can read: what it did, what it sent, what it saved,
-and any errors. If a run produces nothing to tell you and did not mean to be
-silent, you get a warning rather than silence.
+A run keeps going whether or not you are watching it. Leave the agent's page
+mid-run and come back and you pick the run up where it is — the elapsed time
+carries on rather than restarting, and the steps taken while you were away are
+still listed.
+
+Every run writes a log you can read. Open a run in the agent's history and you
+get what it sent you, then what it actually did to get there: each tool it
+called, in order, alongside the model's own replies. That is the view to open
+before editing an agent that behaved unexpectedly — an agent reporting no
+change looks the same whether it checked and found nothing or never checked at
+all, and the run's steps are what tell the two apart.
+
+A run that decides it has nothing worth telling you is marked **Silent**, so a
+deliberately quiet run reads differently from one that produced nothing because
+it broke. If a run produces nothing and did *not* mean to be silent, you get a
+warning rather than silence.
 
 ## Attaching things
 
