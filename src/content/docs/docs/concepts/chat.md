@@ -20,12 +20,18 @@ an agent for it.
 **Your context.** Your profile and everything in `memory/` is always present, so
 it knows your timezone and how you like to be spoken to.
 
+**The web.** It can search, fetch a page, and — when a page only renders with
+JavaScript — open it in a real [browser](/docs/concepts/browser/) and read what
+actually appeared.
+
 ## What it cannot do
 
 Chat is deliberately narrower than an agent:
 
 - It can create and edit notes, but **not delete or rename** them.
 - It **cannot run shell commands**.
+- It can **read** a page in the browser but never click, type or sign in — that
+  belongs to agents you have granted it to, for the same reason as below.
 
 Agents get the wider set because they are reviewed and tested before they are
 saved. A chat turn is not.

@@ -68,6 +68,7 @@ export default defineConfig({
             { label: "Agents", slug: "docs/concepts/agents", attrs: { "data-icon": "agents" } },
             { label: "Skills", slug: "docs/concepts/skills", attrs: { "data-icon": "skills" } },
             { label: "Chat", slug: "docs/concepts/chat", attrs: { "data-icon": "chat" } },
+            { label: "Browser", slug: "docs/concepts/browser", attrs: { "data-icon": "connections" } },
             { label: "Secrets", slug: "docs/concepts/secrets", attrs: { "data-icon": "secrets" } },
             { label: "Connections", slug: "docs/concepts/connections", attrs: { "data-icon": "connections" } },
             { label: "MCP servers", slug: "docs/concepts/mcp-servers", attrs: { "data-icon": "connections" } },

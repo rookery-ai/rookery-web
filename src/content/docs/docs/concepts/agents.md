@@ -134,6 +134,12 @@ control that matters: an agent can only reach accounts you have bound to it. At
 build time it can see all of the workspace's connections so it can be tested;
 once running, only what it is bound to.
 
+**The browser** lets an agent read pages that only render with JavaScript. Every
+agent can do that. Clicking, filling in forms and signing in are off until you
+switch them on for that agent, and anything irreversible — paying, ordering,
+deleting — needs a second switch of its own. See
+[Browser](/docs/concepts/browser/).
+
 ## Agents calling agents
 
 An agent can invoke another one and use its result, up to three levels deep, with

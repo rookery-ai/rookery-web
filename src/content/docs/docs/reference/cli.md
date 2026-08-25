@@ -269,6 +269,33 @@ rookery version
 
 Version, commit and build date.
 
+## browser
+
+```bash
+rookery browser install [--with-deps]
+rookery browser status
+```
+
+Installs the headless browser agents use to read pages that only exist once
+JavaScript has run. It is a separate step because it is a few hundred megabytes —
+a Node driver and a copy of Chromium — and most of Rookery works without it.
+Without it, those pages simply cannot be read; nothing else changes, and
+`/healthz` tells you which state you are in.
+
+`--with-deps` also installs the system libraries Chromium needs, which requires
+root. Without it, `install` prints the exact command for your package manager so
+you can run it yourself.
+
+```bash
+rookery browser read <url>
+rookery browser act <click|fill|press|wait|read> --ref <e12>
+```
+
+Not for interactive use. These are how a command-line coder reaches the browser
+during a run, through a loopback bridge with a token scoped to that run — the same
+shape as `connector exec` below. Stored passwords are substituted into the page by
+Rookery itself, so the coder never receives their values.
+
 ## connector
 
 ```bash

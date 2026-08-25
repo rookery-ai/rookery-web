@@ -18,6 +18,7 @@ binary. Environment variables win.
 | `ROOKERY_SESSION_KEY` | generated, saved to `<data_dir>/session.key` | 32-byte hex key signing browser sessions. |
 | `ROOKERY_SYSTEM_KEY` | generated, saved to `<data_dir>/system.key` | Hex key encrypting stored credentials. See the warning below. |
 | `ROOKERY_SANDBOX` | `1` | `0`, `false` or `off` disables filesystem confinement on Linux. |
+| `ROOKERY_BROWSER_ALLOW_PRIVATE` | `0` | `1`, `true` or `on` lets the headless browser reach addresses on your own network. See the warning below. |
 | `ROOKERY_CODER_MODE` | `full` | `slim` removes the local coder option entirely. |
 | `ROOKERY_CODER_BIN` | `claude` | The default coder binary, for workspaces that have not picked one. Resolved on `PATH` unless you give an absolute path. |
 | `ROOKERY_CLAUDE_BIN` | — | Deprecated alias for `ROOKERY_CODER_BIN`. Still honoured; warns at startup. |
@@ -127,6 +128,20 @@ level. Setting this to `0` turns that off.
 
 Only do that to diagnose a problem, and turn it back on. On macOS and Windows the
 confinement does not exist and this variable has no effect.
+
+### `ROOKERY_BROWSER_ALLOW_PRIVATE`
+
+The headless browser normally refuses to open anything on a private address —
+your LAN, `localhost`, or a Tailscale address. That is not a general caution: the
+browser follows links an agent picked out of search results and page content, and
+`localhost` is where Rookery's own internal bridges and their access tokens live.
+
+Set this to `1` only if you specifically want an agent to read something hosted on
+your own network, such as a dashboard. The server logs a warning at startup while
+it is on, so you can see at a glance that the guard is off.
+
+Note that many self-hosted services already have a proper connection in Rookery,
+which is a better route than pointing a browser at them.
 
 ### `ROOKERY_CODER_MODE`
 
