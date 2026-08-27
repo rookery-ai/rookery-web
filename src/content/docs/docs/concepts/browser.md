@@ -8,8 +8,9 @@ Some pages have nothing in them until JavaScript builds them: dashboards, single
 apps, anything that shows a spinner first. Fetching one of those over plain HTTP gives
 you an empty shell, which is why Rookery can also open a page in a real browser.
 
-Two things happen with it. Agents and chat can **read** rendered pages. And an agent you
-have specifically allowed can **use** one — sign in, fill a form, click through a flow.
+Two things happen with it. Agents and chat can **read** rendered pages. And an agent can
+**use** one — sign in, fill a form, click through a flow — with your permission needed
+only for the steps that cannot be undone.
 
 ## Installing it
 
@@ -39,20 +40,35 @@ answer tells you which engine actually served it.
 
 ## Using a page
 
-Reading is always allowed. Everything else is off until you turn it on, per agent, on
-that agent's page.
+Agents read pages and use them: clicking, filling in forms, signing in. You do not
+have to allow that. An agent you asked to log into your energy account and fetch this
+month's bill simply does it — approving "clicking" for a job you described in words
+would be friction with nothing behind it, and an agent can already make the same
+requests with a script anyway.
 
-**Let it use pages, not just read them.** The agent can click buttons, fill in fields and
-sign in. This is what a "log into my energy account and tell me this month's bill" agent
-needs.
+**One thing asks you first: an action that cannot be undone.** Paying, placing an
+order, transferring money, deleting an account.
 
-**Let it do things that cannot be undone.** A separate switch, because it is a separate
-decision. Paying, placing an order, transferring money, deleting something. Without it the
-agent stops at the final button and tells you what it was about to do instead.
+When an agent's work involves one, its page says so, above the schedule, and offers a
+single checkbox. Until you tick it the agent goes right up to that step, stops, and
+tells you exactly what it would have done — which button, on which page, and what it
+would have caused. Nothing else about the run is affected.
 
-An agent with the second switch on can spend money on its schedule, without asking, while
-you are asleep. That is the point of it — and the reason it is a deliberate, separate act
+You will not see that checkbox on an agent that only reads, or only does things that
+can be undone. That is deliberate: a permission shown on everything is one nobody
+reads by the time it matters.
+
+An agent with the permission on can spend money on its schedule, without asking, while
+you are asleep. That is what it is for — and why it is a deliberate, separate act
 rather than something bundled into "allow browsing".
+
+### What this does not cover
+
+The permission guards the **browser**. An agent can also make web requests from a
+script, and those are not covered by it. If an agent has a stored credential and a
+task that involves spending money, the honest summary is that you are trusting the
+agent, and this checkbox reduces one common way that goes wrong rather than closing
+the category.
 
 ## Passwords
 
