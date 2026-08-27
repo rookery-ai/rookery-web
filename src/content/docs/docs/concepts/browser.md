@@ -49,14 +49,23 @@ requests with a script anyway.
 **One thing asks you first: an action that cannot be undone.** Paying, placing an
 order, transferring money, deleting an account.
 
-When an agent's work involves one, its page says so, above the schedule, and offers a
-single checkbox. Until you tick it the agent goes right up to that step, stops, and
-tells you exactly what it would have done — which button, on which page, and what it
-would have caused. Nothing else about the run is affected.
+**You are asked while you are designing it.** When the plan involves such an action,
+the build button reads **Allow and build** and says so above itself. Approving builds
+the agent and switches the permission on, so it works the first time rather than
+stopping halfway through its first run for something you already agreed to.
 
-You will not see that checkbox on an agent that only reads, or only does things that
-can be undone. That is deliberate: a permission shown on everything is one nobody
-reads by the time it matters.
+The permission then sits on the agent's page, above the schedule, and you can switch
+it off whenever you like. Turn it off and the agent goes right up to that step, stops,
+and tells you exactly what it would have done — which button, on which page, and what
+it would have caused. Nothing else about the run is affected.
+
+If an agent turns out to need it that was never flagged during design — a site changed,
+or the plan did not mention it — the first run to reach that step stops the same way,
+and the permission appears on its page with an explanation.
+
+You will not see any of this on an agent that only reads, or only does things that can
+be undone. That is deliberate: a permission shown on everything is one nobody reads by
+the time it matters.
 
 An agent with the permission on can spend money on its schedule, without asking, while
 you are asleep. That is what it is for — and why it is a deliberate, separate act
