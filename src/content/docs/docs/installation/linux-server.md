@@ -30,6 +30,7 @@ One interactive pass does the whole setup:
 - resolves the session key and the system key, and explains which one matters
 - creates the owner account — there is exactly one per installation
 - offers to install any missing host tools with your own package manager
+- offers the optional headless browser, if you do not already have it
 - reports the coder situation
 - installs and enables the **systemd user service**, with lingering turned on
 

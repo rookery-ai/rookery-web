@@ -78,6 +78,21 @@ Check what Rookery found:
 rookery healthcheck
 ```
 
+### The browser
+
+Reading pages that only appear once JavaScript has run — and signing in, filling
+forms and clicking through a flow — needs a headless browser. It is a separate
+~200 MB download, so it is optional: `rookery onboard` offers it, and if you
+already have it, setup does not mention it at all.
+
+```bash
+rookery browser install
+rookery browser status
+```
+
+Everything else works without it; those pages just come back empty. See
+[Browser](/docs/concepts/browser).
+
 ## Upgrading and removing
 
 ```bash

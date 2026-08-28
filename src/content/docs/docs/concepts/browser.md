@@ -14,7 +14,13 @@ only for the steps that cannot be undone.
 
 ## Installing it
 
-The browser is a few hundred megabytes, so it is not installed by default:
+**`rookery onboard` offers it during setup**, on Linux, macOS and Windows alike — it
+downloads the right browser for whatever machine you are on. Say yes and there is
+nothing else to do. Say no and it tells you the command to run later.
+
+If you already have it, setup does not mention it at all.
+
+To install it separately, or after declining:
 
 ```bash
 rookery browser install
@@ -25,8 +31,9 @@ Without it everything else works normally and only JavaScript-rendered pages are
 unreadable. `/healthz` reports which state you are in, and the agent page tells you if a
 browser is missing rather than quietly offering a switch that would do nothing.
 
-Chromium also needs some system libraries. `install` prints the exact command for your
-package manager, or `--with-deps` installs them for you if you can run it as root.
+On Linux, Chromium also needs some system libraries. Setup and `install` both print the
+exact command for your package manager, or `--with-deps` installs them for you if you can
+run it as root. macOS and Windows need nothing extra.
 
 ## Reading
 

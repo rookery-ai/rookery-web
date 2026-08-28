@@ -31,6 +31,7 @@ import {
   Globe,
   FileText,
   Terminal,
+  MousePointerClick,
 } from "lucide-react";
 
 const title = "Rookery — your knowledge grew hands";
@@ -338,6 +339,7 @@ const SELF_HOSTED = [
             {
               [
                 { Icon: Globe, label: "Web search & fetch" },
+                { Icon: MousePointerClick, label: "Sign in & click through sites" },
                 { Icon: FileText, label: "Read & write your notes" },
                 { Icon: Terminal, label: "Run what it needs" },
                 { Icon: Plug, label: "Every connected account" },
@@ -357,6 +359,20 @@ const SELF_HOSTED = [
             same reach. The model decides how <strong class="font-semibold text-bark"
               >well</strong
             > a job is done — never whether it can be done at all.
+          </p>
+
+          <!-- Stated rather than folded into the chip row above: driving a real
+               browser needs a few hundred megabytes that most installs will
+               never download, and a capability list that quietly includes an
+               optional one is the kind of claim a reader discovers is untrue at
+               the worst moment. -->
+          <p
+            class="mx-auto mt-4 max-w-[54ch] text-[clamp(0.95rem,1.2vw,1rem)] leading-[1.6] text-stone"
+          >
+            Driving a real browser — reading pages that only load with JavaScript,
+            signing in, filling forms, clicking through a checkout — is an optional
+            extra you install in one command. Anything that cannot be undone asks you
+            first.
           </p>
         </div>
       </div>
