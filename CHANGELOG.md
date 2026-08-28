@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.12](https://github.com/rookery-ai/rookery-web/compare/v0.1.11...v0.1.12) (2026-08-28)
+
+
+### Documentation
+
+* name browser control on the landing page, and the onboard offer everywhere ([#55](https://github.com/rookery-ai/rookery-web/issues/55)) ([2f43d8f](https://github.com/rookery-ai/rookery-web/commit/2f43d8fb82ceba8b23f9c7956777d244a343f0d8))
+
 ## [0.1.11](https://github.com/rookery-ai/rookery-web/compare/v0.1.10...v0.1.11) (2026-08-28)
 
 
