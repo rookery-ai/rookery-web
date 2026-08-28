@@ -118,6 +118,25 @@ better route.
 **Staying signed in between runs.** A login lasts for the run that made it. The next run
 signs in again. Sites that dislike a fresh sign-in every time may ask for a code.
 
+## When a payment needs your phone
+
+Some payments finish in your banking app: the site asks, your phone buzzes, and the page
+only continues once you approve. An agent cannot tap that for you — but it does not need
+to. It waits for the page to change.
+
+Before it starts waiting it messages you, straight away, telling you what to do:
+
+> Approve the payment in your banking app
+
+That message arrives immediately rather than at the end of the run, which matters because
+a scheduled agent runs when nobody is watching. It then waits up to fifteen minutes. If
+nothing happens in that time it tells you plainly what did not arrive and where the
+payment got to, rather than silently trying again.
+
+Codes are a different matter. If the site sends you a **code to type** rather than a push
+to approve, the agent cannot receive it — unless it can read the code itself, which it can
+when the code arrives in a mailbox you have connected.
+
 ## How it is contained
 
 The browser runs as a separate, confined process. It cannot read the database, the
