@@ -12,8 +12,9 @@ rookery [--config <file>] <command>
 
 Sets up a fresh install in one interactive pass: resolves the two keys and
 explains which one matters, creates the owner account, offers to install the host
-tools Rookery degrades without, reports the coder situation, and on Linux installs
-and enables the systemd user unit with lingering turned on.
+tools Rookery degrades without, offers the optional headless browser, reports the
+coder situation, and on Linux installs and enables the systemd user unit with
+lingering turned on.
 
 ```bash
 rookery onboard
@@ -22,12 +23,16 @@ rookery onboard
 | Flag | Effect |
 |---|---|
 | `--non-interactive` | Never prompt. Reports what to run instead of doing it. |
-| `--yes` | Answer yes to every prompt (installs host tools and the service). |
+| `--yes` | Answer yes to every prompt (installs host tools, the browser and the service). |
 | `-u`, `--username` | Owner username, skipping that prompt. |
 | `-p`, `--password` | Owner password, skipping that prompt. |
 
 Every step it skips is repeated in a closing **Still to do** list, so a partial
 setup never looks like a finished one.
+
+The browser step is silent when the browser is already installed — it is a
+several-hundred-megabyte optional extra, and there is nothing to say about one
+that is already there.
 
 On macOS and Windows it prints how to run the server in the foreground: launchd
 and Windows service registration are not built yet.
