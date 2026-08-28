@@ -26,6 +26,12 @@ its instructions, its logs, or anything it writes to your knowledge base.
 Rookery redacts secret values from captured output before showing it to you, so a
 script that accidentally prints one does not leak it into a run log.
 
+There is one place a secret is used without the agent receiving it at all. When an
+agent signs in to a website through the [browser](/docs/concepts/browser/), it names
+the secret — `${ENERGY_ACCOUNT_PASSWORD}` — and Rookery types the value into the page
+itself. The agent never holds the password, and it is stripped back out of the page
+text, the field, the address bar and any error afterwards.
+
 ## How they are stored
 
 Encrypted with AES-256-GCM. The key is derived from your workspace master

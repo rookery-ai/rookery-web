@@ -1,6 +1,6 @@
 ---
 title: Skills
-description: Reusable capabilities your agents draw on — 22 built in, plus any you write.
+description: Reusable capabilities your agents draw on — 21 built in, plus any you write.
 icon: skills
 ---
 
