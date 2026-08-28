@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.11](https://github.com/rookery-ai/rookery-web/compare/v0.1.10...v0.1.11) (2026-08-28)
+
+
+### Documentation
+
+* document the browser, its permissions and its limits ([#53](https://github.com/rookery-ai/rookery-web/issues/53)) ([a1b3890](https://github.com/rookery-ai/rookery-web/commit/a1b389078e850a9477f41169f6b59efee04512c6))
+
 ## [0.1.10](https://github.com/rookery-ai/rookery-web/compare/v0.1.9...v0.1.10) (2026-08-24)
 
 
