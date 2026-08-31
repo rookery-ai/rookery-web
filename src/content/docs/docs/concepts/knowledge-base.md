@@ -119,9 +119,41 @@ becomes a markdown note. Also available from the command line:
 rookery kb convert report.pdf --dest notes/research
 ```
 
-Conversion is one-directional — into markdown, never out. If the extraction looks
-thin, the note says so in its own frontmatter, so a scanned PDF that yielded
-almost nothing cannot pass as a clean one.
+The result is a note you can **edit**, not just read: the converter writes the
+same markdown the editor itself writes, so an imported document opens in the
+rich text editor rather than read-only. Headings, lists — numbered ones included
+— tables, quotes, collapsible sections, alignment, underline and highlight
+colours all survive as things you can change afterwards.
+
+**Images inside a document come with it.** A picture embedded in a Word file or
+on a slide is saved into `uploads/` alongside the original and shown in the note,
+so it renders in the editor and travels into anything you export.
+
+**A scanned PDF is read with OCR.** When a PDF has no text layer, Rookery
+rasterises the pages and recognises the text, and the note says in its own
+frontmatter that the words were read from images and may contain recognition
+errors. This needs `tesseract` and `poppler-utils` on the host; without them the
+note tells you which one to install. When a text layer is present but looks
+thin, the note says that too, so a scan that yielded almost nothing cannot pass
+as a clean one.
+
+Conversion into markdown is the one-directional part — a note is never written
+back into the original file. Getting a note **out** in another format is a
+separate thing, and it is supported: see below.
+
+### Taking documents out
+
+Any note can be exported as HTML, Word (`.docx`), PDF or its raw markdown, from
+the Export menu on the note.
+
+PDF needs a renderer on the server. If you installed the browser
+(`rookery browser install`) you already have one and nothing further is needed;
+otherwise `weasyprint`, `chromium`, `google-chrome`, `wkhtmltopdf` or
+`libreoffice` will do. Without one, the PDF entry is shown as unavailable rather
+than failing when you press it.
+
+Exports are self-contained: images in the note are embedded in the file, so an
+exported HTML page or PDF still shows them once it leaves the machine.
 
 ## Searching
 

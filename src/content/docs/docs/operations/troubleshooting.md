@@ -41,8 +41,8 @@ simpler than either.
 |---|---|
 | `python3` | **The safety check on generated agent scripts silently switches off.** |
 | `rg` (ripgrep) | Knowledge base search falls back to a slower pure-Go scan. |
-| `pdftotext` | PDF text extraction is poorer. |
-| `tesseract` | No text from images. |
+| `pdftotext` (poppler-utils) | PDF text extraction is poorer, and scanned PDFs cannot be read at all — the same package provides `pdftoppm`, which OCR needs to turn pages into images. |
+| `tesseract` | No text from images, and no OCR for scanned PDFs. |
 
 :::danger
 The `python3` warning is the one that matters. Generated agent scripts are checked
