@@ -58,12 +58,16 @@ exactly one workspace — but the kernel-level guarantee does not exist. Rookery
 reports this at startup and at `/healthz`.
 :::
 
-**No service registration yet.** Running as a Windows service is not shipped.
-For now, run it in a terminal, or wrap it with a tool like NSSM yourself.
+**Autostart is a logon task, not a Windows service.** Rookery registers a Task
+Scheduler task that starts it when you sign in — see
+[Keeping it running](#keeping-it-running). It needs no administrator rights and
+stores no password, but it starts at sign-in rather than at boot, and it runs in
+a visible console window.
 
-Between those two, Windows is the weakest of the three platforms for an
-always-on installation. It is fine for trying Rookery; for the machine you leave
-it on, prefer [Linux](/docs/installation/linux-server) — or
+Windows remains the weakest of the three platforms for an always-on
+installation, mainly because of the missing filesystem confinement above. It is
+fine for trying Rookery, and fine for a laptop you sign in to; for a machine you
+leave running unattended, prefer [Linux](/docs/installation/linux-server) — or
 [WSL](#wsl-is-a-reasonable-alternative), below.
 
 ## Host tools
@@ -171,11 +175,31 @@ Type the passphrase at the prompt rather than piping it, or keep it ASCII-only.
 
 ## Keeping it running
 
-Until service registration ships, `rookery serve` runs in the window you started
-it in and stops when that window closes. Scheduled agents stop with it.
+`install.ps1` offers to set this up, and `rookery onboard` offers it again if
+you skipped it. To do it yourself at any time:
 
-The practical options are to leave a terminal open, to wrap it with NSSM or
-Task Scheduler yourself, or to use WSL.
+```powershell
+rookery service install     # start automatically when you sign in
+rookery service status      # is it registered?
+rookery service uninstall   # stop it starting automatically
+```
+
+This registers a **Task Scheduler task triggered at logon**, running as you. It
+needs no administrator rights and stores no password.
+
+Two things to know:
+
+- It starts when you **sign in**, not at boot. A machine that reboots and sits
+  at the sign-in screen is not running Rookery yet.
+- It runs in a **visible console window**. Closing that window stops the
+  server. Hiding it would require either a stored password or an administrator
+  install, which is a worse trade for a personal machine.
+
+Uninstalling autostart leaves your data directory completely untouched.
+
+If you need Rookery running without anyone signed in, use
+[Linux](/docs/installation/linux-server) or
+[WSL](#wsl-is-a-reasonable-alternative).
 
 ## Upgrading and removing
 
