@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.13](https://github.com/rookery-ai/rookery-web/compare/v0.1.12...v0.1.13) (2026-09-01)
+
+
+### Documentation
+
+* correct what document import and export actually do ([#57](https://github.com/rookery-ai/rookery-web/issues/57)) ([a9ef396](https://github.com/rookery-ai/rookery-web/commit/a9ef396af08c27b131b76979105be268a454d2d2))
+* document rookery service and Windows autostart ([#59](https://github.com/rookery-ai/rookery-web/issues/59)) ([0b316f1](https://github.com/rookery-ai/rookery-web/commit/0b316f168375b37b2f7bb2779abf066ce8cda0d3))
+
 ## [0.1.12](https://github.com/rookery-ai/rookery-web/compare/v0.1.11...v0.1.12) (2026-08-28)
 
 
