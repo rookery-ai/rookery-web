@@ -15,7 +15,19 @@ you have connected.
 
 Rookery supplies those itself rather than relying on the model to have them, so
 the model determines how *well* a job is done, not whether it can be done at
-all. This is why a modest local model is a reasonable choice for routine agents.
+all. Tools remove the floor, not the ceiling. This is why a modest local model is
+a reasonable choice for routine agents.
+:::
+
+:::caution[Where that stops being true]
+**Browser control is the exception.** A connected account's actions are curated
+and pre-authenticated — a narrow, well-defined surface, which is exactly what
+lets a small model use them reliably. Driving a live web page is the opposite:
+open-ended, stateful, and unforgiving of a wrong click.
+
+So an agent that reads and acts through connections works well on a modest
+model, while one that signs in and clicks through a site still rewards a capable
+one. Worth knowing before you choose a model for an agent that does the latter.
 :::
 
 ## A coder tool you already have

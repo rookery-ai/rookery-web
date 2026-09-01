@@ -21,19 +21,24 @@ const APPS = [
 ] as const;
 
 const ITEMS = [
-  {
-    Icon: CheckCircle2,
-    tone: "ok" as const,
-    title: "Morning uptime check",
-    body: "Both sites answered in under 400ms.",
-    when: "07:00",
-  },
+  // The first item is the other half of the transcript above: the flagship agent
+  // reaches the payment step, stops, and asks. Showing the request on a phone is
+  // what makes the approval gate read as a real mechanism rather than a claim in
+  // prose — and it is where the owner actually meets it, since a scheduled run
+  // has nobody watching the screen.
   {
     Icon: AlertTriangle,
     tone: "warn" as const,
-    title: "Invoice watcher",
-    body: "Two invoices are past due — written into your notes.",
-    when: "09:14",
+    title: "Monthly energy bill",
+    body: "One bill unpaid for August, 2,480 MKD. Waiting for your approval.",
+    when: "09:00",
+  },
+  {
+    Icon: CheckCircle2,
+    tone: "ok" as const,
+    title: "Morning briefing",
+    body: "Three meetings today, and two replies you owe someone.",
+    when: "07:00",
   },
   {
     Icon: Clock,

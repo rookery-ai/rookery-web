@@ -195,8 +195,11 @@ export function WorkspacesVisual() {
 export function AgentsVisual() {
   const { ref, seen } = useInView<HTMLDivElement>();
   const agents = [
-    { name: "Morning uptime check", when: "Mon–Sun · 07:00", state: "ok" },
-    { name: "Invoice watcher", when: "Weekdays · 09:00", state: "run" },
+    // Deliberately mostly read-only. The bill payer is the only one here that
+    // can change anything outside your own notes, which is the proportion the
+    // page claims when it says paying is the upper bound rather than the norm.
+    { name: "Monthly energy bill", when: "1st · 09:00", state: "run" },
+    { name: "Morning briefing", when: "Mon–Sun · 07:00", state: "ok" },
     { name: "Inbox triage", when: "Every 30 min", state: "ok" },
     { name: "Weekly reading digest", when: "Sun · 18:00", state: "idle" },
   ];

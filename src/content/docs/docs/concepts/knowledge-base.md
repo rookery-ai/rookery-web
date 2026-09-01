@@ -60,8 +60,12 @@ reach further.
 
 The web interface has a full rich-text editor:
 
-- **Formatting** — headings, bold and italic, quotes, code blocks.
+- **Formatting** — headings, bold, italic, underline, quotes, code blocks, and
+  text or highlight colour.
 - **Lists** — bulleted, numbered, and checkboxes you can tick.
+- **Callouts** — a note, tip or warning block that stands out from the prose.
+- **Collapsible sections** — a summary line that opens on click, for detail you
+  do not want in the way.
 - **Tables** — with header rows, added and edited inline.
 - **Images** — dropped or pasted in, and resizable once placed.
 - **Alignment** — centre or right-align a paragraph, a heading, a list, a table

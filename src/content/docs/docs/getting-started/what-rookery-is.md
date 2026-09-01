@@ -96,16 +96,18 @@ you want a flowchart, this is the wrong tool.
 
 That is the only firm "not". Two clarifications that often come up:
 
-- **Self-hosted today.** You run it; nothing leaves your machine unless you
-  connect a service and ask an agent to use it. A **hosted version is planned**
-  once the open-source project has shipped — self-hosting will always remain
-  free.
+- **You run it.** Nothing leaves your machine unless you connect a service and
+  ask an agent to use it. Apache-2.0, permanently — and there is no contributor
+  licence agreement, so the licence cannot be changed unilaterally by anyone.
 - **It is a notes app**, as above — use it purely as one if that is all you want.
   The agents are there when you decide you want them.
 
 ## What it runs on
 
-- A single binary. SQLite for the database — no separate server to run.
+- One binary. SQLite for the database — no separate server to run. The browser
+  is the one optional add-on, a few hundred megabytes that `rookery onboard`
+  offers you during setup; on Linux it also wants a handful of system libraries.
+  Everything else works without it.
 - **Linux**, **macOS** and **Windows**, on both Intel and ARM.
 - A container image, for anyone who prefers one.
 

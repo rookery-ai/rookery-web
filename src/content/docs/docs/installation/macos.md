@@ -36,12 +36,16 @@ rookery serve
 ## The difference from Linux
 
 :::caution
-**There is no filesystem confinement on macOS.** On Linux, agent processes are
-confined by the kernel to their own workspace. That mechanism is Linux-only, so on
-a Mac agent processes run unconfined.
+These are two separate protections, and only one of them is Linux-only.
 
-Workspace data separation still applies — every stored item still belongs to
-exactly one workspace — but the kernel-level guarantee does not exist.
+**Data separation works here exactly as it does on Linux.** Every stored item —
+knowledge, credentials, connections — belongs to exactly one workspace and is
+only ever read back for that workspace.
+
+**Filesystem confinement does not.** On Linux, agent processes are additionally
+confined by the kernel to their own workspace's directory; that mechanism is a
+Linux kernel feature, so on a Mac agent processes run unconfined. The separation
+holds; the kernel-level guarantee behind it does not.
 
 Rookery reports this at startup and at `/healthz`. It does not pretend otherwise.
 :::
