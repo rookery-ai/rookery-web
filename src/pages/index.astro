@@ -34,9 +34,9 @@ import {
   MousePointerClick,
 } from "lucide-react";
 
-const title = "Rookery — your knowledge grew hands";
+const title = "Rookery — agents that work on your behalf, on hardware you own";
 const description =
-  "Rookery runs agents on your own machine — around the clock. They read and write your knowledge, reach the apps you already use, and tell you the moment something happens.";
+  "Agents that work on your behalf, on hardware you own — your knowledge, your accounts, and the pages that have no API. Describe one in plain language, watch it tested, and let it run on a schedule.";
 
 /**
  * A CURATED selection of the connection marks, not all 124.
@@ -171,19 +171,40 @@ const SELF_HOSTED = [
           <span class="rounded-full bg-ember px-2 py-0.5 text-[11px] font-semibold text-white"
             >Open source</span
           >
-          Apache-2.0, self-hostable forever
+          Apache-2.0, permanently
           <ArrowRight className="size-3.5" />
         </a>
 
         <h1
-          class="mt-7 max-w-[15ch] text-[clamp(2.7rem,8vw,5.5rem)] leading-[0.98] font-semibold tracking-[-0.05em] text-balance"
+          class="mt-7 max-w-[19ch] text-[clamp(2.3rem,6.4vw,4.4rem)] leading-[1.02] font-semibold tracking-[-0.05em] text-balance"
         >
-          Your knowledge grew hands.
+          Describe an agent. Watch it tested. Let it run.
         </h1>
         <p
-          class="mt-7 max-w-[44ch] text-[clamp(1.1rem,2.3vw,1.45rem)] leading-[1.5] text-stone"
+          class="mt-7 max-w-[52ch] text-[clamp(1.1rem,2.3vw,1.45rem)] leading-[1.5] text-stone"
         >
-          Rookery runs agents on your own machine — around the clock.
+          Rookery runs on your own machine, over your notes and the accounts you
+          connect. Agents work while you're away — calling the services you use,
+          and clicking through the pages that don't offer an API.
+        </p>
+
+        <!-- The canonical description, verbatim, DIRECTLY beneath the subhead.
+             The headline describes the loop and never says what the product is,
+             so this paragraph is the half that explains it; separating them
+             leaves a hero that reads as a slogan. It sits one step down in scale
+             and colour so it reads as the explanation rather than as a second
+             pitch competing with the first. -->
+        <p
+          class="mt-5 max-w-[62ch] text-[clamp(0.98rem,1.35vw,1.08rem)] leading-[1.7] text-stone/85"
+        >
+          Rookery is a platform for agents that work on your behalf, running on
+          hardware you own. You install one program. It gives you a place to keep
+          what you know, a way to build agents by describing them in plain
+          language, and a way for those agents to reach the services you already
+          use — email, calendars, repositories, home automation, whatever you
+          connect. They run on a schedule, or when you ask, and they tell you what
+          happened. The whole thing is designed to sit on a machine that stays on,
+          so the work carries on while you are not watching.
         </p>
         <div class="mt-11">
           <InstallBlock client:load />
@@ -205,6 +226,20 @@ const SELF_HOSTED = [
           </h2>
         </div>
         <Transcript client:visible />
+
+        <!-- The flagship demo is deliberately the most consequential thing an
+             agent can do, so it needs something beside it saying so. Without
+             this line a reader takes paying a bill as the DEFAULT rather than
+             the upper bound, and the honest answer is that most agents read
+             things and tell you about them. -->
+        <p
+          class="mx-auto mt-10 max-w-[58ch] text-center text-[clamp(0.95rem,1.2vw,1.02rem)] leading-[1.7] text-stone"
+        >
+          That is the upper bound, not the usual case. Most agents only read and
+          report — a morning briefing from your calendar and inbox, a watch on a
+          classified-ads search, a weekly summary written into your notes. Those need
+          no permission at all, because there is nothing to undo.
+        </p>
       </div>
     </section>
 
@@ -255,15 +290,19 @@ const SELF_HOSTED = [
               Knowledge base
             </span>
           </div>
+          <!-- "Your knowledge grew hands" was the hero headline. It belongs here:
+               it is a claim about the KNOWLEDGE BASE — notes that can now act —
+               and as a hero it asked the reader to work out what the product was
+               before telling them. -->
           <h2
             class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
           >
-            Select a sentence. Watch it improve.
+            Your knowledge grew hands.
           </h2>
           <p class="mt-5 max-w-[46ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
             Everything you know, everything your agents learn, and what your connected
             services bring in — as plain markdown on your own disk. Open it in Rookery
-            or in any editor you like.
+            or in any editor you like. Select a sentence and watch it improve.
           </p>
           <p class="mt-6 text-[13.5px] text-stone/80">Try the buttons →</p>
         </div>
@@ -338,8 +377,12 @@ const SELF_HOSTED = [
           <div class="mt-7 flex flex-wrap justify-center gap-2.5">
             {
               [
+                // Browser control is deliberately NOT in this row. It is the one
+                // capability the parity claim below does not extend to, and it is
+                // an optional download besides — a capability list that quietly
+                // includes an optional one is a claim the reader discovers is
+                // untrue at the worst moment. It has its own section instead.
                 { Icon: Globe, label: "Web search & fetch" },
-                { Icon: MousePointerClick, label: "Sign in & click through sites" },
                 { Icon: FileText, label: "Read & write your notes" },
                 { Icon: Terminal, label: "Run what it needs" },
                 { Icon: Plug, label: "Every connected account" },
@@ -352,28 +395,137 @@ const SELF_HOSTED = [
             }
           </div>
 
+          <!-- The claim is a FLOOR, not a ceiling, and the wording has to keep it
+               that way. "A small model is as good" is both false and the reading
+               this sentence most easily collapses into, so the contrast is stated
+               explicitly in both directions. The carve-out is not a hedge: a
+               curated, pre-authenticated action is exactly the narrow surface a
+               small model succeeds on, and a live web page is the opposite —
+               open-ended, stateful and unforgiving. Claiming parity there would
+               be discovered as untrue by the first person who tried it. -->
           <p
             class="mx-auto mt-7 max-w-[54ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.7] text-stone"
           >
             A small model on your own machine and a frontier one are given exactly the
-            same reach. The model decides how <strong class="font-semibold text-bark"
+            same reach. Tools remove the floor on what a model can <em class="italic"
+              >do</em
+            > — never the ceiling on how <strong class="font-semibold text-bark"
               >well</strong
-            > a job is done — never whether it can be done at all.
+            > it does it.
           </p>
 
-          <!-- Stated rather than folded into the chip row above: driving a real
-               browser needs a few hundred megabytes that most installs will
-               never download, and a capability list that quietly includes an
-               optional one is the kind of claim a reader discovers is untrue at
-               the worst moment. -->
           <p
             class="mx-auto mt-4 max-w-[54ch] text-[clamp(0.95rem,1.2vw,1rem)] leading-[1.6] text-stone"
           >
-            Driving a real browser — reading pages that only load with JavaScript,
-            signing in, filling forms, clicking through a checkout — is an optional
-            extra you install in one command. Anything that cannot be undone asks you
-            first.
+            One exception, stated plainly: driving a live web page is open-ended in a
+            way a curated action is not, and it still rewards a capable model. Every
+            other tool here is genuinely model-agnostic.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Browser control.
+
+         Promoted from a sub-paragraph under Skills, where it sat directly
+         beneath the model-parity claim and read as being covered by it — the one
+         inference this page must not invite.
+
+         The section leads with the SECURITY DESIGN rather than the capability.
+         Agents that drive a browser are not novel and a reader has seen them;
+         what is worth their attention is that the model never receives the
+         password and never sees a screenshot. Volunteering the scheduled-spending
+         line is what makes the rest of it credible — discovering it later reads
+         as concealment, however good the permission design is. -->
+    <section class="relative border-y border-line/60 bg-paper/50 py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-10 place-items-center rounded-xl bg-ember-soft text-ember ring-1 ring-ember/15"
+            >
+              <MousePointerClick className="size-5" />
+            </span>
+            <span
+              class="font-mono text-[12px] font-medium tracking-[0.16em] text-stone uppercase"
+            >
+              Browser control
+            </span>
+          </div>
+          <h2
+            class="mt-6 text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
+          >
+            For the pages that never offered an API.
+          </h2>
+          <p class="mt-5 max-w-[54ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.65] text-stone">
+            Agents read pages that only exist once JavaScript has run, and — where you
+            allow it — sign in, fill forms and click through a flow. It is an optional
+            download, offered once during setup and installed in one command.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                t: "The model never sees the password",
+                d: "You store it as a secret. Rookery types it into the page. It is never in the transcript the model reads.",
+              },
+              {
+                t: "Secrets stripped from what comes back",
+                d: "Page text, field values, the address bar and error messages — a form submitted over GET puts the value in the URL.",
+              },
+              {
+                t: "No screenshots, ever",
+                d: "A filled-in form cannot be redacted, so images are never handed to the agent at all. That is permanent, not pending.",
+              },
+              {
+                t: "A separate, confined process",
+                d: "Chromium runs outside the server process, with no reach into the database, the encryption key or your notes.",
+              },
+              {
+                t: "Private addresses refused",
+                d: "Filtered at connection time, so redirects and page resources are covered too — not just the address you asked for.",
+              },
+              {
+                t: "Captchas are not worked around",
+                d: "If a site puts up a bot check, the agent reports it and stops. That is a policy, not a limitation waiting to be lifted.",
+              },
+            ].map(({ t, d }) => (
+              <div>
+                <h3 class="text-[15.5px] font-semibold tracking-[-0.01em] text-bark">{t}</h3>
+                <p class="mt-2 text-[14.5px] leading-[1.6] text-stone">{d}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-14 max-w-[62ch] rounded-2xl border border-line bg-bone/60 p-6 sm:p-7">
+          <p class="text-[15.5px] leading-[1.65] text-bark">
+            <strong class="font-semibold">An agent you have permitted can spend money on
+            its schedule, without asking, while you are asleep.</strong>
+          </p>
+          <p class="mt-3 text-[14.5px] leading-[1.65] text-stone">
+            So anything that cannot be undone — paying, ordering, deleting — is asked
+            for while you are still reading the plan, not discovered mid-run. The build
+            button reads <em class="italic">Allow and build</em> and says why. Until you
+            allow it, the agent goes up to that step, stops, and tells you what it would
+            have done. The permission then sits on the agent's page, and only on the
+            agents that need one.
+          </p>
+          <p class="mt-3 text-[14.5px] leading-[1.65] text-stone">
+            Note its limit honestly: it guards the browser. An agent can already make
+            web requests from a script, and no browser permission covers those.
+          </p>
+        </div>
+
+        <div class="mt-9">
+          <a
+            href="/docs/concepts/browser"
+            class="inline-flex items-center gap-2 text-[15px] font-medium text-ember transition-opacity hover:opacity-80"
+          >
+            How it is contained <ArrowRight className="size-4" />
+          </a>
         </div>
       </div>
     </section>

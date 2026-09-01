@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot, Check, CircleDot, Play, Save } from "lucide-react";
+import { Bot, Check, CircleDot, KeyRound, LogIn, PauseCircle, Play } from "lucide-react";
 
 /**
  * PLACEHOLDER CONTENT — must be replaced with a VERBATIM capture from a real
@@ -10,31 +10,51 @@ import { Bot, Check, CircleDot, Play, Save } from "lucide-react";
  * The frame around it is real, though: the header, the build steps and the
  * saved-agent card exist so a visitor can tell WHAT is being built. Without
  * them this read as a generic chat bubble demo.
+ *
+ * WHY THIS SCENARIO. The previous one checked whether two websites were up.
+ * That is a fetch on a timer — a reader who already knows what cron is learns
+ * nothing from it, and it is the example they use to decide whether the rest of
+ * the page is worth reading.
+ *
+ * Paying a bill is the most compelling demo available and also the most
+ * alarming, so the restraint has to be visible in the SAME frame as the
+ * capability — the Allow-and-build turn and the stop before payment are the
+ * point of the sequence, not a caveat attached afterwards. Shown together it
+ * reads as competence; shown apart it reads as recklessness discovered later.
+ *
+ * The card values are secret PLACEHOLDERS, never values. That is both the only
+ * safe thing to render and the more impressive shot, because it is the visible
+ * evidence that the model never receives them.
  */
 type Turn = { from: "you" | "rookery"; text: string };
 
 const TURNS: Turn[] = [
   {
     from: "you",
-    text: "Every morning, tell me if any of my sites went down overnight.",
+    text: "Pay any unpaid bills on my energy account each month.",
   },
   {
     from: "rookery",
-    text: "Two quick questions. Which sites should I watch, and should I message you every morning or only when something is actually wrong?",
+    text: "I opened the account page to see what is there. It needs a sign-in, and bills are listed per month with a Pay button.\n\nTwo questions. Which card should it use, and do you want it to pay automatically or check with you first?",
   },
-  { from: "you", text: "rookery.cloud and my blog. Only when something is wrong." },
+  {
+    from: "you",
+    text: "The card in Secrets. Check with me first, every time.",
+  },
   {
     from: "rookery",
-    text: "Here is the agent I will build:\n\n• Checks both sites every morning at 7am\n• Messages you only if one is unreachable or slow\n• Writes every check into your notes, under Uptime\n\nType approve and I will build it and test it for real.",
+    text: "Here is the agent I will build:\n\n• Signs in on the 1st of each month\n• Finds bills still unpaid for the previous month\n• Fills the card fields from Secrets\n• Stops before paying and messages you on Telegram\n\nThis agent can make a payment, which cannot be undone. Building it needs your permission.",
   },
-  { from: "you", text: "approve" },
+  { from: "you", text: "Allow and build" },
 ];
 
 const STEPS = [
   { Icon: CircleDot, label: "Writing the agent" },
-  { Icon: Play, label: "Running it for real" },
-  { Icon: Check, label: "Both sites answered in 380ms" },
-  { Icon: Save, label: "Saved" },
+  { Icon: Play, label: "Test run against the real site" },
+  { Icon: LogIn, label: "Signed in" },
+  { Icon: Check, label: "Found 1 unpaid bill for August" },
+  { Icon: KeyRound, label: "Filled card fields — ${CARD_NUMBER}, ${CVV}" },
+  { Icon: PauseCircle, label: "Stopped before paying. Messaged you." },
 ];
 
 export default function Transcript() {
@@ -161,10 +181,10 @@ export default function Transcript() {
                 </span>
                 <div className="min-w-0">
                   <p className="truncate text-[13.5px] font-semibold">
-                    Morning uptime check
+                    Monthly energy bill
                   </p>
                   <p className="truncate text-[12.5px] text-stone">
-                    Mon–Sun · 07:00 · notifies only on failure
+                    1st of the month · 09:00 · asks before paying
                   </p>
                 </div>
               </div>

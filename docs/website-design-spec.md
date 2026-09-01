@@ -68,13 +68,14 @@ with a always-on Linux host.
 
 ```
 1  Nav                mark + wordmark · Docs · GitHub
-2  Hero               headline, subhead, OS-detected install block
+2  Hero               headline, subhead, canonical paragraph, install block
 3  The transcript      the proof — a real designer build, replayed
 4  Features            one full section each, revealed on scroll:
                         4.1  Workspaces
                         4.2  Knowledge base
                         4.3  Agents
                         4.4  Skills
+                        4.4b Browser control  (security design, not capability)
                         4.5  Connections   (logo grid lives here)
                         4.6  Chat
                         4.7  Notifications — inbox and chat apps
@@ -96,17 +97,38 @@ path rather than a disclaimer.
 
 ## 4. Hero
 
-> # Your Knowledge Grew Hands.
+> # Describe an agent. Watch it tested. Let it run.
 >
-> Rookery runs agents on your own machine — around the clock.
+> Rookery runs on your own machine, over your notes and the accounts you
+> connect. Agents work while you're away — calling the services you use, and
+> clicking through the pages that don't offer an API.
+>
+> *(canonical paragraph, verbatim)*
+
+**The headline is about the LOOP, not about what the product is.** It names what
+using Rookery feels like and deliberately does not define it, which is why the
+canonical description sits directly beneath rather than further down the page.
+Separated, the hero reads as a slogan and the reader has to reach the features
+before learning what they are looking at. The two are one unit; do not split
+them.
+
+The canonical paragraph is reused **verbatim** wherever a paragraph fits — here,
+the docs landing page, the README. Consistency across surfaces is worth more than
+phrasing tuned per venue: a reader arriving at the repository from the site
+should meet the same framing and read it as coherence.
+
+It renders one step down in scale and colour from the subhead, so it reads as the
+explanation rather than as a second pitch competing with the first.
 
 **Why "knowledge" and not "notes".** The knowledge base is not a notes app. It
 holds what the owner knows, what their agents learn and write back across runs,
 and what flows in from the services they connect. "Notes" undersells it to the
 size of Obsidian; "knowledge" is the accurate word for the union of all three.
+*"Your knowledge grew hands"* was the original headline and now titles §4.2,
+where it is a claim about the knowledge base rather than the whole product.
 
-Below the subhead: the install block (§5). Nothing else. No badges, no logos, no
-social proof.
+Below the canonical paragraph: the install block (§5). Nothing else. No logos, no
+social proof. The one badge above the headline states the licence.
 
 ---
 
@@ -201,6 +223,27 @@ transcript (§6).
 **4.4 Skills.** 22 built in — reading PDFs and spreadsheets, web research,
 email triage, calendar work, change detection. Plus any you create the same
 conversational way agents are created.
+
+**4.4b Browser control.** *For the pages that never offered an API.* Agents read
+pages that only exist once JavaScript has run and, where permitted, sign in, fill
+forms and click through a flow.
+
+**This section leads with the security design, not the capability.** Agents that
+drive a browser are not novel and the reader has seen them; what earns their
+attention is that the model never receives the password and is never given a
+screenshot. Six points, then the scheduled-spending statement.
+
+**It was a sub-paragraph under §4.4 and had to move.** Sitting directly beneath
+the model-parity claim, it read as being covered by it — the one inference this
+page must not invite, because parity is exactly what does **not** hold for
+browser control (§11a). It is also an optional download, so it must not appear in
+the always-available capability row either.
+
+**Volunteering "an agent you have permitted can spend money on its schedule while
+you are asleep" is what makes the rest credible.** Discovered later it reads as
+concealment however good the permission design is. It is stated in bold, followed
+by the design that answers it, and by the honest limit: the permission guards the
+browser, and an agent can already make web requests from a script.
 
 **4.5 Connections.** **100+ services**, self-managed OAuth, no third-party
 broker holding your tokens. The logo grid lives in this section, built from the
@@ -512,6 +555,29 @@ screenshot. This is brand copy, not a compliance notice.
 ---
 
 ## 11. Recorded decisions
+
+**11a. The model-parity claim is a FLOOR, and browser control is carved out of
+it.**
+
+*Tools remove the floor on what a model can do — never the ceiling on how well it
+does it.* That phrasing is load-bearing. The claim is the strongest asset this
+page has and therefore its biggest liability: it collapses easily into "a small
+model is as good", which is false and would be disproved by the first reader who
+tried it. Both directions are stated explicitly so the sentence cannot be read
+one-way.
+
+**Browser control is excluded, deliberately.** A connected account's actions are
+curated and pre-authenticated — a narrow, well-defined surface, which is exactly
+what lets a small model use them reliably. Driving a live web page is the
+opposite: open-ended, stateful, unforgiving of a wrong click. Claiming parity
+there would be discovered as untrue immediately, and would take the honest half
+of the claim down with it.
+
+Consequently browser control is **not** in the always-available capability row
+(it is also an optional download), and the carve-out is repeated in
+`concepts/models.md` — the page a reader actually consults when choosing a model
+for an agent. Fixing only the landing page would leave the uncalibrated claim
+live where the decision is made.
 
 **"100+ connections" in the hero — deliberate, against recommendation.**
 

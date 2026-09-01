@@ -49,12 +49,16 @@ Leave that window open — see [Keeping it running](#keeping-it-running).
 ## What differs on Windows
 
 :::caution
-**There is no filesystem confinement on Windows.** Agent processes run
-unconfined. The mechanism Rookery uses on Linux is a Linux kernel feature with
-no equivalent here.
+These are two separate protections, and only one of them is Linux-only.
 
-Workspace data separation still applies — every stored item still belongs to
-exactly one workspace — but the kernel-level guarantee does not exist. Rookery
+**Data separation works here exactly as it does on Linux.** Every stored item —
+knowledge, credentials, connections — belongs to exactly one workspace and is
+only ever read back for that workspace.
+
+**Filesystem confinement does not.** On Linux, agent processes are additionally
+confined by the kernel to their own workspace's directory; that mechanism is a
+Linux kernel feature with no equivalent here, so agent processes run unconfined.
+The separation holds; the kernel-level guarantee behind it does not. Rookery
 reports this at startup and at `/healthz`.
 :::
 
