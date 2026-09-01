@@ -51,6 +51,39 @@ when the database is opened.
 
 Configured entirely by [environment variables](/docs/operations/configuration).
 
+## service
+
+Starts Rookery automatically when you sign in, so agents, schedules and
+reminders keep running after a reboot.
+
+```bash
+rookery service install     # register it, and start it now
+rookery service status      # is it registered?
+rookery service uninstall   # stop it starting automatically
+```
+
+The mechanism depends on the platform:
+
+| Platform | Mechanism |
+|---|---|
+| Linux | systemd **user** unit, with lingering enabled so it survives logout |
+| Windows | Task Scheduler task triggered at logon |
+| macOS | not yet available — run `rookery serve` yourself |
+
+Both are **per-user** rather than system-wide, because the server owns a data
+directory inside your own profile. Neither needs administrator rights, and
+neither stores your password.
+
+`install.sh` and `install.ps1` offer this during installation, so you usually do
+not run it by hand. Use it if you skipped the prompt, or if you installed from
+the `.deb`, `.rpm` or `.tar.gz`, which do not run either script.
+
+Uninstalling autostart leaves your data directory completely untouched.
+
+On Windows the server runs in a visible console window. That is a deliberate
+trade: the alternatives require either a stored password or administrator
+rights.
+
 ## owner
 
 Manages the single owner account for the installation.
