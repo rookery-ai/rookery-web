@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.14](https://github.com/rookery-ai/rookery-web/compare/v0.1.13...v0.1.14) (2026-09-01)
+
+
+### Documentation
+
+* lead with what Rookery is, and give browser control its own section ([#60](https://github.com/rookery-ai/rookery-web/issues/60)) ([a897af9](https://github.com/rookery-ai/rookery-web/commit/a897af93e16aaba867adb7868b7235429e7a83bb))
+
 ## [0.1.13](https://github.com/rookery-ai/rookery-web/compare/v0.1.12...v0.1.13) (2026-09-01)
 
 
