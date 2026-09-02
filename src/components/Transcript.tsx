@@ -43,7 +43,7 @@ const TURNS: Turn[] = [
   },
   {
     from: "rookery",
-    text: "Here is the agent I will build:\n\n• Signs in on the 1st of each month\n• Finds bills still unpaid for the previous month\n• Fills the card fields from Secrets\n• Stops before paying and messages you on Telegram\n\nThis agent can make a payment, which cannot be undone. Building it needs your permission.",
+    text: "Here is the agent I will build:\n\nMonthly energy bill — the 1st of each month, 09:00.\n\n• Signs in to your energy account with ENERGY_USER and ENERGY_PASSWORD from Secrets\n• Opens the billing page and finds any bill still unpaid for the previous month\n• Fills the card fields from CARD_NUMBER, CARD_EXPIRY and CVV — typed straight into the page, never shown to the model\n• Stops before submitting, and messages you on Telegram with the amount and the due date\n• Writes every check into your notes, under Energy\n\nI will run it against the real site and show you what happened before anything is saved.",
   },
   { from: "you", text: "Allow and build" },
 ];
@@ -51,9 +51,9 @@ const TURNS: Turn[] = [
 const STEPS = [
   { Icon: CircleDot, label: "Writing the agent" },
   { Icon: Play, label: "Test run against the real site" },
-  { Icon: LogIn, label: "Signed in" },
-  { Icon: Check, label: "Found 1 unpaid bill for August" },
-  { Icon: KeyRound, label: "Filled card fields — ${CARD_NUMBER}, ${CVV}" },
+  { Icon: LogIn, label: "Signed in as ${ENERGY_USER}" },
+  { Icon: Check, label: "Found 1 unpaid bill for August — 2,480 MKD" },
+  { Icon: KeyRound, label: "Filled ${CARD_NUMBER}, ${CARD_EXPIRY}, ${CVV}" },
   { Icon: PauseCircle, label: "Stopped before paying. Messaged you." },
 ];
 
