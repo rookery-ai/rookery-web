@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.15](https://github.com/rookery-ai/rookery-web/compare/v0.1.14...v0.1.15) (2026-09-02)
+
+
+### Documentation
+
+* cut the landing page back to what a first reader needs ([#62](https://github.com/rookery-ai/rookery-web/issues/62)) ([a9f4cfa](https://github.com/rookery-ai/rookery-web/commit/a9f4cfafc864c0f561373ea2d8e8c21b95bca33f))
+
 ## [0.1.14](https://github.com/rookery-ai/rookery-web/compare/v0.1.13...v0.1.14) (2026-09-01)
 
 
