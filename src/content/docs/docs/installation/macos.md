@@ -55,13 +55,32 @@ what you asked, are not the concern. A skill you imported from someone else is.
 
 ## Keeping it running
 
-A launchd service is **not yet shipped**. `rookery onboard` says so rather than
-installing a half-working one. For now, run it in a terminal, or write your own
-launch agent.
+`rookery onboard` offers to register Rookery to start automatically, and
+`rookery service install` does it on its own:
 
-This is the practical reason a Mac is better as a place to try Rookery than as
-the machine you leave it on. For an always-on installation, see
+```bash
+rookery service install
+```
+
+That writes a **launch agent** to `~/Library/LaunchAgents` and loads it. It needs
+no administrator rights and runs as you, which is what lets it reach your data
+directory under your home folder. `rookery service status` reports whether it is
+registered and loaded; `rookery service uninstall` removes it and leaves your
+data untouched.
+
+:::caution[It starts at login, not at boot]
+A launch agent belongs to your login session, so a Mac that reboots with nobody
+signed in does **not** start Rookery until someone logs in. There is no launchd
+equivalent of the `enable-linger` that gives the Linux setup boot-start.
+
+If you want a Mac to come back on its own after a power cut or a restart, enable
+automatic login for the account Rookery runs as, in **System Settings → Users &
+Groups**. Otherwise, for a machine you truly leave alone, see
 [Linux server](/docs/installation/linux-server).
+:::
+
+Logs go to `~/.rookery/logs/rookery.log` — launchd has no equivalent of the
+journal, so the agent writes to a file directly.
 
 ## Host tools
 

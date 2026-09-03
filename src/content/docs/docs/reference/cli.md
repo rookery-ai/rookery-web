@@ -34,8 +34,10 @@ The browser step is silent when the browser is already installed — it is a
 several-hundred-megabyte optional extra, and there is nothing to say about one
 that is already there.
 
-On macOS and Windows it prints how to run the server in the foreground: launchd
-and Windows service registration are not built yet.
+Autostart is offered on all three platforms: a systemd user unit on Linux, a
+launchd user agent on macOS, and a Task Scheduler logon task on Windows. Each is
+a **per-user** mechanism rather than a system service, so none of them needs
+administrator rights and each can reach a data directory in your own home folder.
 
 ## serve
 
@@ -67,12 +69,17 @@ The mechanism depends on the platform:
 | Platform | Mechanism |
 |---|---|
 | Linux | systemd **user** unit, with lingering enabled so it survives logout |
+| macOS | launchd **user** agent in `~/Library/LaunchAgents`, started at login |
 | Windows | Task Scheduler task triggered at logon |
-| macOS | not yet available — run `rookery serve` yourself |
 
-Both are **per-user** rather than system-wide, because the server owns a data
-directory inside your own profile. Neither needs administrator rights, and
-neither stores your password.
+All three are **per-user** rather than system-wide, because the server owns a
+data directory inside your own profile. None needs administrator rights, and none
+stores your password.
+
+Only the Linux one starts at **boot**. Lingering has no launchd or Task Scheduler
+equivalent, so on macOS and Windows a machine that restarts with nobody signed in
+waits for a login before Rookery comes back. Enable automatic login if you need
+it to recover unattended.
 
 `install.sh` and `install.ps1` offer this during installation, so you usually do
 not run it by hand. Use it if you skipped the prompt, or if you installed from
