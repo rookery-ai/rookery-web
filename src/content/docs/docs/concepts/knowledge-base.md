@@ -87,9 +87,10 @@ elsewhere is understood.
 Columns carry two limits worth knowing for the same reason. **Each block is one
 cell**, so a cell holding a heading *and* a paragraph is not supported, and two
 bullet lists cannot sit side by side because markdown cannot express two adjacent
-lists as separate blocks at all. And **columns are a Rookery layout**: elsewhere —
-on GitHub, in an export — the cells appear stacked in order, with every image and
-every bit of formatting intact.
+lists as separate blocks at all. And **columns are a Rookery layout**: on GitHub,
+or anywhere else that renders your markdown directly, the cells appear stacked in
+order with every image and every bit of formatting intact. Rookery's own exports
+do keep the layout — see [Taking documents out](#taking-documents-out).
 
 ### AI writing tools
 
@@ -156,8 +157,25 @@ otherwise `weasyprint`, `chromium`, `google-chrome`, `wkhtmltopdf` or
 `libreoffice` will do. Without one, the PDF entry is shown as unavailable rather
 than failing when you press it.
 
-Exports are self-contained: images in the note are embedded in the file, so an
-exported HTML page or PDF still shows them once it leaves the machine.
+**Exports keep the layout you see in the editor.** Images are embedded in the
+file — all three formats, not just HTML and PDF — at the size you resized them
+to, and a columns block stays a grid: side by side in HTML and PDF, and as a
+borderless table in Word, which is how Word expresses side-by-side. Centred and
+right-aligned blocks stay aligned.
+
+So an exported document still shows its pictures, at the right size and in the
+right arrangement, once it leaves the machine.
+
+:::note[Attachments are listed, not embedded]
+A note that links to a PDF or a spreadsheet keeps that link, and the export ends
+with an **Attachments** section naming each linked file and its path.
+
+The file itself does not travel inside the document. Images can be embedded
+because they are inlined into the markup; a linked file cannot ride the same
+mechanism without weakening a protection that stops an exported note carrying
+active content. Naming the path means a reader who received only the exported
+document knows what was referenced and can ask you for it.
+:::
 
 ## Searching
 
