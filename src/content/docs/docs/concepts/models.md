@@ -110,3 +110,22 @@ When a provider runs out of credit or rate-limits you, the run fails with a
 message saying which — "out of quota" and "try again shortly" are different
 problems and are reported differently. Token usage is recorded per run on the
 agent's page.
+
+## When the model cannot be reached
+
+A model server that is not running, a base URL that does not resolve, or a coder
+tool that is not installed all fail **immediately**, naming what could not be
+reached — the model and the endpoint, or the missing binary. Rookery does not
+retry these: nothing about a refused connection improves by waiting, so retrying
+would only delay the explanation.
+
+This matters most for a self-hosted model. If Ollama is not running, chat and
+agent runs say so within a second rather than appearing to hang. The same
+sentence appears wherever the failure surfaces — a chat turn, an agent run, or
+the **Test** button in coder settings — so the fastest way to check a local
+setup is that button.
+
+A model that *is* reachable but slow is a different case and is not an error.
+Loading a large local model on the first request of the day can take a minute,
+so a chat turn shows the model it is contacting as soon as it starts, and says
+it is still waiting if nothing has come back after twenty seconds.
