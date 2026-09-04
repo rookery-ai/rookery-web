@@ -38,7 +38,7 @@ This is the step that finishes the install: it resolves the two keys and
 explains which one matters, creates your owner account, offers any missing host
 tools, and reports what it could not do in a closing **Still to do** list.
 
-Then start the server and open `http://localhost:8080`:
+Then start the server and open `http://localhost:8899`:
 
 ```powershell
 rookery serve

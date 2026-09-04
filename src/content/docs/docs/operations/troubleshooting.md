@@ -25,12 +25,12 @@ The same information is served, without a login, at `GET /healthz` — useful fo
 checking an installation from another machine:
 
 ```bash
-curl -s http://localhost:8080/healthz
+curl -s http://localhost:8899/healthz
 ```
 
 :::note
 In PowerShell, `curl` is an alias for `Invoke-WebRequest` and returns a response
-object rather than the body. Use `irm http://localhost:8080/healthz`, or
+object rather than the body. Use `irm http://localhost:8899/healthz`, or
 `curl.exe` if you have real curl installed. On Windows the subcommand above is
 simpler than either.
 :::

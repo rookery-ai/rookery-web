@@ -12,7 +12,7 @@ binary. Environment variables win.
 | Variable | Default | What it does |
 |---|---|---|
 | `ROOKERY_HOST` | `0.0.0.0` | Address to bind. `127.0.0.1` for loopback only. |
-| `ROOKERY_PORT` | `8080` | Port to listen on. |
+| `ROOKERY_PORT` | `8899` | Port to listen on. |
 | `ROOKERY_DATA_DIR` | `~/.rookery` | Everything lives here: database, knowledge bases, backups. |
 | `ROOKERY_PUBLIC_URL` | — | The externally reachable address. Required for connections that use sign-in. |
 | `ROOKERY_SESSION_KEY` | generated, saved to `<data_dir>/session.key` | 32-byte hex key signing browser sessions. |

@@ -27,7 +27,7 @@ This is the step that finishes the install: it resolves the two keys and
 explains which one matters, creates your owner account, offers any missing host
 tools, and reports what it could not do in a closing **Still to do** list.
 
-Then start the server and open `http://localhost:8080`:
+Then start the server and open `http://localhost:8899`:
 
 ```bash
 rookery serve
@@ -134,7 +134,7 @@ a named release instead.
 ## Reaching it from your phone
 
 By default Rookery listens on all interfaces, so other devices on your network can
-reach it at `http://<your-mac>:8080`. macOS will ask you to allow incoming
+reach it at `http://<your-mac>:8899`. macOS will ask you to allow incoming
 connections the first time.
 
 For connections that use sign-in you also need

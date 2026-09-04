@@ -37,7 +37,7 @@ One interactive pass does the whole setup:
 Anything it skips is repeated in a closing **Still to do** list, so a partial
 setup never looks like a finished one.
 
-Then open `http://localhost:8080` and log in.
+Then open `http://localhost:8899` and log in.
 
 :::note
 Scripting an unattended install? `rookery onboard --yes -u yourname -p 'a-long-password'`
@@ -73,12 +73,12 @@ symptom is silence, not an error.
 
 ## Reaching it from outside
 
-By default Rookery listens on all interfaces on port 8080.
+By default Rookery listens on all interfaces on port 8899.
 
 | Variable | Default | Purpose |
 |---|---|---|
 | `ROOKERY_HOST` | `0.0.0.0` | Bind address. Set `127.0.0.1` for loopback only. |
-| `ROOKERY_PORT` | `8080` | Listen port. |
+| `ROOKERY_PORT` | `8899` | Listen port. |
 | `ROOKERY_DATA_DIR` | `~/.rookery` | Where everything is stored. |
 
 If you plan to connect services that use OAuth, you also need Rookery to know its

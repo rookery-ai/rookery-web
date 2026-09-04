@@ -215,7 +215,7 @@ Set it with `ROOKERY_PUBLIC_URL`, or in owner settings, which takes precedence.
 ### On your own machine, use `localhost`
 
 ```
-ROOKERY_PUBLIC_URL=http://localhost:8080
+ROOKERY_PUBLIC_URL=http://localhost:8899
 ```
 
 Most providers make a specific exception for loopback, so plain HTTP is accepted
@@ -225,10 +225,10 @@ here even though it is refused everywhere else.
 
 | Address | Verdict |
 |---|---|
-| `http://localhost:8080` | **Best.** Widest acceptance. |
-| `http://127.0.0.1:8080` | Usually works, but some providers reject IP addresses outright as redirect hosts. |
-| `http://192.168.1.50:8080` | **Never works.** A private IP is not a loopback address and not a public host. |
-| `http://rookery.lan:8080` | **Never works.** See below. |
+| `http://localhost:8899` | **Best.** Widest acceptance. |
+| `http://127.0.0.1:8899` | Usually works, but some providers reject IP addresses outright as redirect hosts. |
+| `http://192.168.1.50:8899` | **Never works.** A private IP is not a loopback address and not a public host. |
+| `http://rookery.lan:8899` | **Never works.** See below. |
 
 A caveat that catches people out: this only helps if the browser you approve in
 is on the same machine as Rookery. Approving from your phone against a server's
@@ -243,7 +243,7 @@ that validates the domain will always refuse them:
 .local   .lan   .home   .internal   .test   .invalid   .example   .localdomain
 ```
 
-A dotless hostname like `http://server:8080` fails for the same reason — there is
+A dotless hostname like `http://server:8899` fails for the same reason — there is
 no registrable domain in it at all.
 
 ### Some providers accept nothing but HTTPS on a real domain
