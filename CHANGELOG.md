@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.16](https://github.com/rookery-ai/rookery-web/compare/v0.1.15...v0.1.16) (2026-09-04)
+
+
+### Documentation
+
+* change the default port from 8080 to 8899 ([#70](https://github.com/rookery-ai/rookery-web/issues/70)) ([cfcf3c8](https://github.com/rookery-ai/rookery-web/commit/cfcf3c875a6129cac57cb0967ec375bffce5a343))
+* **knowledge-base:** exports keep image sizes and grid layout ([#67](https://github.com/rookery-ai/rookery-web/issues/67)) ([937f131](https://github.com/rookery-ai/rookery-web/commit/937f131fd68fc432ec214acb4ba8747e869c5a97))
+* macOS starts at login, and two claims that were already stale ([#66](https://github.com/rookery-ai/rookery-web/issues/66)) ([56458b9](https://github.com/rookery-ai/rookery-web/commit/56458b92d23d69116ba826701fa8343e16fa29ee))
+* **models:** explain what happens when a model cannot be reached ([#65](https://github.com/rookery-ai/rookery-web/issues/65)) ([59c722c](https://github.com/rookery-ai/rookery-web/commit/59c722c0c3bf947d619c3102225be273cf9c13bd))
+* **skills:** a skill teaches judgment, not capability ([#68](https://github.com/rookery-ai/rookery-web/issues/68)) ([a419b3b](https://github.com/rookery-ai/rookery-web/commit/a419b3b875b07820acdd6c31ba78dc42b862f719))
+
 ## [0.1.15](https://github.com/rookery-ai/rookery-web/compare/v0.1.14...v0.1.15) (2026-09-02)
 
 
