@@ -68,10 +68,12 @@ The symptom is silence rather than an error, which is why this catches people
 out. `rookery onboard` enables lingering for you; an install set up by hand may
 not have it.
 
-**On macOS and Windows this is expected, not a misconfiguration.** Neither
-launchd registration nor a Windows service is shipped yet, so `rookery serve`
-lives and dies with the terminal that started it. Leave the window open, wrap it
-yourself, or run the always-on installation on
+**macOS and Windows have their own equivalents, and `rookery service install`
+registers them.** macOS gets a launchd user agent and Windows a Task Scheduler
+logon task. Both start Rookery when you **sign in** — so unlike Linux with
+lingering, a machine that reboots with nobody signed in does not bring Rookery
+back until someone logs in. Enable automatic login for that account if you need
+it to recover on its own, or run the always-on installation on
 [Linux](/docs/installation/linux-server).
 
 ### A connection won't complete sign-in
