@@ -11,26 +11,33 @@ import {
   Wrench,
   Users,
   ShieldCheck,
+  Terminal,
 } from "lucide-react";
 
 /**
  * The bundled skills, by their real names from internal/skilllibrary/skills/.
  * A bento grid rather than another media panel, because a list of capabilities
  * is more legible as a set of tiles than as a screenshot of a list.
+ *
+ * The notes describe what each skill teaches an agent to DECIDE, not what it
+ * lets an agent do — reading a spreadsheet is a built-in tool, so a tile
+ * promising "read csv" would advertise the platform's floor as though it were
+ * this section's contribution.
  */
 const SKILLS = [
-  { Icon: FileText, name: "PDF", note: "Read and pull text out of documents", span: "sm:col-span-2" },
-  { Icon: Table2, name: "Spreadsheets", note: "csv, xlsx" },
-  { Icon: Globe, name: "Web research", note: "Search, read, and cite" },
+  { Icon: FileText, name: "PDF", note: "Spot a scan, and OCR it instead of guessing", span: "sm:col-span-2" },
+  { Icon: Table2, name: "Spreadsheets", note: "Check the shape before reading" },
+  { Icon: Globe, name: "Web research", note: "Corroborate, date, and cite" },
   { Icon: Mail, name: "Email triage", note: "Sort what matters from what doesn't", span: "sm:col-span-2" },
   { Icon: CalendarDays, name: "Calendar", note: "Scheduling and availability" },
   { Icon: ScanText, name: "Image OCR", note: "Text out of pictures" },
   { Icon: Bell, name: "Change detection", note: "Notice what moved" },
   { Icon: Clock, name: "Time & timezones", note: "Get 3pm right, everywhere" },
   { Icon: GitBranch, name: "Git & GitHub", note: "Repos, issues, pull requests" },
+  { Icon: Terminal, name: "SSH", note: "Reach another machine safely" },
   { Icon: Users, name: "Agent collaboration", note: "One agent calling another" },
   { Icon: Wrench, name: "Tool installer", note: "Fetch what it needs" },
-  { Icon: ShieldCheck, name: "Resilient runs", note: "Fail softly, retry sensibly" },
+  { Icon: ShieldCheck, name: "Resilient runs", note: "Resume instead of repeating" },
 ];
 
 export default function SkillsBento() {

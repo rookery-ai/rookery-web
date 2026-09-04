@@ -1,19 +1,32 @@
 ---
 title: Skills
-description: Reusable capabilities your agents draw on — 21 built in, plus any you write.
+description: Reusable capabilities your agents draw on — 22 built in, plus any you write.
 icon: skills
 ---
 
-A skill is a document that teaches an agent how to do something well: read a PDF,
-research a topic properly, triage an inbox, notice what changed. Attach it to an
-agent and those instructions become part of how that agent works.
+A skill is a document that teaches an agent **judgment**: which approach to take,
+what good looks like, and where a job goes quietly wrong. Attach it to an agent
+and those instructions become part of how that agent works.
+
+:::note[A skill is not a capability]
+Agents already *have* capabilities — reading and searching your knowledge base,
+querying a table, fetching a page, driving a browser, calling a connected
+service. Those are tools, and they work whether or not a skill is attached.
+
+A skill exists for what a tool cannot express: that you should check the shape of
+a big file before reading it, that a confident answer from three years ago is a
+wrong answer, that a notification nobody acts on is noise. Skills that merely
+restated a capability have been rewritten to point at the tool that does it
+better — a skill and a tool competing for the same job makes an agent's choice
+worse, not better.
+:::
 
 ## Built in
 
 Twenty-two ship with Rookery and are available in every workspace with no setup.
 
 - **Working with files**
-  - PDF, spreadsheets (csv, xlsx), Word documents, presentations, markdown
+  - PDFs, spreadsheets (csv, xlsx), Word documents, presentations, markdown
   - Reading text out of images
 - **How to behave**
   - Keeping the knowledge base tidy
@@ -22,16 +35,17 @@ Twenty-two ship with Rookery and are available in every workspace with no setup.
   - Collaborating with other agents
   - Surviving failures and retrying sensibly
   - Handling time and timezones correctly
-- **Web and research**
-  - Researching a topic properly, with sources
-  - Driving a real browser
+- **Web and research** — researching a topic properly, with sources, and
+  driving a real browser when a page needs it
 - **Development**
   - git and GitHub
   - Installing command-line tools it needs
 - **Productivity**
   - Email triage
   - Calendar and scheduling
-- **Integrations** — working with APIs
+- **Integrations**
+  - Working with APIs
+  - Reaching another machine over SSH
 - **Meta** — creating skills, and vetting them
 
 ## Your own
