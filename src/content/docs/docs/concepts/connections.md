@@ -31,7 +31,7 @@ each provider, including the **redirect address** to paste into their form.
 The provider redirects back to Rookery after you approve, so Rookery must know its
 own externally reachable address. Set `ROOKERY_PUBLIC_URL`.
 
-Use `http://localhost:8080` on your own machine, or a real domain over HTTPS
+Use `http://localhost:8899` on your own machine, or a real domain over HTTPS
 otherwise. A `.lan` hostname or a private IP address will never be accepted, and
 a few providers — Slack among them — refuse anything that is not HTTPS on a
 registrable domain, with no localhost exception.

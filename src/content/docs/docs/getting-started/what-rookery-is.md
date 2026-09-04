@@ -64,7 +64,7 @@ saw.
 
 ## How you reach it
 
-- **A web interface**, served by the same program, at `http://your-machine:8080`.
+- **A web interface**, served by the same program, at `http://your-machine:8899`.
 - **Chat apps** — connect Telegram, Discord or Slack and use Rookery from your
   phone. Agents deliver results there, and you can reply with commands: `/run` an
   agent, `/remind` yourself, `/chat` with your knowledge, `/agent` to build a new

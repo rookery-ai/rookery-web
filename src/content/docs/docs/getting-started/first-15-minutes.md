@@ -55,10 +55,10 @@ On Linux, `onboard` already started the service. Otherwise:
 rookery serve
 ```
 
-It listens on `0.0.0.0:8080` by default. The database is created and brought up
+It listens on `0.0.0.0:8899` by default. The database is created and brought up
 to date automatically on start — there is no separate migration step.
 
-Open `http://localhost:8080` and log in.
+Open `http://localhost:8899` and log in.
 
 ## 4. Create a workspace
 

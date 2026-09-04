@@ -5,11 +5,11 @@ icon: docker
 ---
 
 ```bash
-docker run -d --name rookery -p 8080:8080 \
+docker run -d --name rookery -p 8899:8899 \
   -v rookery-data:/data ghcr.io/rookery-ai/rookery:latest
 ```
 
-Open `http://localhost:8080`.
+Open `http://localhost:8899`.
 
 ## Create the owner account
 
@@ -43,7 +43,7 @@ Back it up. The volume is the installation.
 Environment variables work the same as a native install:
 
 ```bash
-docker run -d --name rookery -p 8080:8080 \
+docker run -d --name rookery -p 8899:8899 \
   -v rookery-data:/data \
   -e ROOKERY_PUBLIC_URL=https://rookery.example.com \
   ghcr.io/rookery-ai/rookery:latest

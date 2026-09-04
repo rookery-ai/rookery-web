@@ -41,7 +41,7 @@ const TABS: Tab[] = [
     label: "Docker",
     icons: [DockerIcon],
     command:
-      "docker run -d --name rookery -p 8080:8080 -v rookery-data:/data ghcr.io/rookery-ai/rookery:latest",
+      "docker run -d --name rookery -p 8899:8899 -v rookery-data:/data ghcr.io/rookery-ai/rookery:latest",
   },
   {
     id: "binary",
