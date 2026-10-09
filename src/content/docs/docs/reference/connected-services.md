@@ -87,12 +87,18 @@ action that would appear to search and could not.
 ## Commerce and finance
 
 Stripe, Shopify, Salesforce, HubSpot, Firefly III, YNAB, Wise, CoinGecko,
-Alpha Vantage.
+Alpha Vantage, Deel.
 
 Wise is deliberately **read-only** here — balances, profiles and exchange rates.
 It can move money, and an agent that can send a transfer is a different
 proposition from one that can read a balance; if that is ever added it will be
 behind the approval gate, not merely marked as changing things.
+
+**Deel** connects with an organization API token from Deel's Developer Center.
+Agents can read contracts, people, timesheets and invoice adjustments, and can log
+hours. Two Deel actions change what a real person is paid: approving a timesheet,
+and adding a bonus, commission or deduction to an invoice. Both count as
+**public writing**, so you can require your approval for them on each agent.
 
 CoinGecko and Alpha Vantage need only a free key. Alpha Vantage's free tier is
 rate-limited to a few calls a minute, so an agent polling it on a tight schedule
