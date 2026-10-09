@@ -26,6 +26,14 @@ and Google Health.
 These share one sign-in. You approve each service separately, but they all use
 the same app credentials, so setting Google up once covers the rest.
 
+**Agents edit Google Docs by quoting the text, not by position.** To add a line
+under a heading, rewrite a section or fix a sentence, the agent names text it can
+see in the document and Rookery works out where that is. If the text appears more
+than once, or not at all, nothing is changed and the agent is told why. After every
+edit the document is read back to confirm the change landed, so an agent cannot
+report an edit that did not happen. Markdown the agent writes, such as headings,
+bullets, bold text and links, becomes real formatting in the document.
+
 ## Productivity
 
 Notion, Todoist, Dropbox, Asana, ClickUp, Monday, Trello, Airtable, Calendly,
