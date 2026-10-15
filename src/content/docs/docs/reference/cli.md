@@ -98,14 +98,22 @@ Manages the single owner account for the installation.
 ```bash
 rookery owner bootstrap -u <username> -p <password>
 rookery owner reset-password -p <new-password>
+rookery owner reset-workspace-password -w <workspace> [-p <new-password>]
 ```
 
 `bootstrap` creates the owner. First run only.
 
 `reset-password` works offline and needs no login — it is the recovery path if you
-are locked out. It changes only the owner password; **workspace master passwords
-cannot be reset**, because they derive the keys that decrypt that workspace's
-secrets.
+are locked out. It changes only the owner password.
+
+`reset-workspace-password` sets a workspace's master password when the current one
+is forgotten, and keeps every secret in that workspace. It works because the
+current password is stored encrypted under the install's `system.key` (scheduled
+runs need it), so the command recovers it, re-encrypts each secret under the new
+password and replaces the stored copy. If any secret fails to decrypt, nothing is
+changed. Leave out `-p` to be asked twice with the input hidden. It runs only on
+the host, never over the web: anyone who can read the data directory already holds
+`system.key` and the database side by side.
 
 :::caution
 A password on the command line lands in your shell history. Clear it afterwards,
