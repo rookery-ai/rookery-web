@@ -40,7 +40,8 @@ setup.
 ## Chat apps
 
 Connect **Telegram**, **Discord** or **Slack** and notifications reach you
-wherever you are. All three are direct-message only.
+wherever you are. Discord and Slack are direct-message only; a Telegram bot can
+also serve a group.
 
 Once connected, the conversation goes both ways:
 
@@ -65,6 +66,31 @@ knowledge and connections as chat in the browser.
 Each needs credentials from the platform — a bot token for Telegram and Discord,
 and for Slack a bot token plus an app-level token. The connections page shows the
 steps for each.
+
+**Each workspace has its own bot.** The bot a message arrives on decides which
+workspace it belongs to, so one Telegram, Discord or Slack account can talk to a
+separate bot for every workspace — say, one for Personal and one for Work. A
+workspace cannot share a bot with another workspace: both would answer every
+message.
+
+To link, send `/start` to the workspace's bot. A bot serves one chat: whoever
+sends `/start` first holds it, and anyone else is told it is already linked. To
+hand it to a different chat, unlink it on the connections page first.
+
+### Telegram groups
+
+Add the bot to a group and send `/start` **in the group** to link the group itself.
+Everyone in it can then use every command and chat with the workspace — there is
+no per-member control, so add only people you would trust with the workspace.
+Commands addressed to the bot by name (`/help@YourBot`) work, and a bot sharing the
+group with another workspace's bot answers only the commands meant for it.
+
+New Telegram bots run in **privacy mode**, which in a group shows them commands
+only. To chat with the workspace in plain messages, open @BotFather, send
+`/setprivacy`, choose the bot and pick **Disable** — or make the bot a group admin.
+
+A workspace links one chat per platform: your direct messages *or* one group,
+not both.
 
 Every adapter connects **outbound**: the bot dials out to the platform, so nothing
 listens on an open port. Rookery works from behind a home router with nothing
