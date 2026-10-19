@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/rookery-ai/rookery-web/compare/v0.2.0...v0.2.1) (2026-10-19)
+
+
+### Documentation
+
+* **notifications:** one bot per workspace, and Telegram groups ([#83](https://github.com/rookery-ai/rookery-web/issues/83)) ([026a5fc](https://github.com/rookery-ai/rookery-web/commit/026a5fce002d682cc22c3cd1631fc679b9cf2790))
+
 ## [0.2.0](https://github.com/rookery-ai/rookery-web/compare/v0.1.15...v0.2.0) (2026-10-19)
 
 
