@@ -70,6 +70,17 @@ If an agent turns out to need it that was never flagged during design — a site
 or the plan did not mention it — the first run to reach that step stops the same way,
 and the permission appears on its page with an explanation.
 
+### Forms that are awkward to fill
+
+Two kinds of field used to trip agents up, and both now work. A **dropdown** is filled
+by naming the option you want ("Portugal"); if more than one option could match, the
+agent is shown the choices rather than given a guess. And a field whose label is not
+properly linked to it, which is common on older sites, is offered under the text written
+beside it, so the agent can still find "Username" and "Password".
+
+Each step in a run's log names the field or button it used — `browser_fill "Credit Card
+Number" ← ${CARD_NUMBER}` — so you can read what the agent did without guessing.
+
 You will not see any of this on an agent that only reads, or only does things that can
 be undone. That is deliberate: a permission shown on everything is one nobody reads by
 the time it matters.
