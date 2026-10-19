@@ -1,7 +1,7 @@
 ---
 import "../styles/brand.css";
 import InstallBlock from "../components/InstallBlock.tsx";
-import Transcript from "../components/Transcript.tsx";
+import HeroDemo from "../components/HeroDemo.astro";
 import AIActionsDemo from "../components/AIActionsDemo.tsx";
 import LogoWall from "../components/LogoWall.astro";
 import SkillsBento from "../components/SkillsBento.tsx";
@@ -39,7 +39,7 @@ const description =
   "Agents that work on your behalf, on hardware you own — your knowledge, your accounts, and the pages that have no API. Describe one in plain language, watch it tested, and let it run on a schedule.";
 
 /**
- * A CURATED selection of the connection marks, not all 124.
+ * A CURATED selection of the connection marks, not all 137.
  *
  * Inlining every one cost 182 KB of gzipped HTML for one section — more than
  * the rest of the page combined — and sold worse: a wall containing
@@ -55,7 +55,7 @@ const CONNECTION_SLUGS = [
   "reddit", "x", "linkedin", "facebook", "instagram", "mastodon", "bluesky",
   "threads", "tiktok", "pinterest", "google_analytics", "google_ads",
   "home_assistant", "immich", "nextcloud", "grafana", "n8n", "gitea",
-  "jellyfin", "strava", "readwise", "wikipedia",
+  "jellyfin", "strava", "readwise", "wikipedia", "deel",
 ];
 const CONNECTIONS = CONNECTION_SLUGS.map((slug) => ({ slug }));
 
@@ -194,23 +194,7 @@ const SELF_HOSTED = [
         <div class="mt-10">
           <InstallBlock client:load />
         </div>
-      </div>
-    </section>
-
-    <!-- Proof -->
-    <section class="relative border-y border-line/60 bg-paper/50 py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="mb-12 text-center">
-          <p class="font-mono text-[12px] font-medium tracking-[0.16em] text-ember uppercase">
-            What it's like
-          </p>
-          <h2
-            class="mx-auto mt-4 max-w-[18ch] text-[clamp(2.3rem,5.4vw,3.7rem)] leading-[1.04] font-semibold tracking-[-0.04em] text-balance"
-          >
-            You describe it. It gets built and tested.
-          </h2>
-        </div>
-        <Transcript client:visible />
+        <HeroDemo />
       </div>
     </section>
 

@@ -1,0 +1,66 @@
+---
+/**
+ * The hero's product demo: a real recording of the agent designer, framed as
+ * a montage with two other screens of the app behind it.
+ *
+ * Replaces Transcript.tsx, which was scripted placeholder copy — and wrong in
+ * one way that mattered: it showed an agent pausing mid-run to ask before it
+ * paid, which Rookery does not do. Permission for an irreversible step is
+ * given ONCE, when you build ("Allow and build"), and that is exactly what
+ * this recording shows.
+ *
+ * Recorded from a live designer conversation and time-lapsed (waits for the
+ * model compressed, typing sped up); the build button is never clicked. The
+ * recording lives in public/media because it is served as-is, not processed.
+ *
+ * Reduced motion: the <video> does not autoplay, so the poster (the final
+ * frame, with the plan and "Allow and build") is what those visitors see.
+ */
+---
+
+<div class="hero-demo relative mx-auto mt-16 w-full max-w-5xl sm:mt-20" aria-label="Recording: building an agent in Rookery">
+  <!-- Side screens: decorative, behind the recording. -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-[22%] hidden h-[62%] sm:block">
+    <img
+      src="/media/hero-chat.webp"
+      alt=""
+      loading="lazy"
+      class="absolute left-0 h-full w-[34%] rounded-xl object-cover object-left-top ring-1 ring-bark/10 shadow-[0_18px_44px_-22px_rgba(33,29,26,0.45)]"
+    />
+    <img
+      src="/media/hero-home.webp"
+      alt=""
+      loading="lazy"
+      class="absolute right-0 h-full w-[34%] rounded-xl object-cover object-right-top ring-1 ring-bark/10 shadow-[0_18px_44px_-22px_rgba(33,29,26,0.45)]"
+    />
+  </div>
+
+  <div
+    class="relative z-10 mx-auto w-full overflow-hidden rounded-2xl bg-[#1c1c1c] ring-1 ring-bark/15 shadow-[0_2px_4px_rgba(33,29,26,0.12),0_40px_90px_-30px_rgba(33,29,26,0.55)] sm:w-[84%]"
+  >
+    <video
+      data-hero-video
+      class="block aspect-[1760/1101] w-full"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/media/designer-poster.webp"
+    >
+      <source src="/media/designer.webm" type="video/webm" />
+      <source src="/media/designer.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <p class="mt-4 text-center text-[13px] text-stone">
+    A real designer conversation, sped up. It asks before it plans, and asks once before it is allowed to pay.
+  </p>
+</div>
+
+<script>
+  // Autoplay only when motion is welcome; otherwise the poster stays put.
+  const v = document.querySelector<HTMLVideoElement>("[data-hero-video]");
+  if (v && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    v.autoplay = true;
+    v.play().catch(() => {});
+  }
+</script>
