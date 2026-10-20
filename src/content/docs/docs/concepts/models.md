@@ -42,9 +42,14 @@ Each workspace gets its own isolated configuration directory, so one workspace's
 agents can never read another's session or history. Your operator credentials are
 copied in per invocation.
 
+Isolation also means a CLI does **not** see your own settings for it. In
+particular, a default model you chose inside Claude Code does not reach Rookery;
+with the workspace's **Model** field empty, Claude Code uses its built-in
+default. To pick one, set the Model field (for example `opus`).
+
 :::caution
-**OpenCode needs an explicit model.** Unlike Claude Code, whose model comes with
-its login, OpenCode talks to many providers and has no default of its own. With
+**OpenCode needs an explicit model.** Unlike Claude Code, which falls back to a
+built-in default, OpenCode talks to many providers and has no default of its own. With
 none set it targets a hardcoded provider and fails with an authentication error —
 which looks like a broken login but is really a missing model.
 
