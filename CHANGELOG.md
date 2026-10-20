@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/rookery-ai/rookery-web/compare/v0.2.1...v0.2.2) (2026-10-20)
+
+
+### Documentation
+
+* **models:** Claude Code does not inherit its own default model ([#85](https://github.com/rookery-ai/rookery-web/issues/85)) ([503b93d](https://github.com/rookery-ai/rookery-web/commit/503b93da2bd44a08ee3aa817661800b30b4cbddc))
+
 ## [0.2.1](https://github.com/rookery-ai/rookery-web/compare/v0.2.0...v0.2.1) (2026-10-19)
 
 
