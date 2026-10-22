@@ -30,6 +30,19 @@ model, while one that signs in and clicks through a site still rewards a capable
 one. Worth knowing before you choose a model for an agent that does the latter.
 :::
 
+:::note[Agents that need helper code are built by a coder tool]
+Most agents need no code of their own: they work through connected accounts, web
+pages, the browser and your knowledge base. A few — paginating through dozens of
+pages, crunching a large dataset — need a small helper script, and writing one
+and proving it works is beyond the smaller models a provider API usually runs.
+
+So a workspace on a **provider API** builds agents without helper code only. When
+an agent needs it, the designer says so: switch the workspace to a **coder tool**
+such as Claude Code, build the agent, then switch back. The finished agent keeps
+running on the provider API, scripts included — building it is the only step
+that needs the more capable tool.
+:::
+
 ## A coder tool you already have
 
 If you already use a command-line coding assistant, Rookery can drive it directly
