@@ -68,6 +68,11 @@ file it is reading, the search it is running — with the earlier steps one clic
 away. Only one turn runs per chat at a time, so sending a second question while
 the first is still working is declined rather than queued.
 
+While it is working, the send button becomes **Stop**. Press it to end the turn
+then and there: the chat records that you stopped it, and anything it had
+already changed in your knowledge base stays changed. Leaving the page is not
+the same as stopping — a turn you walk away from keeps going.
+
 ## Approvals
 
 Chat is **not** gated by the approval system that agents can use. When you ask it
