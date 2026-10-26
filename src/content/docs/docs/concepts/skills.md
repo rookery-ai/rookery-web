@@ -88,3 +88,29 @@ agent's page, and the checkbox list is the source of truth.
 
 If a skill needs a command-line tool that is not installed, the agent is told
 where to find it or how to install it, rather than failing halfway through a run.
+
+## Skills that need Python packages
+
+A skill can depend on packages that are not part of Python itself — a data
+library, or a whole framework. Building such a skill does **not** install
+anything: the skill declares its packages, and the first agent run that uses it
+installs them into an environment named after the skill. Later runs reuse it.
+
+Because the build cannot run the real package, it tests what it can without it —
+help text, error handling, its own logic — and tells you what it could not
+exercise. That is expected, not a failure.
+
+Installing someone else's code is a real risk, so it is contained:
+
+- The install runs in its own sandbox that can write only that environment and
+  holds none of your secrets, and every package it resolves is checked against
+  [OSV's list of known-malicious packages](https://osv.dev) first.
+- The skill's script then runs with only the secrets it declares, and cannot read
+  your coder's login or other skills' environments.
+- The audit before saving refuses a skill that writes a secret to disk — keep
+  secrets under **Settings → Secrets** — or that downloads from a source that
+  hides where it comes from, and flags packages that are not pinned to a version.
+
+What this does not cover: a script still has the network and can write your notes,
+an agent can still choose to run `pip` itself, and the sandbox exists on Linux
+only.

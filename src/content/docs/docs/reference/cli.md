@@ -382,3 +382,30 @@ built-in `get_state` / `set_state` tools, so an agent behaves identically
 whichever coder your workspace uses.
 
 Documented here so it is not a mystery if you see it in a log.
+
+## deps
+
+```bash
+rookery deps install --env <name> --package <requirement> [--package <requirement>]…
+rookery deps run --env <name> [--secret <NAME>]… -- <script> [args…]
+```
+
+Not for interactive use: this is how a command-line coder installs the Python
+packages a skill declares, and runs that skill's scripts, during a run. The
+API-engine coders reach the same code through built-in `install_packages` /
+`run_in_env` tools.
+
+Each `<name>` is one environment under the workspace's home, kept between runs, so
+the first run that needs a package installs it and later runs reuse it.
+
+- **`install`** accepts package names (optionally pinned, `requests==2.32.4`) and
+  `https://` / `git+https://` URLs, nothing that looks like a pip option. It runs
+  in its own sandbox that can write only that environment and holds none of your
+  secrets, resolves the full dependency set first, and refuses it if any package
+  is listed as malicious by [OSV](https://osv.dev). It refuses outright during a
+  skill build: skills declare their packages, agents install them.
+- **`run`** gives the script only the secrets you name with `--secret`, and runs it
+  where it cannot read the workspace home (your coder's login, other environments).
+
+The sandbox is Linux-only, like the rest of Rookery's confinement. Documented here
+so it is not a mystery if you see it in a log.
