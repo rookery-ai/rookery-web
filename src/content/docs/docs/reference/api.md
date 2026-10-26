@@ -191,6 +191,7 @@ Model Context Protocol servers you added by URL — see
 | PATCH | `/chats/:id` | Rename/update a chat | Workspace |
 | POST | `/chats/:id/messages` | Start a turn — returns `202` with a turn id, not the reply | Workspace |
 | GET | `/chats/:id/turn/progress` | SSE stream of the turn in progress | Workspace |
+| POST | `/chats/:id/turn/cancel` | Stop the turn in progress — `204`, or `404` when none is running | Workspace |
 | POST | `/chats/:id/resume` | Resume a stopped chat | Workspace |
 | POST | `/chats/:id/stop` | Stop a chat | Workspace |
 | DELETE | `/chats/:id` | Delete a chat | Workspace |
@@ -205,6 +206,12 @@ turn back up.
 
 Only one turn runs per chat at a time. Sending a second message while one is
 still working returns `409`.
+
+Closing the progress stream never cancels a turn; only `POST
+/chats/:id/turn/cancel` does. A stopped turn ends its stream with `done`, not
+`error`, and records `⏹ Stopped before an answer.` as the assistant's reply, so
+the history still alternates. Anything the turn already wrote to the knowledge
+base stays.
 
 ### Reminders, inbox, and dashboard
 
