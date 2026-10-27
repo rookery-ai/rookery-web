@@ -96,9 +96,14 @@ library, or a whole framework. Building such a skill does **not** install
 anything: the skill declares its packages, and the first agent run that uses it
 installs them into an environment named after the skill. Later runs reuse it.
 
-Because the build cannot run the real package, it tests what it can without it —
-help text, error handling, its own logic — and tells you what it could not
-exercise. That is expected, not a failure.
+Building a skill is research and writing, not running. The builder can read your
+knowledge base, the web and, on an API coder, your connected accounts, MCP servers
+and web pages — all read-only — to learn how the tool really works. It does not
+install packages or run its scripts, which keeps a build to a few minutes.
+
+The skill is tested where it is used: when you build an agent that uses it, that
+build installs the packages and runs the skill's scripts for real, and that is
+where a broken script shows up and gets fixed.
 
 Installing someone else's code is a real risk, so it is contained:
 
