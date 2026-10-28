@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.3](https://github.com/rookery-ai/rookery-web/compare/v0.2.2...v0.2.3) (2026-10-28)
+
+
+### Documentation
+
+* **chat:** document stopping an in-flight turn ([#88](https://github.com/rookery-ai/rookery-web/issues/88)) ([362d8c5](https://github.com/rookery-ai/rookery-web/commit/362d8c5d00b411c8a07dfe0a85871bc0685b3303))
+* **models:** agents needing helper code are built by a coder tool ([#87](https://github.com/rookery-ai/rookery-web/issues/87)) ([85be2dd](https://github.com/rookery-ai/rookery-web/commit/85be2ddb99d87c6b73c642dbd2e29d2d10abe7d8))
+* **skills:** skill dependencies and the rookery deps command ([#90](https://github.com/rookery-ai/rookery-web/issues/90)) ([bffe281](https://github.com/rookery-ai/rookery-web/commit/bffe281ca6310cabd65ca038b69ca91c13a327e4))
+
 ## [0.2.2](https://github.com/rookery-ai/rookery-web/compare/v0.2.1...v0.2.2) (2026-10-20)
 
 
