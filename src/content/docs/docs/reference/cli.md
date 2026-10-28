@@ -404,8 +404,11 @@ the first run that needs a package installs it and later runs reuse it.
   secrets, resolves the full dependency set first, and refuses it if any package
   is listed as malicious by [OSV](https://osv.dev). It refuses outright during a
   skill build: skills declare their packages, agents install them.
-- **`run`** gives the script only the secrets you name with `--secret`, and runs it
-  where it cannot read the workspace home (your coder's login, other environments).
+- **`run`** gives the script only the secrets you name with `--secret`, plus
+  `ROOKERY_VAULT_ROOT` (your knowledge base's location, so a skill can save notes in the
+  right place), and runs it where it cannot read the workspace home (your coder's login,
+  other environments). This is the only way to run a skill's code: an agent's `bash` refuses
+  to call an environment's Python directly, since that would hand the code every secret.
 
 The sandbox is Linux-only, like the rest of Rookery's confinement. Documented here
 so it is not a mystery if you see it in a log.
