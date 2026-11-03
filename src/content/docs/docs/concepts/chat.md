@@ -41,8 +41,14 @@ saved. A chat turn is not.
 **The web interface** — full-page chat, or the slide-over from anywhere.
 
 **A chat app** — type anything that is not a command into Telegram, Discord or
-Slack and it becomes a chat turn. `/chat` manages conversations explicitly:
-start, list, resume, stop, delete.
+Slack and you are in a conversation: your first message opens a new chat, and
+every message after it remembers the ones before, exactly as in the web
+interface. After 30 minutes of silence the next message starts a fresh chat,
+and its reply tells you the previous one ended and how to go back to it.
+
+`/chat` starts a new chat straight away, without waiting. `/chat list`,
+`/chat resume <id>`, `/chat stop` and `/chat delete <id>` manage the rest.
+Resuming a chat you began in the web interface carries it over to the app.
 
 Both write to the same conversations.
 
