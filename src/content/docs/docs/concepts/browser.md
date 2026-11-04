@@ -72,11 +72,23 @@ and the permission appears on its page with an explanation.
 
 ### Forms that are awkward to fill
 
-Two kinds of field used to trip agents up, and both now work. A **dropdown** is filled
-by naming the option you want ("Portugal"); if more than one option could match, the
-agent is shown the choices rather than given a guess. And a field whose label is not
-properly linked to it, which is common on older sites, is offered under the text written
-beside it, so the agent can still find "Username" and "Password".
+Payment pages are where forms are at their worst, and the browser is built for them:
+
+- **Fields are typed key by key**, the way a person types. Many card and expiry boxes
+  only react to real keystrokes — a value pasted in looks right on screen and is then
+  ignored when the form is sent. After typing, the agent is told whether the field
+  actually took the value, so it does not carry on believing it did.
+- **Dropdowns are filled by naming the option** you want ("Portugal", "12"). That works
+  for an ordinary dropdown and for the button-plus-list kind that payment pages use for
+  an expiry month. If more than one option could match, the agent is shown the choices
+  rather than given a guess, and it only ever picks from the list it opened.
+- **Fields without a proper label** are still offered — under the text written beside
+  them, a table row's contents (a "select this row" checkbox), or the hint inside the box
+  (`MM/YY`). A field with nothing at all is offered as "unlabelled" rather than hidden.
+- **Something in the way is named.** If a cookie banner or a pop-up covers what the agent
+  is trying to click, it is told what is covering it and which buttons that has, instead
+  of clicking blindly. A disabled button and a page that failed to load are reported the
+  same way.
 
 Each step in a run's log names the field or button it used — `browser_fill "Credit Card
 Number" ← ${CARD_NUMBER}` — so you can read what the agent did without guessing.
@@ -110,9 +122,18 @@ Store the value under **Secrets** first. If the agent asks for a secret that doe
 exist it stops and tells you — it will not invent one or type the placeholder.
 
 Values are also stripped back out of everything the agent sees afterwards: the page text,
-the field's own contents, the address bar, and any error the page produces. Screenshots
-are never given to an agent at all, because a picture of a filled-in form cannot be
-redacted.
+the field's own contents, the address bar, and any error the page produces. That includes
+a value the page has reformatted — a card number shown as `4111 1111 …` or masked down to
+its last four digits. A field filled from a secret is simply shown to the agent as
+"filled from `${CARD_NUMBER}`". Screenshots are never given to an agent at all, because a
+picture of a filled-in form cannot be redacted.
+
+When a box is shorter than what you stored — a two-digit year box and a four-digit year —
+the agent can take part of a secret without seeing it: `${CARD_EXPIRY_YEAR[-2:]}` is the
+last two characters.
+
+This protects what passes through the browser. An agent that also runs scripts has your
+secrets available to those scripts, as described under [Secrets](/docs/concepts/secrets/).
 
 ## What it will not do
 
