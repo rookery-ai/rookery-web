@@ -83,7 +83,7 @@ Payment pages are where forms are at their worst, and the browser is built for t
   an expiry month. If more than one option could match, the agent is shown the choices
   rather than given a guess, and it only ever picks from the list it opened.
 - **Fields without a proper label** are still offered — under the text written beside
-  them, a table row's contents (the "pay this bill" checkbox), or the hint inside the box
+  them, a table row's contents (a "select this row" checkbox), or the hint inside the box
   (`MM/YY`). A field with nothing at all is offered as "unlabelled" rather than hidden.
 - **Something in the way is named.** If a cookie banner or a pop-up covers what the agent
   is trying to click, it is told what is covering it and which buttons that has, instead
