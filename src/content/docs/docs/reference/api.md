@@ -83,6 +83,7 @@ surface for connector actions marked `public_write`.
 | GET | `/agents/:id` | Agent detail | Workspace |
 | DELETE | `/agents/:id` | Delete an agent | Workspace |
 | POST | `/agents/:id/run` | Run an agent now | Workspace |
+| POST | `/agents/:id/run/stop` | Stop the agent's current run: 204, or 404 when none is running | Workspace |
 | GET | `/agents/:id/run/progress` | SSE stream of a run in progress | Workspace |
 | GET | `/agents/:id/runs/:runID` | One run's transcript — its tool calls and coder turns | Workspace |
 | PUT | `/agents/:id/schedule` | Set an agent's cron schedule | Workspace |
