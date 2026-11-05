@@ -123,6 +123,23 @@ deliberately quiet run reads differently from one that produced nothing because
 it broke. If a run produces nothing and did *not* mean to be silent, you get a
 warning rather than silence.
 
+### Stopping a run
+
+An agent can get stuck in a loop, so any run can be stopped, however it started:
+the **Stop** button on the agent's page or on its card in the agents list, or
+`/agent stop <name>` from a chat app. With no name, `/agent stop` stops the agent
+that is running, or asks which one if several are.
+
+Stop ends the current run and nothing else. The schedule is untouched, so the next
+scheduled run goes ahead as usual. Nothing is undone either: notes it edited,
+messages it sent and actions it took stay as they are, and anything it had not yet
+sent you is not sent. Any agents it called are stopped with it.
+
+The run is marked **Stopped** rather than failed. Its log lists what it did, as any
+run's does, and ends by saying it was stopped. The next run is told only that the
+previous one did not finish, so its memory or files may be incomplete and it should
+fix anything getting in its way. It does not mention this to you.
+
 ## Attaching things
 
 **Skills** give an agent capabilities — reading PDFs, web research, calendar
