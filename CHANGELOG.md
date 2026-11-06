@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.3](https://github.com/rookery-ai/rookery-web/compare/v0.2.2...v0.2.3) (2026-11-06)
+
+
+### Documentation
+
+* **browser:** payment-form handling and reformatted-secret redaction ([#96](https://github.com/rookery-ai/rookery-web/issues/96)) ([3c17cbe](https://github.com/rookery-ai/rookery-web/commit/3c17cbedcaba9174f48c1e2f5ae2e66b78d3c49d))
+* **chat:** chat apps open saved chats; 30 min of silence starts a new one ([#95](https://github.com/rookery-ai/rookery-web/issues/95)) ([a5ec2c5](https://github.com/rookery-ai/rookery-web/commit/a5ec2c5b71b7cbd7f00f831695f9b0e21d6e3472))
+* **chat:** document stopping an in-flight turn ([#88](https://github.com/rookery-ai/rookery-web/issues/88)) ([362d8c5](https://github.com/rookery-ai/rookery-web/commit/362d8c5d00b411c8a07dfe0a85871bc0685b3303))
+* document renaming agents and skills ([#98](https://github.com/rookery-ai/rookery-web/issues/98)) ([f49e199](https://github.com/rookery-ai/rookery-web/commit/f49e199230df4e4dfe5d35304950cddbf9a5a5e2))
+* **models:** agents needing helper code are built by a coder tool ([#87](https://github.com/rookery-ai/rookery-web/issues/87)) ([85be2dd](https://github.com/rookery-ai/rookery-web/commit/85be2ddb99d87c6b73c642dbd2e29d2d10abe7d8))
+* **scheduling:** changing a schedule updates the agent's instructions ([#99](https://github.com/rookery-ai/rookery-web/issues/99)) ([9f8b3c0](https://github.com/rookery-ai/rookery-web/commit/9f8b3c0a37e9e31efdac07ff7a7ac4d10d5c3340))
+* **skills:** skill dependencies and the rookery deps command ([#90](https://github.com/rookery-ai/rookery-web/issues/90)) ([bffe281](https://github.com/rookery-ai/rookery-web/commit/bffe281ca6310cabd65ca038b69ca91c13a327e4))
+
 ## [0.2.2](https://github.com/rookery-ai/rookery-web/compare/v0.2.1...v0.2.2) (2026-10-20)
 
 
