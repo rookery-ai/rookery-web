@@ -82,6 +82,7 @@ surface for connector actions marked `public_write`.
 | GET | `/agents` | List agents | Workspace |
 | GET | `/agents/:id` | Agent detail | Workspace |
 | DELETE | `/agents/:id` | Delete an agent | Workspace |
+| PUT | `/agents/:id/name` | Rename an agent and update everything that refers to it by name | Workspace |
 | POST | `/agents/:id/run` | Run an agent now | Workspace |
 | GET | `/agents/:id/run/progress` | SSE stream of a run in progress | Workspace |
 | GET | `/agents/:id/runs/:runID` | One run's transcript — its tool calls and coder turns | Workspace |
@@ -114,6 +115,7 @@ Covers both stored skills and the conversational skill-designer FSM.
 | GET | `/skills/:id` | Skill detail | Workspace |
 | PUT | `/skills/:id` | Update a skill | Workspace |
 | DELETE | `/skills/:id` | Delete a skill | Workspace |
+| PUT | `/skills/:id/name` | Rename a user skill and update everything that refers to it by name | Workspace |
 | POST | `/skills/design` | Send a design-conversation turn | Workspace |
 | POST | `/skills/design/cancel` | Cancel the in-progress design session | Workspace |
 | POST | `/skills/design/resume` | Resume a design session after reload | Workspace |
