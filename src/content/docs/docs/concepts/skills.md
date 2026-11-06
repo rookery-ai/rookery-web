@@ -61,6 +61,21 @@ audit is not saved.
 
 You can also import one: upload a ZIP or paste a `SKILL.md`.
 
+## Renaming one
+
+**Rename** on one of your own skills changes its name and its folder, and updates `SKILL.md`,
+its scripts, and every agent that uses it. A built-in skill cannot be renamed.
+
+A skill with a hyphen in its name is updated wherever that whole name appears in those files.
+A one-word name such as `notes` could be an ordinary word, so only unambiguous references move:
+the `name:` line, `skills/notes/…` paths, environment arguments and the `# Skills:` header.
+
+The skill's Python environment is deleted rather than moved, because a virtual environment holds
+absolute paths. The next run that needs it reinstalls the packages, so that run is slower.
+
+A rename is refused while an agent using the skill is running, while an agent is being designed
+or edited, and while a skill draft has either the old or the new name.
+
 ## What a skill looks like
 
 ```

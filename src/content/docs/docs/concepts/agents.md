@@ -65,6 +65,22 @@ building, on purpose:
 Your live agent is untouched until you approve. The work happens in a separate
 area and is promoted only on save.
 
+## Renaming one
+
+**Rename…** in the agent page's menu changes the name and nothing about what the agent does.
+If its instructions still describe the old scope, that is an edit.
+
+Everything the platform generated or finds by name follows: other agents' `[CALL: …]` lines,
+the agent's title and state heading, the heading of its past run logs, past inbox messages,
+pending approvals, and `[[wikilinks]]` to it. A link that points at a real note with the same
+name stays pointed at that note.
+
+Sentences are left as written, in your notes and in what past runs said, and so is the audit
+log. Rookery tells you which files still mention the old name so you can look at them yourself.
+
+A rename is refused while the agent, or an agent that calls it, is running, and while an agent
+is being designed or edited in the workspace. Each refusal says what to do.
+
 ## Where the conversation happens
 
 **A build reports back where you started it.** Begin in the web UI and the plan,
