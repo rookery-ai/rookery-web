@@ -157,7 +157,10 @@ suggests values; the agent's page has a **Limits** card to change them later.
   Run button, `/run` and other agents calling it are all refused, and the agent's
   page says when it resumes. Saving new limits lifts the pause. Your own on/off
   switch and the schedule are left alone.
-- An agent with limits does not run twice at once.
+- An agent with a daily or monthly limit that can be checked does not run twice
+  at once, so a second run cannot spend past what the first was allowed. A
+  per-run limit alone, or a dollar limit your provider cannot report, does not
+  stop runs from overlapping.
 - Limits apply only to agents running on an **API** model. On a CLI coder they are
   kept but not enforced, and apply again if you switch back.
 
