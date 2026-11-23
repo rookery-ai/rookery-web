@@ -199,6 +199,19 @@ Two things to know:
   server. Hiding it would require either a stored password or an administrator
   install, which is a worse trade for a personal machine.
 
+:::caution[Nothing answers on localhost:8899 after a restart]
+Earlier releases left a lock file behind whenever the server stopped without a
+clean shutdown — a restart, a shutdown, or closing its window. Every later start
+then refused, believing another server was already running, and the console
+closed before you could read why. Run `rookery upgrade` to get the fix. Until
+then, delete the stale lock and start the task again:
+
+```powershell
+Remove-Item $env:USERPROFILE\.rookery\rookery.pid
+schtasks /Run /TN Rookery
+```
+:::
+
 Uninstalling autostart leaves your data directory completely untouched.
 
 If you need Rookery running without anyone signed in, use
