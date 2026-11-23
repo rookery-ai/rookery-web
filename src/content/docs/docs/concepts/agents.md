@@ -144,18 +144,25 @@ warning rather than silence.
 An agent can be given a spending ceiling: per run, per day, per month, in any
 combination. The designer asks about it while you describe the agent and
 suggests values; the agent's page has a **Limits** card to change them later.
+When you edit an agent through the designer, only the periods you mention
+change — restating a daily limit leaves the monthly one alone.
 
 - **Tokens are the unit everywhere; dollars only where the provider reports a
   cost.** Rookery keeps no price list and never estimates dollars from tokens.
   If a response does not report its cost, a dollar limit cannot be checked for
   that run and is not treated as zero spend.
-- **A per-run limit ends that run.** It is marked **Limited** in the history
-  (not Failed) and you are told in the inbox and chat — at most once per agent
-  per day, so a frequent agent cannot flood you.
+- **A per-run limit ends that run.** It can be set in tokens, dollars or turns
+  (at most 149). The run is marked **Limited** in the history (not Failed) and
+  you are told in the inbox and chat — at most once per agent per day, so a
+  frequent agent cannot flood you. Inbox notices about limits carry a **Limit
+  reached** badge, never a failure one. If the reply that crosses the limit is
+  the agent's final answer, it is still delivered — that cost is already spent.
+- **Messages name the limit you set**, not what was left of the day or month.
 - **A daily or monthly limit pauses the agent** until the period ends, in your
   profile timezone, then it resumes by itself. While paused, scheduled runs, the
   Run button, `/run` and other agents calling it are all refused, and the agent's
-  page says when it resumes. Saving new limits lifts the pause. Your own on/off
+  page says when it resumes. Home flags it as **Limit reached** under Agents at a
+  glance and Needs attention. Saving new limits lifts the pause. Your own on/off
   switch and the schedule are left alone.
 - An agent with a daily or monthly limit that can be checked does not run twice
   at once, so a second run cannot spend past what the first was allowed. A
