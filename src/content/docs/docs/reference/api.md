@@ -83,11 +83,13 @@ surface for connector actions marked `public_write`.
 | GET | `/agents/:id` | Agent detail | Workspace |
 | DELETE | `/agents/:id` | Delete an agent | Workspace |
 | PUT | `/agents/:id/name` | Rename an agent and update everything that refers to it by name | Workspace |
-| POST | `/agents/:id/run` | Run an agent now | Workspace |
+| POST | `/agents/:id/run` | Run an agent now — `409` with `budget_paused` while its spending limit has paused it, or `busy` when a budgeted agent is already running | Workspace |
 | GET | `/agents/:id/run/progress` | SSE stream of a run in progress | Workspace |
 | GET | `/agents/:id/runs/:runID` | One run's transcript — its tool calls and coder turns | Workspace |
 | PUT | `/agents/:id/schedule` | Set an agent's cron schedule | Workspace |
 | DELETE | `/agents/:id/schedule` | Remove an agent's schedule | Workspace |
+| GET | `/agents/:id/limits` | An agent's spending limits, spend so far this day and month, and any pause | Workspace |
+| PUT | `/agents/:id/limits` | Set or clear an agent's limits; saving also lifts a pause | Workspace |
 | PUT | `/agents/:id/agent-md` | Overwrite an agent's AGENT.md | Workspace |
 | PUT | `/agents/:id/skills` | Set an agent's declared skills | Workspace |
 | PUT | `/agents/:id/connections` | Set an agent's bound service connections | Workspace |
