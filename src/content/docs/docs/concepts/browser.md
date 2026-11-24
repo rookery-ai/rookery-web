@@ -31,6 +31,12 @@ Without it everything else works normally and only JavaScript-rendered pages are
 unreadable. `/healthz` reports which state you are in, and the agent page tells you if a
 browser is missing rather than quietly offering a switch that would do nothing.
 
+**After an upgrade**, the browser may need updating too: each Rookery release is built
+against one version of it. `rookery upgrade` does this for you. If you upgraded another
+way — `dnf` or `apt` — the server notices at startup, logs a
+warning, reports `browser_outdated` in `/healthz`, and puts one notice in each
+workspace's inbox. Run `rookery browser install` as yourself, then restart Rookery.
+
 On Linux, Chromium also needs some system libraries. Setup and `install` both print the
 exact command for your package manager, or `--with-deps` installs them for you if you can
 run it as root. macOS and Windows need nothing extra.
