@@ -221,6 +221,14 @@ It then reports the version the binary on disk actually claims, rather than the
 one it meant to install — an upgrade that silently left the old one serving is
 the failure worth spending a check on.
 
+It then brings the new binary's tools up to date. If you installed the browser,
+and the new release needs a different version of it, `upgrade` downloads the
+matching one (`rookery browser install --if-outdated`); if you never installed the
+browser, nothing happens. It also lists any missing host tools — python3, ripgrep,
+Poppler, Tesseract — with the command that installs them. Neither step fails the
+upgrade: the binary is already replaced, and it tells you what to run if a step
+could not finish.
+
 Afterwards it tells you how to restart: the systemd user service on Linux, or
 the foreground command on macOS and Windows, which have no service to restart.
 
@@ -317,7 +325,7 @@ Version, commit and build date.
 ## browser
 
 ```bash
-rookery browser install [--with-deps]
+rookery browser install [--with-deps] [--if-outdated]
 rookery browser status
 ```
 
@@ -330,6 +338,12 @@ Without it, those pages simply cannot be read; nothing else changes, and
 `--with-deps` also installs the system libraries Chromium needs, which requires
 root. Without it, `install` prints the exact command for your package manager so
 you can run it yourself.
+
+`--if-outdated` installs only when a browser you installed for an earlier Rookery
+release no longer matches this one, and does nothing otherwise. The browser is
+tied to the release that installed it, so an upgrade can leave it behind;
+`rookery upgrade` runs this for you. `status` says `outdated` in that case, rather
+than `not available`.
 
 ```bash
 rookery browser read <url>
