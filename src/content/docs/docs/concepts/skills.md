@@ -1,6 +1,6 @@
 ---
 title: Skills
-description: Reusable capabilities your agents draw on — 22 built in, plus any you write.
+description: Reusable capabilities your agents draw on — 23 built in, plus any you write.
 icon: skills
 ---
 
@@ -23,7 +23,7 @@ worse, not better.
 
 ## Built in
 
-Twenty-two ship with Rookery and are available in every workspace with no setup.
+Twenty-three ship with Rookery and are available in every workspace with no setup.
 
 - **Working with files**
   - PDFs, spreadsheets (csv, xlsx), Word documents, presentations, markdown
@@ -34,6 +34,7 @@ Twenty-two ship with Rookery and are available in every workspace with no setup.
   - Writing notifications worth reading
   - Collaborating with other agents
   - Surviving failures and retrying sensibly
+  - Keeping a run tidy: scratch files, memory and results each in their place
   - Handling time and timezones correctly
 - **Web and research** — researching a topic properly, with sources, and
   driving a real browser when a page needs it
