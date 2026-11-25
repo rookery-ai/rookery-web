@@ -198,3 +198,16 @@ cycles refused. Useful when one agent gathers and another decides.
 Failures are reported in plain language rather than swallowed: out of quota,
 rate-limited, a bad key, or the run taking too long each produce a specific
 message. The run log has the detail.
+
+## Run history
+
+Each agent keeps the full record of its **last 15 runs**: the run log, its tool
+calls and its output. Older runs are trimmed automatically after every run — the
+log is deleted and only the run's time, status and usage are kept, so spending
+limits stay exact. There is no setting for this; nothing needs more than the last
+15 runs, an edit included.
+
+Every run also gets its own scratch folder for downloads and intermediate files,
+deleted as soon as the run ends. Anything an agent needs next time belongs in its
+memory, and what you asked for belongs in your notes — never raw pages saved into
+your knowledge base.
