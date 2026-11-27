@@ -22,6 +22,15 @@ there. If Rookery cannot express your schedule exactly, it shows you the precise
 form rather than a friendly approximation — because you would have no way to tell
 a wrong friendly answer from a right one.
 
+Changing or removing the schedule there also updates the agent's instructions, so
+they do not go on announcing the old time. The schedule line changes immediately.
+A moment later Rookery uses your configured model to find sentences such as "every
+Tuesday at 7am" and reword them, then lists each change on the card next to its
+original text. Each change is confined to one line, so a step can be reworded but
+never added or removed, and a step that depends on the old timing ("compare with
+yesterday's run") is left as written and listed for you to check. If the model is
+unavailable the schedule still saves; saving again retries the wording.
+
 One limit worth knowing: a schedule cannot combine a day of the month with a day
 of the week. "The first Monday of the month" is not expressible — asking for both
 gives you every day in the first week *and* every Monday, not the one day where

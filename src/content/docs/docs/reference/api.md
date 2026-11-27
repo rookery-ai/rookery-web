@@ -82,11 +82,15 @@ surface for connector actions marked `public_write`.
 | GET | `/agents` | List agents | Workspace |
 | GET | `/agents/:id` | Agent detail | Workspace |
 | DELETE | `/agents/:id` | Delete an agent | Workspace |
-| POST | `/agents/:id/run` | Run an agent now | Workspace |
+| PUT | `/agents/:id/name` | Rename an agent and update everything that refers to it by name | Workspace |
+| POST | `/agents/:id/run` | Run an agent now — `409` with `budget_paused` while its spending limit has paused it, or `busy` when a budgeted agent is already running | Workspace |
+| POST | `/agents/:id/run/stop` | Stop the agent's current run: 204, or 404 when none is running | Workspace |
 | GET | `/agents/:id/run/progress` | SSE stream of a run in progress | Workspace |
 | GET | `/agents/:id/runs/:runID` | One run's transcript — its tool calls and coder turns | Workspace |
 | PUT | `/agents/:id/schedule` | Set an agent's cron schedule | Workspace |
 | DELETE | `/agents/:id/schedule` | Remove an agent's schedule | Workspace |
+| GET | `/agents/:id/limits` | An agent's spending limits, spend so far this day and month, and any pause | Workspace |
+| PUT | `/agents/:id/limits` | Set or clear an agent's limits; saving also lifts a pause | Workspace |
 | PUT | `/agents/:id/agent-md` | Overwrite an agent's AGENT.md | Workspace |
 | PUT | `/agents/:id/skills` | Set an agent's declared skills | Workspace |
 | PUT | `/agents/:id/connections` | Set an agent's bound service connections | Workspace |
@@ -114,6 +118,7 @@ Covers both stored skills and the conversational skill-designer FSM.
 | GET | `/skills/:id` | Skill detail | Workspace |
 | PUT | `/skills/:id` | Update a skill | Workspace |
 | DELETE | `/skills/:id` | Delete a skill | Workspace |
+| PUT | `/skills/:id/name` | Rename a user skill and update everything that refers to it by name | Workspace |
 | POST | `/skills/design` | Send a design-conversation turn | Workspace |
 | POST | `/skills/design/cancel` | Cancel the in-progress design session | Workspace |
 | POST | `/skills/design/resume` | Resume a design session after reload | Workspace |
@@ -191,6 +196,7 @@ Model Context Protocol servers you added by URL — see
 | PATCH | `/chats/:id` | Rename/update a chat | Workspace |
 | POST | `/chats/:id/messages` | Start a turn — returns `202` with a turn id, not the reply | Workspace |
 | GET | `/chats/:id/turn/progress` | SSE stream of the turn in progress | Workspace |
+| POST | `/chats/:id/turn/cancel` | Stop the turn in progress — `204`, or `404` when none is running | Workspace |
 | POST | `/chats/:id/resume` | Resume a stopped chat | Workspace |
 | POST | `/chats/:id/stop` | Stop a chat | Workspace |
 | DELETE | `/chats/:id` | Delete a chat | Workspace |
@@ -205,6 +211,12 @@ turn back up.
 
 Only one turn runs per chat at a time. Sending a second message while one is
 still working returns `409`.
+
+Closing the progress stream never cancels a turn; only `POST
+/chats/:id/turn/cancel` does. A stopped turn ends its stream with `done`, not
+`error`, and records `⏹ Stopped before an answer.` as the assistant's reply, so
+the history still alternates. Anything the turn already wrote to the knowledge
+base stays.
 
 ### Reminders, inbox, and dashboard
 
