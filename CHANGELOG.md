@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.2.2](https://github.com/rookery-ai/rookery-web/compare/v0.2.1...v0.2.2) (2026-10-20)
+
+
+### Documentation
+
+* **models:** Claude Code does not inherit its own default model ([#85](https://github.com/rookery-ai/rookery-web/issues/85)) ([503b93d](https://github.com/rookery-ai/rookery-web/commit/503b93da2bd44a08ee3aa817661800b30b4cbddc))
+
+## [0.2.1](https://github.com/rookery-ai/rookery-web/compare/v0.2.0...v0.2.1) (2026-10-19)
+
+
+### Documentation
+
+* **notifications:** one bot per workspace, and Telegram groups ([#83](https://github.com/rookery-ai/rookery-web/issues/83)) ([026a5fc](https://github.com/rookery-ai/rookery-web/commit/026a5fce002d682cc22c3cd1631fc679b9cf2790))
+
+## [0.2.0](https://github.com/rookery-ai/rookery-web/compare/v0.1.15...v0.2.0) (2026-10-19)
+
+
+### Features
+
+* **landing:** hero shows a real recording of the agent designer ([#82](https://github.com/rookery-ai/rookery-web/issues/82)) ([2a69ca5](https://github.com/rookery-ai/rookery-web/commit/2a69ca5f9998dd0a6a5655c874d6ffc405ae87d7))
+
+
+### Documentation
+
+* change the default port from 8080 to 8899 ([#70](https://github.com/rookery-ai/rookery-web/issues/70)) ([cfcf3c8](https://github.com/rookery-ai/rookery-web/commit/cfcf3c875a6129cac57cb0967ec375bffce5a343))
+* **connected-services:** agents edit Google Docs by quoting text ([#78](https://github.com/rookery-ai/rookery-web/issues/78)) ([2a07631](https://github.com/rookery-ai/rookery-web/commit/2a07631756bc937c3266bbfa56285ea6ae127dc9))
+* **connected-services:** Deel ([#79](https://github.com/rookery-ai/rookery-web/issues/79)) ([c971b2a](https://github.com/rookery-ai/rookery-web/commit/c971b2a7387a67b63584926090a66ca09a800322))
+* **knowledge-base:** exports keep image sizes and grid layout ([#67](https://github.com/rookery-ai/rookery-web/issues/67)) ([937f131](https://github.com/rookery-ai/rookery-web/commit/937f131fd68fc432ec214acb4ba8747e869c5a97))
+* macOS starts at login, and two claims that were already stale ([#66](https://github.com/rookery-ai/rookery-web/issues/66)) ([56458b9](https://github.com/rookery-ai/rookery-web/commit/56458b92d23d69116ba826701fa8343e16fa29ee))
+* **models:** explain what happens when a model cannot be reached ([#65](https://github.com/rookery-ai/rookery-web/issues/65)) ([59c722c](https://github.com/rookery-ai/rookery-web/commit/59c722c0c3bf947d619c3102225be273cf9c13bd))
+* **skills:** a skill teaches judgment, not capability ([#68](https://github.com/rookery-ai/rookery-web/issues/68)) ([a419b3b](https://github.com/rookery-ai/rookery-web/commit/a419b3b875b07820acdd6c31ba78dc42b862f719))
+
 ## [0.1.15](https://github.com/rookery-ai/rookery-web/compare/v0.1.14...v0.1.15) (2026-09-02)
 
 

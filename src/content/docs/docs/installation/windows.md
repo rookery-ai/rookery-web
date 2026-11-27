@@ -16,7 +16,7 @@ irm https://rookery.cloud/install.ps1 | iex
 The installer verifies the download against the release's checksums, puts
 `rookery.exe` in `%LOCALAPPDATA%\Programs\Rookery`, adds that folder to your
 user `PATH`, and offers the optional host tools. It needs no administrator
-rights.
+rights, with one exception: Tesseract (see [Host tools](#host-tools)).
 
 :::note
 `iex` runs the script but cannot pass arguments to it. To install a specific
@@ -93,6 +93,20 @@ matches you meant.
 `python3` matters most — without it, the safety check on generated agent scripts
 silently switches off. `oschwartz10612.Poppler` is the maintained Windows build
 of Poppler and is what provides `pdftotext.exe`.
+
+:::caution[Tesseract asks for administrator permission]
+Tesseract is the one tool that installs for all users, into
+`C:\Program Files\Tesseract-OCR`, so Windows shows a permission prompt while
+installing it. The prompt can open behind the terminal window. If it is missed
+or declined, the install fails; the other three tools need no prompt. To retry,
+open PowerShell with **Run as administrator** and run:
+
+```powershell
+winget install -e --id UB-Mannheim.TesseractOCR --accept-source-agreements --accept-package-agreements
+```
+
+Rookery works without it. Only OCR of scanned documents and images is affected.
+:::
 
 :::note
 A newly installed tool appears on `PATH` in a **new** terminal, not the one that
@@ -198,6 +212,19 @@ Two things to know:
 - It runs in a **visible console window**. Closing that window stops the
   server. Hiding it would require either a stored password or an administrator
   install, which is a worse trade for a personal machine.
+
+:::caution[Nothing answers on localhost:8899 after a restart]
+Earlier releases left a lock file behind whenever the server stopped without a
+clean shutdown — a restart, a shutdown, or closing its window. Every later start
+then refused, believing another server was already running, and the console
+closed before you could read why. Run `rookery upgrade` to get the fix. Until
+then, delete the stale lock and start the task again:
+
+```powershell
+Remove-Item $env:USERPROFILE\.rookery\rookery.pid
+schtasks /Run /TN Rookery
+```
+:::
 
 Uninstalling autostart leaves your data directory completely untouched.
 
