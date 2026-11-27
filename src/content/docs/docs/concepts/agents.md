@@ -65,6 +65,22 @@ building, on purpose:
 Your live agent is untouched until you approve. The work happens in a separate
 area and is promoted only on save.
 
+## Renaming one
+
+**Rename…** in the agent page's menu changes the name and nothing about what the agent does.
+If its instructions still describe the old scope, that is an edit.
+
+Everything the platform generated or finds by name follows: other agents' `[CALL: …]` lines,
+the agent's title and state heading, the heading of its past run logs, past inbox messages,
+pending approvals, and `[[wikilinks]]` to it. A link that points at a real note with the same
+name stays pointed at that note.
+
+Sentences are left as written, in your notes and in what past runs said, and so is the audit
+log. Rookery tells you which files still mention the old name so you can look at them yourself.
+
+A rename is refused while the agent, or an agent that calls it, is running, and while an agent
+is being designed or edited in the workspace. Each refusal says what to do.
+
 ## Where the conversation happens
 
 **A build reports back where you started it.** Begin in the web UI and the plan,
@@ -123,6 +139,55 @@ deliberately quiet run reads differently from one that produced nothing because
 it broke. If a run produces nothing and did *not* mean to be silent, you get a
 warning rather than silence.
 
+### Stopping a run
+
+An agent can get stuck in a loop, so any run can be stopped, however it started:
+the **Stop** button on the agent's page or on its card in the agents list, or
+`/agent stop <name>` from a chat app. With no name, `/agent stop` stops the agent
+that is running, or asks which one if several are.
+
+Stop ends the current run and nothing else. The schedule is untouched, so the next
+scheduled run goes ahead as usual. Nothing is undone either: notes it edited,
+messages it sent and actions it took stay as they are, and anything it had not yet
+sent you is not sent. Any agents it called are stopped with it.
+
+The run is marked **Stopped** rather than failed. Its log lists what it did, as any
+run's does, and ends by saying it was stopped. The next run is told only that the
+previous one did not finish, so its memory or files may be incomplete and it should
+fix anything getting in its way. It does not mention this to you.
+
+## Limits
+
+An agent can be given a spending ceiling: per run, per day, per month, in any
+combination. The designer asks about it while you describe the agent and
+suggests values; the agent's page has a **Limits** card to change them later.
+When you edit an agent through the designer, only the periods you mention
+change — restating a daily limit leaves the monthly one alone.
+
+- **Tokens are the unit everywhere; dollars only where the provider reports a
+  cost.** Rookery keeps no price list and never estimates dollars from tokens.
+  If a response does not report its cost, a dollar limit cannot be checked for
+  that run and is not treated as zero spend.
+- **A per-run limit ends that run.** It can be set in tokens, dollars or turns
+  (at most 149). The run is marked **Limited** in the history (not Failed) and
+  you are told in the inbox and chat — at most once per agent per day, so a
+  frequent agent cannot flood you. Inbox notices about limits carry a **Limit
+  reached** badge, never a failure one. If the reply that crosses the limit is
+  the agent's final answer, it is still delivered — that cost is already spent.
+- **Messages name the limit you set**, not what was left of the day or month.
+- **A daily or monthly limit pauses the agent** until the period ends, in your
+  profile timezone, then it resumes by itself. While paused, scheduled runs, the
+  Run button, `/run` and other agents calling it are all refused, and the agent's
+  page says when it resumes. Home flags it as **Limit reached** under Agents at a
+  glance and Needs attention. Saving new limits lifts the pause. Your own on/off
+  switch and the schedule are left alone.
+- An agent with a daily or monthly limit that can be checked does not run twice
+  at once, so a second run cannot spend past what the first was allowed. A
+  per-run limit alone, or a dollar limit your provider cannot report, does not
+  stop runs from overlapping.
+- Limits apply only to agents running on an **API** model. On a CLI coder they are
+  kept but not enforced, and apply again if you switch back.
+
 ## Attaching things
 
 **Skills** give an agent capabilities — reading PDFs, web research, calendar
@@ -150,3 +215,16 @@ cycles refused. Useful when one agent gathers and another decides.
 Failures are reported in plain language rather than swallowed: out of quota,
 rate-limited, a bad key, or the run taking too long each produce a specific
 message. The run log has the detail.
+
+## Run history
+
+Each agent keeps the full record of its **last 15 runs**: the run log, its tool
+calls and its output. Older runs are trimmed automatically after every run — the
+log is deleted and only the run's time, status and usage are kept, so spending
+limits stay exact. There is no setting for this; nothing needs more than the last
+15 runs, an edit included.
+
+Every run also gets its own scratch folder for downloads and intermediate files,
+deleted as soon as the run ends. Anything an agent needs next time belongs in its
+memory, and what you asked for belongs in your notes — never raw pages saved into
+your knowledge base.
