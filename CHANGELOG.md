@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.2.3](https://github.com/rookery-ai/rookery-web/compare/v0.2.2...v0.2.3) (2026-11-27)
+
+
+### Documentation
+
+* **agents:** agent budgets and limits ([#100](https://github.com/rookery-ai/rookery-web/issues/100)) ([9152c72](https://github.com/rookery-ai/rookery-web/commit/9152c722af6d5e5417004d09b429b3a393755ad3))
+* **agents:** document the 15-run history cap and the run-hygiene skill ([#104](https://github.com/rookery-ai/rookery-web/issues/104)) ([6951283](https://github.com/rookery-ai/rookery-web/commit/69512830b63be25c0615e80f20965b88eb605b50))
+* **agents:** stopping a running agent ([#97](https://github.com/rookery-ai/rookery-web/issues/97)) ([1c3e59f](https://github.com/rookery-ai/rookery-web/commit/1c3e59fe3fe7687bf756452873abe6ca87ac1a33))
+* browser updates after a Rookery upgrade ([#103](https://github.com/rookery-ai/rookery-web/issues/103)) ([c3eefc2](https://github.com/rookery-ai/rookery-web/commit/c3eefc2f5c027fa7e258866e414edfc98d122aa9))
+* **browser:** payment-form handling and reformatted-secret redaction ([#96](https://github.com/rookery-ai/rookery-web/issues/96)) ([3c17cbe](https://github.com/rookery-ai/rookery-web/commit/3c17cbedcaba9174f48c1e2f5ae2e66b78d3c49d))
+* **chat:** chat apps open saved chats; 30 min of silence starts a new one ([#95](https://github.com/rookery-ai/rookery-web/issues/95)) ([a5ec2c5](https://github.com/rookery-ai/rookery-web/commit/a5ec2c5b71b7cbd7f00f831695f9b0e21d6e3472))
+* **chat:** document stopping an in-flight turn ([#88](https://github.com/rookery-ai/rookery-web/issues/88)) ([362d8c5](https://github.com/rookery-ai/rookery-web/commit/362d8c5d00b411c8a07dfe0a85871bc0685b3303))
+* document renaming agents and skills ([#98](https://github.com/rookery-ai/rookery-web/issues/98)) ([f49e199](https://github.com/rookery-ai/rookery-web/commit/f49e199230df4e4dfe5d35304950cddbf9a5a5e2))
+* **install:** explain why Windows stopped answering after a restart ([#101](https://github.com/rookery-ai/rookery-web/issues/101)) ([1bbefa3](https://github.com/rookery-ai/rookery-web/commit/1bbefa3b8a9d2ad7f83fd61d310d2e894c0e13e7))
+* **install:** say Tesseract asks for administrator permission on Windows ([#102](https://github.com/rookery-ai/rookery-web/issues/102)) ([39be7ec](https://github.com/rookery-ai/rookery-web/commit/39be7ec87280d1b2330ed207b3e67af982509816))
+* **models:** agents needing helper code are built by a coder tool ([#87](https://github.com/rookery-ai/rookery-web/issues/87)) ([85be2dd](https://github.com/rookery-ai/rookery-web/commit/85be2ddb99d87c6b73c642dbd2e29d2d10abe7d8))
+* **scheduling:** changing a schedule updates the agent's instructions ([#99](https://github.com/rookery-ai/rookery-web/issues/99)) ([9f8b3c0](https://github.com/rookery-ai/rookery-web/commit/9f8b3c0a37e9e31efdac07ff7a7ac4d10d5c3340))
+* **skills:** skill dependencies and the rookery deps command ([#90](https://github.com/rookery-ai/rookery-web/issues/90)) ([bffe281](https://github.com/rookery-ai/rookery-web/commit/bffe281ca6310cabd65ca038b69ca91c13a327e4))
+
+
+### Build
+
+* **deps-dev:** bump fast-uri from 3.1.5 to 3.1.9 ([#91](https://github.com/rookery-ai/rookery-web/issues/91)) ([46046ed](https://github.com/rookery-ai/rookery-web/commit/46046ed544d7fb1579eb0cb8a4a56d4935c4cdca))
+* **deps:** bump sharp to 0.35.5 ([#112](https://github.com/rookery-ai/rookery-web/issues/112)) ([b09a97c](https://github.com/rookery-ai/rookery-web/commit/b09a97c12dc24a7a032b9c0e3171f2636d4f9828))
+* **deps:** bump vite from 6.4.3 to 6.4.5 ([#94](https://github.com/rookery-ai/rookery-web/issues/94)) ([6c77622](https://github.com/rookery-ai/rookery-web/commit/6c77622dbfdb8f56dabd01e9122bd689709c1839))
+
 ## [0.2.2](https://github.com/rookery-ai/rookery-web/compare/v0.2.1...v0.2.2) (2026-10-20)
 
 
