@@ -221,6 +221,14 @@ It then reports the version the binary on disk actually claims, rather than the
 one it meant to install — an upgrade that silently left the old one serving is
 the failure worth spending a check on.
 
+It then brings the new binary's tools up to date. If you installed the browser,
+and the new release needs a different version of it, `upgrade` downloads the
+matching one (`rookery browser install --if-outdated`); if you never installed the
+browser, nothing happens. It also lists any missing host tools — python3, ripgrep,
+Poppler, Tesseract — with the command that installs them. Neither step fails the
+upgrade: the binary is already replaced, and it tells you what to run if a step
+could not finish.
+
 Afterwards it tells you how to restart: the systemd user service on Linux, or
 the foreground command on macOS and Windows, which have no service to restart.
 
@@ -317,7 +325,7 @@ Version, commit and build date.
 ## browser
 
 ```bash
-rookery browser install [--with-deps]
+rookery browser install [--with-deps] [--if-outdated]
 rookery browser status
 ```
 
@@ -330,6 +338,12 @@ Without it, those pages simply cannot be read; nothing else changes, and
 `--with-deps` also installs the system libraries Chromium needs, which requires
 root. Without it, `install` prints the exact command for your package manager so
 you can run it yourself.
+
+`--if-outdated` installs only when a browser you installed for an earlier Rookery
+release no longer matches this one, and does nothing otherwise. The browser is
+tied to the release that installed it, so an upgrade can leave it behind;
+`rookery upgrade` runs this for you. `status` says `outdated` in that case, rather
+than `not available`.
 
 ```bash
 rookery browser read <url>
@@ -382,3 +396,33 @@ built-in `get_state` / `set_state` tools, so an agent behaves identically
 whichever coder your workspace uses.
 
 Documented here so it is not a mystery if you see it in a log.
+
+## deps
+
+```bash
+rookery deps install --env <name> --package <requirement> [--package <requirement>]…
+rookery deps run --env <name> [--secret <NAME>]… -- <script> [args…]
+```
+
+Not for interactive use: this is how a command-line coder installs the Python
+packages a skill declares, and runs that skill's scripts, during a run. The
+API-engine coders reach the same code through built-in `install_packages` /
+`run_in_env` tools.
+
+Each `<name>` is one environment under the workspace's home, kept between runs, so
+the first run that needs a package installs it and later runs reuse it.
+
+- **`install`** accepts package names (optionally pinned, `requests==2.32.4`) and
+  `https://` / `git+https://` URLs, nothing that looks like a pip option. It runs
+  in its own sandbox that can write only that environment and holds none of your
+  secrets, resolves the full dependency set first, and refuses it if any package
+  is listed as malicious by [OSV](https://osv.dev). It refuses outright during a
+  skill build: skills declare their packages, agents install them.
+- **`run`** gives the script only the secrets you name with `--secret`, plus
+  `ROOKERY_VAULT_ROOT` (your knowledge base's location, so a skill can save notes in the
+  right place), and runs it where it cannot read the workspace home (your coder's login,
+  other environments). This is the only way to run a skill's code: an agent's `bash` refuses
+  to call an environment's Python directly, since that would hand the code every secret.
+
+The sandbox is Linux-only, like the rest of Rookery's confinement. Documented here
+so it is not a mystery if you see it in a log.

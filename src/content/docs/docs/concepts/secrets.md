@@ -30,7 +30,9 @@ There is one place a secret is used without the agent receiving it at all. When 
 agent signs in to a website through the [browser](/docs/concepts/browser/), it names
 the secret — `${ENERGY_ACCOUNT_PASSWORD}` — and Rookery types the value into the page
 itself. The agent never holds the password, and it is stripped back out of the page
-text, the field, the address bar and any error afterwards.
+text, the field, the address bar and any error afterwards — including a copy the page
+has reformatted, such as a card number split into groups or masked to its last four
+digits.
 
 ## How they are stored
 
