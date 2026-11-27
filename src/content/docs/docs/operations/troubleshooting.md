@@ -55,6 +55,19 @@ The container image ships all four, so a healthy container reports no warnings.
 
 ## Common problems
 
+### Agents stopped using the browser after an upgrade
+
+The browser is installed for the Rookery release that installed it, and a later
+release can need a different version. `rookery upgrade` updates it for you; an
+upgrade through `dnf` or `apt` cannot, because the server
+is not allowed to write to your home directory. The server tells you instead: a
+startup warning, `"browser_outdated": true` in `/healthz`, and an inbox notice.
+
+```bash
+rookery browser install
+systemctl --user restart rookery.service   # Linux; restart the foreground server elsewhere
+```
+
 ### Scheduled agents stop when I close my terminal
 
 **On Linux**, lingering is not enabled. A systemd user service ends with your
