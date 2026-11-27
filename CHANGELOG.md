@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/rookery-ai/rookery-web/compare/v0.2.3...v0.2.4) (2026-11-27)
+
+
+### Bug Fixes
+
+* **deploy:** serve the site's 404 page for unknown paths ([#113](https://github.com/rookery-ai/rookery-web/issues/113)) ([e7952ee](https://github.com/rookery-ai/rookery-web/commit/e7952ee3210ff58cbe731aee98e1af6c6db4736d))
+
 ## [0.2.3](https://github.com/rookery-ai/rookery-web/compare/v0.2.2...v0.2.3) (2026-11-27)
 
 
