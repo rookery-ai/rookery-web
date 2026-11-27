@@ -21,7 +21,13 @@
   // No `main` key: this Worker runs no code. Every request is an asset
   // request, which Cloudflare serves for free and which never counts against
   // the free plan's invocation limit.
-  "assets": { "directory": "./dist" }
+  //
+  // `not_found_handling` defaults to "none", which answers an unknown path
+  // with a bare 404 and an EMPTY body — a blank page — even though the build
+  // emits a styled dist/404.html. "404-page" serves the nearest 404.html
+  // (here the root one) with status 404, so a mistyped docs link lands on the
+  // site's own page with its navigation and search instead of nothing.
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" }
 
   // Bindings and variables belong in this file, never in Terraform — Terraform
   // owns the Worker's existence, wrangler owns its content, and wrangler's
