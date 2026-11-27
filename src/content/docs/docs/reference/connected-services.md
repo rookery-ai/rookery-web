@@ -26,6 +26,14 @@ and Google Health.
 These share one sign-in. You approve each service separately, but they all use
 the same app credentials, so setting Google up once covers the rest.
 
+**Agents edit Google Docs by quoting the text, not by position.** To add a line
+under a heading, rewrite a section or fix a sentence, the agent names text it can
+see in the document and Rookery works out where that is. If the text appears more
+than once, or not at all, nothing is changed and the agent is told why. After every
+edit the document is read back to confirm the change landed, so an agent cannot
+report an edit that did not happen. Markdown the agent writes, such as headings,
+bullets, bold text and links, becomes real formatting in the document.
+
 ## Productivity
 
 Notion, Todoist, Dropbox, Asana, ClickUp, Monday, Trello, Airtable, Calendly,
@@ -79,12 +87,18 @@ action that would appear to search and could not.
 ## Commerce and finance
 
 Stripe, Shopify, Salesforce, HubSpot, Firefly III, YNAB, Wise, CoinGecko,
-Alpha Vantage.
+Alpha Vantage, Deel.
 
 Wise is deliberately **read-only** here — balances, profiles and exchange rates.
 It can move money, and an agent that can send a transfer is a different
 proposition from one that can read a balance; if that is ever added it will be
 behind the approval gate, not merely marked as changing things.
+
+**Deel** connects with an organization API token from Deel's Developer Center.
+Agents can read contracts, people, timesheets and invoice adjustments, and can log
+hours. Two Deel actions change what a real person is paid: approving a timesheet,
+and adding a bonus, commission or deduction to an invoice. Both count as
+**public writing**, so you can require your approval for them on each agent.
 
 CoinGecko and Alpha Vantage need only a free key. Alpha Vantage's free tier is
 rate-limited to a few calls a minute, so an agent polling it on a tight schedule
