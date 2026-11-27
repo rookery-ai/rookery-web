@@ -47,7 +47,7 @@ Once connected, the conversation goes both ways:
 
 | Command | What it does |
 |---|---|
-| `/agent` | Build or edit an agent |
+| `/agent` | Build or edit an agent, or stop a running one |
 | `/skill` | Create a skill |
 | `/run` | Run an agent now |
 | `/chat` | Start, resume or stop a conversation |

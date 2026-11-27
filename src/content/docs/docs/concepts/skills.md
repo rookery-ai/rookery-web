@@ -1,6 +1,6 @@
 ---
 title: Skills
-description: Reusable capabilities your agents draw on — 22 built in, plus any you write.
+description: Reusable capabilities your agents draw on — 23 built in, plus any you write.
 icon: skills
 ---
 
@@ -23,7 +23,7 @@ worse, not better.
 
 ## Built in
 
-Twenty-two ship with Rookery and are available in every workspace with no setup.
+Twenty-three ship with Rookery and are available in every workspace with no setup.
 
 - **Working with files**
   - PDFs, spreadsheets (csv, xlsx), Word documents, presentations, markdown
@@ -34,6 +34,7 @@ Twenty-two ship with Rookery and are available in every workspace with no setup.
   - Writing notifications worth reading
   - Collaborating with other agents
   - Surviving failures and retrying sensibly
+  - Keeping a run tidy: scratch files, memory and results each in their place
   - Handling time and timezones correctly
 - **Web and research** — researching a topic properly, with sources, and
   driving a real browser when a page needs it
@@ -60,6 +61,21 @@ raw IP addresses, obfuscated code, destructive commands. A skill that fails the
 audit is not saved.
 
 You can also import one: upload a ZIP or paste a `SKILL.md`.
+
+## Renaming one
+
+**Rename** on one of your own skills changes its name and its folder, and updates `SKILL.md`,
+its scripts, and every agent that uses it. A built-in skill cannot be renamed.
+
+A skill with a hyphen in its name is updated wherever that whole name appears in those files.
+A one-word name such as `notes` could be an ordinary word, so only unambiguous references move:
+the `name:` line, `skills/notes/…` paths, environment arguments and the `# Skills:` header.
+
+The skill's Python environment is deleted rather than moved, because a virtual environment holds
+absolute paths. The next run that needs it reinstalls the packages, so that run is slower.
+
+A rename is refused while an agent using the skill is running, while an agent is being designed
+or edited, and while a skill draft has either the old or the new name.
 
 ## What a skill looks like
 
